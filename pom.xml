@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.unla</groupId>
-	<artifactId>grupo-6-OO2-2023</artifactId>
+	<artifactId>grupo-6</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>grupo-6-OO2-2023</name>
+	<name>grupo-6</name>
 	<description>Trabajo practico cuatrimestral OO2</description>
 	<properties>
 		<java.version>17</java.version>
