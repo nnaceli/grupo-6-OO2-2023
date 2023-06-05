@@ -12,9 +12,15 @@ import com.unla.grupo6.helpers.ViewRouterHelper;
 @Controller
 @RequestMapping("/espacioverde")
 public class DisEspacioVerdeController {
+	
 	@GetMapping("helloWorld")
 	public String helloWorld() {
 		return "DisEspacioVerde/helloWorld";
+	}
+	
+	@GetMapping("index")
+	public String index() {
+		return "DisEspacioVerde/index";
 	}
 	
 	
