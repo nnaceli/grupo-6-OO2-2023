@@ -4,5 +4,5 @@ public class ViewRouterHelper {
 	/**** Views ****/
 	
 	//ESPACIO VERDE
-	public final static String INDEX =  "disEspacioVerde/index";
+	public final static String ESPACIOVERDE_INDEX =  "espacioVerde/index";
 }

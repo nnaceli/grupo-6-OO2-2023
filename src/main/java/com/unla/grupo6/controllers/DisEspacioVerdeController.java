@@ -10,8 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 
 @Controller
-@RequestMapping("/disEspacioVerde")
+@RequestMapping("/espacioverde")
 public class DisEspacioVerdeController {
+	@GetMapping("helloWorld")
+	public String helloWorld() {
+		return "DisEspacioVerde/helloWorld";
+	}
+	
 	
 //	@Autowired
 //	@Qualifier("espacioVerdeService")
@@ -25,5 +30,7 @@ public class DisEspacioVerdeController {
 //		mAV.addObject("espaciosVerdes", espacioVerdeService.getAll());
 //		return mAV;
 //	}
+	
+	
 
 }
