@@ -1,10 +1,10 @@
 package com.unla.grupo6.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+//import lombok.Getter;
+//import lombok.NoArgsConstructor;
+//import lombok.Setter;
 
-@Getter @Setter @NoArgsConstructor
+//@Getter @Setter @NoArgsConstructor
 public class DispositivoModel {
 	private int id;
 	
