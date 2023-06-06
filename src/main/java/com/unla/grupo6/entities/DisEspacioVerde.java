@@ -10,10 +10,12 @@ import jakarta.persistence.Table;
 
 
 
+
 @Entity
 @Table(name="DisEspacioVerde")
 //@NoArgsConstructor
 public class DisEspacioVerde {
+
 
 //@Entity
 //@Table(name="DisEspacioVerde")
