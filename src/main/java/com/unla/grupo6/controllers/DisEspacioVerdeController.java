@@ -23,6 +23,11 @@ public class DisEspacioVerdeController {
 		return "DisEspacioVerde/index";
 	}
 	
+	@GetMapping("estadoEspacioVerde")
+	public String estadoEspacioVerde() {
+		return "DisEspacioVerde/estadoEspacioVerde";
+	}
+	
 	
 //	@Autowired
 //	@Qualifier("espacioVerdeService")
