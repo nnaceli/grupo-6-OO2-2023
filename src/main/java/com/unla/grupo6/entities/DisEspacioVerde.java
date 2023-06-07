@@ -9,12 +9,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 
-	public class DisEspacioVerde extends Dispositivo {
+public class DisEspacioVerde extends Dispositivo {
 
-		private boolean bajaHumedad;
+	private boolean bajaHumedad;
 
-		// falta el o los metodos
+	public DisEspacioVerde(int id, String nombre, String descripcion, boolean enFuncionamiento) {
+		super(id, nombre, descripcion, enFuncionamiento);
+		// TODO Auto-generated constructor stub
 	}
 
+	// falta el o los metodos
+}
