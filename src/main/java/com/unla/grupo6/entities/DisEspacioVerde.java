@@ -16,11 +16,65 @@ import lombok.Setter;
 public class DisEspacioVerde extends Dispositivo {
 
 	private boolean bajaHumedad;
+	
+	private float humedad;
+	
+	
 
-	public DisEspacioVerde(int id, String nombre, String descripcion, boolean enFuncionamiento) {
+	
+	//cosntructor
+	public DisEspacioVerde(int id, String nombre, String descripcion, boolean enFuncionamiento, boolean bajaHumedad,
+			float humedad) {
 		super(id, nombre, descripcion, enFuncionamiento);
-		// TODO Auto-generated constructor stub
+		this.bajaHumedad = bajaHumedad;
+		this.humedad = humedad;
 	}
 
+
 	// falta el o los metodos
+	public String regar (boolean bajaHumedad) {
+		String riego;
+		
+		if(bajaHumedad == true) {
+			 riego = "EMPAZAR A REGAR";
+		}else {
+			riego = "NO REGAR";
+		}
+		
+		return riego;
+	}
+
+
+	//getters y setters
+	public boolean isBajaHumedad() {
+		return bajaHumedad;
+	}
+
+
+	public void setBajaHumedad(boolean bajaHumedad) {
+		this.bajaHumedad = bajaHumedad;
+	}
+
+
+	public float getHumedad() {
+		return humedad;
+	}
+
+
+	public void setHumedad(float humedad) {
+		this.humedad = humedad;
+	}
+	
+//	public int verificarHumedad() {
+//
+//        if(humedad < 30)
+//            encenderRiego();
+//
+//        return 1;
+//    }
+//
+//
+//    public void encenderRiego() {
+//        regar = true; 
+//    }
 }

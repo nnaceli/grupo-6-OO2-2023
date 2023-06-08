@@ -36,8 +36,8 @@ public class DisEspacioVerdeController {
 	//private ModelMapper modelMapper = new ModelMapper();
 	
 //	@GetMapping("")
-//	public ModelAndView index() {
-//		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ESPACIOVERDE_INDEX); //por que no me lo reconoce y me pide un archivo del tfi gustavo?
+//	public ModelAndView index1() {
+//		ModelAndView mAV = new ModelAndView(ViewRouterHelper.ESPACIOVERDE_INDEX); //por que no me lo reconoce y me pide un archivo del tfi gustavo?
 //		mAV.addObject("espaciosVerdes", espacioVerdeService.getAll());
 //		return mAV;
 //	}
