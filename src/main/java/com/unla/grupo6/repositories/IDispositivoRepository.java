@@ -19,6 +19,7 @@ public interface IDispositivoRepository extends JpaRepository <Dispositivo, Seri
 		
 		public abstract Dispositivo findByFuncionamiento(boolean enFuncionamiento);
 		
+		//revisar que tipo de query hay que hacer para el tp
 		@Query("SELECT d FROM Dispositivo d JOIN FETCH d.disEspacioVerde de WHERE de.nombre = (:nombre)")
 		public abstract Dispositivo findByEspacioVerdeNombre(String nombre);
 		
