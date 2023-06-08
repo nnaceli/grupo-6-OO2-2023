@@ -3,6 +3,7 @@ package com.unla.grupo6.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/estacionamiento")
@@ -33,4 +34,8 @@ public class DisEstacionamientoController {
 		return "DisEstacionamiento/eliminarDispositivo";
 	}
 	
+	@GetMapping("/")
+	public RedirectView redirectToHomeIntex() {
+		return new RedirectView("DisEstacionamiento/index");
+	}
 }
