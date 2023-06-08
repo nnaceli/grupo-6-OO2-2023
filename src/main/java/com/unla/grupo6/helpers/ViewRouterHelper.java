@@ -4,7 +4,9 @@ public class ViewRouterHelper {
 	/**** Views ****/
 	
 	//ESPACIO VERDE ver bien como hacerlas 
-	public final static String ESPACIOVERDE_INDEX =  "espacioVerde/index";
+	public final static String ESPACIOVERDE_INDEX =  "DisEspacioVerde/index";
+	public final static String ESPACIOVERDE_AGREGAR = "DisEspacioVerde/agregarEspacioVerde";
+	public final static String ESPACIOVERDE_ROUTE_INDEX = "index";
 	
 	//ESTACIONAMIENTO
 	public final static String ESTACIONAMIENTO_INDEX = "DisEstacionamiento/index";
