@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/estacionamiento")
-public class DisEstacionamiento {
+public class DisEstacionamientoController {
 	
 	@GetMapping("index")
 	public String index() {
