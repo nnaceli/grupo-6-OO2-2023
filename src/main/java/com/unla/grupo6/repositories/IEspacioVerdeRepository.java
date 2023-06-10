@@ -14,6 +14,6 @@ public interface IEspacioVerdeRepository extends JpaRepository<DisEspacioVerde, 
 	
 	public abstract DisEspacioVerde findByHumedad (float humedad);
 	
-	@Query ("SELECT v FROM EspacioVerde v where v.humedad = (:humedad)")
+	@Query ("SELECT v FROM DisEspacioVerde v where v.humedad = (:humedad)")
 	public abstract List<DisEspacioVerde> findByHume (float humedad);
 }

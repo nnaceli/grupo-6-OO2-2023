@@ -22,10 +22,12 @@
 //		
 //		//revisar que tipo de query hay que hacer para el tp 
 //		//debo traer una lista?
-//		@Query("SELECT d FROM Dispositivo d JOIN FETCH d.disEspacioVerde de WHERE de.nombre = (:nombre)")
-//		public abstract Dispositivo findByEspacioVerdeNombre(String nombre);
+//		//@Query("SELECT d FROM Dispositivo d where d.nombre = (:nombre)")
+//		//public abstract Dispositivo findByEspacioVerdeNombre(String nombre);
+//		public abstract List<Dispositivo> findByNombreAnd (String nombre);
 //		
 //		
 //		
 //}
 
+//MUY RARO ESTO DEBO REVISARLO
