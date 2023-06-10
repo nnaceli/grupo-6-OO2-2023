@@ -13,6 +13,8 @@ public class DispositivoModel {
 	private String descripcion;
 	
 	private boolean enFuncionamiento;
+	
+	public DispositivoModel() {}
 
 	//constructor
 	public DispositivoModel(int id, String nombre, String descripcion, boolean enFuncionamiento) {

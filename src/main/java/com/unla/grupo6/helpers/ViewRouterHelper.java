@@ -14,6 +14,7 @@ public class ViewRouterHelper {
 	public final static String ESTACIONAMIENTO_PLAZAS_DISPONIBLES = "DisEstacionamiento/estacionamientosGeneral";
 	
 	public final static String ESTACIONAMIENTO_AGREGAR = "DisEstacionamiento/agregarDispositivo";
+	public final static String ESTACIONAMIENTO_AGREGADO = "DisEstacionamiento/dispositivoAgregado";
 	public final static String ESTACIONAMIENTO_MODIFICAR = "DisEstacionamiento/modificarDispositivo";
 	public final static String ESTACIONAMIENTO_ELIMINAR = "DisEstacionamiento/eliminarDispositivo";
 
