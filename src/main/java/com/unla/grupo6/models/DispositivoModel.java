@@ -3,9 +3,11 @@ package com.unla.grupo6.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+//@Id
 @Getter @Setter @NoArgsConstructor
 public class DispositivoModel {
+	
+	
 	private int id;
 	
 	private String nombre;
