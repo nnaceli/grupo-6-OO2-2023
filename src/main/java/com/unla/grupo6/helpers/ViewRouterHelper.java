@@ -3,6 +3,10 @@ package com.unla.grupo6.helpers;
 public class ViewRouterHelper {
 	/**** Views ****/
 	
+	//DISPOSITIVO
+	public final static String DISPOSITIVO_INDEX =  "Dispositivo/index";
+	
+	
 	//ESPACIO VERDE ver bien como hacerlas 
 	public final static String ESPACIOVERDE_INDEX =  "DisEspacioVerde/index";
 	public final static String ESPACIOVERDE_AGREGAR = "DisEspacioVerde/agregarEspacioVerde";
