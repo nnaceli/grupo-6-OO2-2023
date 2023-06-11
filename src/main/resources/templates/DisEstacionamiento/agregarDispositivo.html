@@ -10,11 +10,6 @@
 		<h2>Ingrese los datos para el formulario</h2>
 		
 		<form action="#" th:action="@{dispositivoAgregado}" th:object="${nuevoDispositivo}" method="post">
-			<p> id: <input type="number" th:field="*{id}"/></p>
-			<p> nombre: <input type="text" th:field="*{nombre}"/></p>
-			<p> descripcion: <input type="text" th:field="*{descripcion}"/></p>
-			<p> en funcionamiento: <input type="text" th:field="*{enFuncionamiento}"/></p>
-			<p> ocupado: <input type="text" th:field="*{ocupado}"/></p>
 			<p> sector: <input type="text" th:field="*{sector}"/></p>
 			<p> tipoEstacionameinto: <input type="number" th:field="*{tipoEstacionamiento}"/></p>
 			<input type="submit">
@@ -22,3 +17,17 @@
 
 	</body>
 </html>
+
+<!-- 
+	
+			<p> ocupado: <input type="text" th:field="*{ocupado}"/></p>
+			<p> id: <input type="text" th:field="*{id}"/></p>
+			<p> nombre: <input type="text" th:field="*{nombre}"/></p>
+			<p> descripcion: <input type="text" th:field="*{descripcion}"/></p>
+			<p> en funcionamiento: <input type="text" th:field="*{enFuncionamiento}"/></p>
+			<p> ocupado: <input type="text" th:field="*{ocupado}"/></p>
+			<p> sector: <input type="text" th:field="*{sector}"/></p>
+			<p> tipoEstacionameinto: <input type="number" th:field="*{tipoEstacionamiento}"/></p>
+			
+
+-->

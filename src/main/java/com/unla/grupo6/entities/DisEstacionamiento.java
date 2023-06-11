@@ -1,5 +1,5 @@
 package com.unla.grupo6.entities;
-
+/*
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -17,7 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 
 
-//@Table(name="dis_estacionamiento")
+@Table(name="dis_estacionamiento")
 public class DisEstacionamiento extends Dispositivo{
 	
 	@Column(name="ocupado")
@@ -50,3 +50,4 @@ public class DisEstacionamiento extends Dispositivo{
 		return 1;
 	}
 }
+*/

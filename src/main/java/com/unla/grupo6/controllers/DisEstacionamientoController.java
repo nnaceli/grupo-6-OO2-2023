@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo6.helpers.ViewRouterHelper;
 //import com.unla.grupo6.models.DisEstacionamientoModel;
+import com.unla.grupo6.models.DisEstacionamientoModel;
 
 
 
@@ -39,20 +40,20 @@ public class DisEstacionamientoController {
 		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISPONIBLES;
 
 	}
-	//ESTO LO DEBÍ COMENTAR PORQUE ME DABA ERROR YA QUE CAMBIE COSAS DE LA HERENCIA DE DE DISESTACIONAMIENTOMODEL
-//	@GetMapping("/agregar")
-//	public String agregarDisEstacionamiento(Model model) {
-//		model.addAttribute("agregar", new DisEstacionamientoModel());
-//		return ViewRouterHelper.ESTACIONAMIENTO_AGREGAR;
-//	}
-//	
-//	@PostMapping("/dispositivoAgregado")
-//	public ModelAndView dispositivoAgregado(@ModelAttribute("agregar") DisEstacionamientoModel nuevoDispositivo) {
-//		ModelAndView mV = new ModelAndView();
-//		mV.setViewName(ViewRouterHelper.ESTACIONAMIENTO_AGREGADO);
-//		mV.addObject("agregar", nuevoDispositivo);
-//		return mV;
-//	}
+	
+	@GetMapping("/agregar")
+	public String agregarDisEstacionamiento(Model model) {
+		model.addAttribute("agregar", new DisEstacionamientoModel());
+		return ViewRouterHelper.ESTACIONAMIENTO_AGREGAR;
+	}
+	
+	@PostMapping("/dispositivoAgregado")
+	public ModelAndView dispositivoAgregado(@ModelAttribute("agregar") DisEstacionamientoModel nuevoDispositivo) {
+		ModelAndView mV = new ModelAndView();
+		mV.setViewName(ViewRouterHelper.ESTACIONAMIENTO_AGREGADO);
+		mV.addObject("agregar", nuevoDispositivo);
+		return mV;
+	}
 	
 	@GetMapping("/modificar")
 	public String modificar() {

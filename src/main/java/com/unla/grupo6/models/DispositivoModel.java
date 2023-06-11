@@ -4,12 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 //@Id
-@Getter @Setter @NoArgsConstructor
-public class DispositivoModel {
-	
+
+
+public class DispositivoModel {	
 	
 	private int id;
-	
+
 	private String nombre;
 	
 	private String descripcion;
