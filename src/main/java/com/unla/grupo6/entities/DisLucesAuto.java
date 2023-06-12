@@ -1,4 +1,4 @@
-package com.unla.grupo6.entities;
+/*package com.unla.grupo6.entities;
 
 import jakarta.persistence.Entity;
 import lombok.Getter;
@@ -53,4 +53,4 @@ public class DisLucesAuto extends Dispositivo {
 		this.nroAula = nroAula;
 	}
 
-}
+}*/

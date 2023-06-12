@@ -23,8 +23,8 @@ public class ViewRouterHelper {
 	public final static String ESTACIONAMIENTO_ELIMINAR = "DisEstacionamiento/eliminarDispositivo";
 
 	
-	//BANIOS
-	
+	//BAÑOS
+	public final static String BAÑO_INDEX = "DisBaño/index";
 	
 	//LUCES
 }
