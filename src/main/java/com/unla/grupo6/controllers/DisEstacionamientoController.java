@@ -1,8 +1,11 @@
 package com.unla.grupo6.controllers;
 
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +19,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 //import com.unla.grupo6.models.DisEstacionamientoModel;
 import com.unla.grupo6.models.DisEstacionamientoModel;
+import com.unla.grupo6.models.DispositivoModel;
 
 
 
@@ -49,10 +53,14 @@ public class DisEstacionamientoController {
 	}
 	
 	@PostMapping("/dispositivoAgregado")
-	public ModelAndView dispositivoAgregado(@ModelAttribute("agregar") DisEstacionamientoModel nuevoDispositivo) {
+	public ModelAndView dispositivoAgregado(@Valid @ModelAttribute("agregar") DispositivoModel nuevoDispositivo, BindingResult bindingResult) {
 		ModelAndView mV = new ModelAndView();
-		mV.setViewName(ViewRouterHelper.ESTACIONAMIENTO_AGREGADO);
-		mV.addObject("agregar", nuevoDispositivo);
+		if(bindingResult.hasErrors()) {
+			mV.setViewName(ViewRouterHelper.ESTACIONAMIENTO_AGREGAR);
+		} else {
+			mV.setViewName(ViewRouterHelper.ESTACIONAMIENTO_AGREGADO);
+			mV.addObject("agregar", nuevoDispositivo);
+		}
 		return mV;
 	}
 	

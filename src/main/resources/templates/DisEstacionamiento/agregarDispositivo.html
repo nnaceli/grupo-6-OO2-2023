@@ -11,12 +11,6 @@
 		
 		<form action="#" th:action="@{dispositivoAgregado}" th:object="${nuevoDispositivo}" method="post">
 			<p> id: <input type="number" th:field="*{id}"/></p>
-			<p> nombre: <input type="text" th:field="*{nombre}"/></p>
-			<p> descripcion: <input type="text" th:field="*{descripcion}"/></p>
-			<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}"/></p>
-			<p> ocupado: <input type="checkbox" th:field="*{ocupado}"/></p>
-			<p> sector: <input type="text" th:field="*{sector}"/></p>
-			<p> tipoEstacionameinto: <input type="number" th:field="*{tipoEstacionamiento}"/></p>
 			<input type="submit">
 		</form>
 
@@ -26,6 +20,14 @@
 <!-- 
 	
 			
+			<p> nombre: <input type="text" th:field="*{nombre}"/></p>
+			<p> descripcion: <input type="text" th:field="*{descripcion}"/></p>
+			<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}"/></p>
+			<p> ocupado: <input type="checkbox" th:field="*{ocupado}"/></p>
+			<p> sector: <input type="text" th:field="*{sector}"/></p>
+			<p th:if="${#fields.hasErrors('sector')}" th:errors="*{sector}"/>
+			<p> tipoEstacionameinto: <input type="number" th:field="*{tipoEstacionamiento}"/></p>
+			<p th:if="${#fields.hasErrors('tipoEstacionamiento')}" th:errors="*{tipoEstacionamiento}"/>
 			
 			
 

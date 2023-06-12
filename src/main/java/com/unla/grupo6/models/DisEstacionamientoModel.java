@@ -1,6 +1,9 @@
 
 package com.unla.grupo6.models;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
+
 import com.unla.grupo6.entities.Dispositivo;
 
 import jakarta.persistence.Column;
@@ -15,7 +18,11 @@ import lombok.Setter;
 public class DisEstacionamientoModel extends DispositivoModel{
 	
 	private boolean ocupado;
+	
+	@Size(min=4, max=18)
 	private String sector;
+	
+	@Max(2)
 	private int tipoEstacionamiento;
 
 	public DisEstacionamientoModel() {}
