@@ -10,16 +10,8 @@
 		<h2>Ingrese los datos para el formulario</h2>
 		
 		<form action="#" th:action="@{dispositivoAgregado}" th:object="${nuevoDispositivo}" method="post">
-			<p> id: <input type="number" th:field="*{id}"/></p>
-			<input type="submit">
-		</form>
-
-	</body>
-</html>
-
-<!-- 
-	
 			
+			<p> id: <input type="number" th:field="*{id}"/></p>
 			<p> nombre: <input type="text" th:field="*{nombre}"/></p>
 			<p> descripcion: <input type="text" th:field="*{descripcion}"/></p>
 			<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}"/></p>
@@ -28,7 +20,13 @@
 			<p th:if="${#fields.hasErrors('sector')}" th:errors="*{sector}"/>
 			<p> tipoEstacionameinto: <input type="number" th:field="*{tipoEstacionamiento}"/></p>
 			<p th:if="${#fields.hasErrors('tipoEstacionamiento')}" th:errors="*{tipoEstacionamiento}"/>
+			<input type="submit">
 			
-			
+		</form>
+
+	</body>
+</html>
+
+<!-- 		
 
 -->
