@@ -1,15 +1,20 @@
-/*package com.unla.grupo6.entities;
+package com.unla.grupo6.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-
+@Entity
+@Table(name = "dis_luces_auto")
 public class DisLucesAuto extends Dispositivo {
+	@Column(name = "estado")
 	private boolean estado;
+
+	@Column(name = "nroAula")
 	private int nroAula;
 
 	public DisLucesAuto(int id, String nombre, String descripcion, boolean enFuncionamiento, boolean estado,
@@ -17,24 +22,6 @@ public class DisLucesAuto extends Dispositivo {
 		super(id, nombre, descripcion, enFuncionamiento);
 		this.estado = estado;
 		this.nroAula = nroAula;
-	}
-
-	public boolean verificarLuz() {
-		boolean luz = false;
-		if (this.estado == true) {
-			// esto esta mal tengo que pensarlo aiuda
-		}
-		return luz;
-	}
-
-	// ver con brandon
-	public boolean cambiarEstado() {
-		boolean estado = false;
-		if (this.estado == true) {
-			estado = true;
-		}
-		this.setEstado(estado);
-		return true;
 	}
 
 	public boolean isEstado() {
@@ -53,4 +40,4 @@ public class DisLucesAuto extends Dispositivo {
 		this.nroAula = nroAula;
 	}
 
-}*/
+}
