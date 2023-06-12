@@ -28,7 +28,7 @@ public class DispositivoService implements IDispositivoService {
 	}
 
 	@Override
-	public Dispositivo findById(int id) {
+	public Dispositivo findByIdDispositivo(int idDispositivo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

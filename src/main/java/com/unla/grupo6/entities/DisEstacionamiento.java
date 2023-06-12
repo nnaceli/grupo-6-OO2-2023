@@ -1,5 +1,5 @@
 package com.unla.grupo6.entities;
-/*
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -50,4 +50,3 @@ public class DisEstacionamiento extends Dispositivo{
 		return 1;
 	}
 }
-*/

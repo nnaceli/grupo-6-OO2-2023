@@ -13,7 +13,7 @@ import com.unla.grupo6.entities.Dispositivo;
 @Repository("dispositivoRepository")
 public interface IDispositivoRepository extends JpaRepository <Dispositivo, Serializable>{
 		
-		public abstract Dispositivo findById(int id);
+		public abstract Dispositivo findByIdDispositivo(int idDispositivo);
 		
 		public abstract Dispositivo findByNombre(String nombre);
 		

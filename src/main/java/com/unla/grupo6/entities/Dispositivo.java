@@ -21,7 +21,7 @@ public class Dispositivo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int id;
+	protected int idDispositivo;
 	
 	@Column(name="nombre")
 	protected String nombre;
@@ -33,7 +33,7 @@ public class Dispositivo {
 	protected boolean enFuncionamiento;
 
 	public Dispositivo(int id, String nombre, String descripcion, boolean enFuncionamiento) {
-		this.id = id;
+		this.idDispositivo = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.enFuncionamiento = enFuncionamiento;

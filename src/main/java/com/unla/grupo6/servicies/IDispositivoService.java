@@ -7,7 +7,7 @@ import com.unla.grupo6.models.DispositivoModel;
 public interface IDispositivoService {
 	public List <Dispositivo> getAll();
 	
-	public Dispositivo findById(int id);
+	public Dispositivo findByIdDispositivo(int idDispositivo);
 	
 	public DispositivoModel findByNombre (String nombre);
 	
