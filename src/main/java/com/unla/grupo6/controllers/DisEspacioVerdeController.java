@@ -1,15 +1,24 @@
 package com.unla.grupo6.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo6.helpers.ViewRouterHelper;
+import com.unla.grupo6.models.DisEspacioVerdeModel;
+import com.unla.grupo6.models.DisEstacionamientoModel;
+import com.unla.grupo6.models.DispositivoModel;
 
 @Controller
 @RequestMapping("/espacioverde")
@@ -32,18 +41,39 @@ public class DisEspacioVerdeController {
 	
 	@GetMapping("/agregar/{sector}")
 	public ModelAndView agregarDisEspacioverde(@PathVariable("sector") String sector) {
-
-
-
 		ModelAndView mV = new ModelAndView(ViewRouterHelper.ESPACIOVERDE_AGREGAR);
 		mV.addObject("sector", sector);
 		return mV;
 	}
 	
+	@GetMapping("/agregar")
+	public String agregarDisEspacioVerde(Model model) {
+		model.addAttribute("agregar", new DisEspacioVerdeModel());
+		return ViewRouterHelper.ESPACIOVERDE_AGREGAR;
+	}
+	
+	
+	@PostMapping("/espacioverdeagregado")
+	public ModelAndView dispositivoAgregado(@Valid @ModelAttribute("agregar") DispositivoModel nuevoDispositivo, BindingResult bindingResult) {
+		ModelAndView mV = new ModelAndView();
+		if(bindingResult.hasErrors()) {
+			mV.setViewName(ViewRouterHelper.ESPACIOVERDE_AGREGAR);
+		} else {
+			mV.setViewName(ViewRouterHelper.ESPACIOVERDE_AGREGADO);
+			mV.addObject("agregar", nuevoDispositivo);
+		}
+		return mV;
+	}
+	
+	
 	@GetMapping("/")
 	public RedirectView redirectToHomeIntex() {
 		return new RedirectView(ViewRouterHelper.ESPACIOVERDE_ROUTE_INDEX);
 	}
+	
+	
+	
+	
 	
 //	@Autowired
 //	@Qualifier("espacioVerdeService")

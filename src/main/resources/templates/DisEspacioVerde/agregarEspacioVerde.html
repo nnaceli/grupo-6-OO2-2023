@@ -2,13 +2,37 @@
 <html>
 	<head>
 		<meta charset="UTF-8"\>
-		<title>Agregar dispositivo a espacio verde</title>
+		<title>Agregar dispositivo espacio verde</title>
 	</head>
 	<body>
-		<h1>Carga de nuevo dispositivo</h1>
+		<h1>Carga de nuevo espacio verde</h1>
 		
-		<p>
-			nuevo dispositivo en sector <span th:text="${sector}"/>
-		</p>
-	</body> 
-</html> 
+		<h2>Ingrese los datos para el formulario</h2>
+		
+		<form action="#" th:action="@{dispositivoAgregado}" th:object="${nuevoDispositivo}" method="post">
+			
+			<p> nombre: <input type="text" th:field="*{nombre}"/></p>
+			
+			
+			
+			<input type="submit" /> 
+		</form>
+
+	</body>
+</html>
+ 
+<!-- 
+		
+			<p> id: <input type="number" th:field="*{id}"/></p>
+			<p> nombre: <input type="text" th:field="*{nombre}"/></p>
+			<p> descripcion: <input type="text" th:field="*{descripcion}"/></p>
+			<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}"/></p>
+			<p> ocupado: <input type="checkbox" th:field="*{ocupado}"/></p>
+			<p> sector: <input type="text" th:field="*{sector}"/></p>
+			<p th:if="${#fields.hasErrors('sector')}" th:errors="*{sector}"/>
+			<p> tipoEstacionameinto: <input type="number" th:field="*{tipoEstacionamiento}"/></p>
+			<p th:if="${#fields.hasErrors('tipoEstacionamiento')}" th:errors="*{tipoEstacionamiento}"/>
+			
+			
+
+-->

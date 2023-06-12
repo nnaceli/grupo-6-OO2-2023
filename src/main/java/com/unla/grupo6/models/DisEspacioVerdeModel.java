@@ -1,40 +1,58 @@
-package com.unla.grupo6.entities;
+package com.unla.grupo6.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 
-@Entity
-@Getter
-@Setter
-@NoArgsConstructor
-
-public class DisEspacioVerde extends Dispositivo {
-
+public class DisEspacioVerdeModel extends DispositivoModel {
+	
 	private boolean bajaHumedad;
 	
+	@Max(30)
 	private float humedad;
 	
+	@Size(min=5, max=20)
 	private String sector;
-	
-	
+
+	//construcotr vacio
+	public DisEspacioVerdeModel() {
+		super();
+	}
+
 	//constructor
-	public DisEspacioVerde(int id, String nombre, String descripcion, boolean enFuncionamiento, boolean bajaHumedad,
-			float humedad, String sector) {
+	public DisEspacioVerdeModel(int id, String nombre, String descripcion, boolean enFuncionamiento,
+			boolean bajaHumedad, @Max(30) float humedad, @Size(min = 5, max = 20) String sector) {
 		super(id, nombre, descripcion, enFuncionamiento);
 		this.bajaHumedad = false;
 		this.humedad = humedad;
 		this.sector = sector;
 	}
 
+	public boolean isBajaHumedad() {
+		return bajaHumedad;
+	}
 
+	public void setBajaHumedad(boolean bajaHumedad) {
+		this.bajaHumedad = bajaHumedad;
+	}
 
+	public float getHumedad() {
+		return humedad;
+	}
 
-	// falta el o los metodos
+	public void setHumedad(float humedad) {
+		this.humedad = humedad;
+	}
+
+	public String getSector() {
+		return sector;
+	}
+
+	public void setSector(String sector) {
+		this.sector = sector;
+	}
+
+	
+	//METODOS
 	public String regar (boolean bajaHumedad) {
 		String riego;
 		
@@ -46,37 +64,6 @@ public class DisEspacioVerde extends Dispositivo {
 		
 		return riego;
 	}
-
-
-	//getters y setters
-	public boolean isBajaHumedad() {
-		return bajaHumedad;
-	}
-
-
-	public void setBajaHumedad(boolean bajaHumedad) {
-		this.bajaHumedad = bajaHumedad;
-	}
-
-
-	public float getHumedad() {
-		return humedad;
-	}
-
-
-	public void setHumedad(float humedad) {
-		this.humedad = humedad;
-	}
-	
-	public String getSector() {
-		return sector;
-	}
-
-
-	public void setSector(String sector) {
-		this.sector = sector;
-	}
-
 	
 //	public int verificarHumedad() {
 //
@@ -90,4 +77,7 @@ public class DisEspacioVerde extends Dispositivo {
 //    public void encenderRiego() {
 //        regar = true; 
 //    }
+	
+	
+	
 }

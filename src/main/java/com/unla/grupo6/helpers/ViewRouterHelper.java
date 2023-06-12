@@ -10,6 +10,10 @@ public class ViewRouterHelper {
 	//ESPACIO VERDE ver bien como hacerlas 
 	public final static String ESPACIOVERDE_INDEX =  "DisEspacioVerde/index";
 	public final static String ESPACIOVERDE_AGREGAR = "DisEspacioVerde/agregarEspacioVerde";
+	public final static String ESPACIOVERDE_MODIFICAR = "DisEspacioVerde/modificarEspacioVerde";
+	public final static String ESPACIOVERDE_ELIMINAR = "DisEspacioVerde/eliminarEspacioVerde";
+	public final static String ESPACIOVERDE_AGREGADO = "DisEstacionamiento/espacioVerdeAgregado";
+	
 	public final static String ESPACIOVERDE_ROUTE_INDEX = "index";
 	
 	//ESTACIONAMIENTO
