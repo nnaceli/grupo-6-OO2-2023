@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-public class DisEstacionamientoModel /*extends DispositivoModel*/{
+public class DisEstacionamientoModel extends DispositivoModel{
 	
 	private boolean ocupado;
 	private String sector;
@@ -20,8 +20,8 @@ public class DisEstacionamientoModel /*extends DispositivoModel*/{
 
 	public DisEstacionamientoModel() {}
 	
-	public DisEstacionamientoModel(/*int id, String nombre, String descripcion, boolean enFuncionamiento,*/ String sector, int tipoEstacionamiento) {
-		//super(id, nombre, descripcion, enFuncionamiento);
+	public DisEstacionamientoModel(int id, String nombre, String descripcion, boolean enFuncionamiento, String sector, int tipoEstacionamiento) {
+		super(id, nombre, descripcion, enFuncionamiento);
 		this.ocupado = false;
 		this.sector = sector;
 		this.tipoEstacionamiento = tipoEstacionamiento;
@@ -39,5 +39,29 @@ public class DisEstacionamientoModel /*extends DispositivoModel*/{
 	public int ocuparPlaza() {
 		ocupado = true;
 		return 1;
+	}
+
+	public boolean isOcupado() {
+		return ocupado;
+	}
+
+	public void setOcupado(boolean ocupado) {
+		this.ocupado = ocupado;
+	}
+
+	public String getSector() {
+		return sector;
+	}
+
+	public void setSector(String sector) {
+		this.sector = sector;
+	}
+
+	public int getTipoEstacionamiento() {
+		return tipoEstacionamiento;
+	}
+
+	public void setTipoEstacionamiento(int tipoEstacionamiento) {
+		this.tipoEstacionamiento = tipoEstacionamiento;
 	}
 }
