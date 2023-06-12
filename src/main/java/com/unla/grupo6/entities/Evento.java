@@ -22,8 +22,6 @@ public class Evento {
 	@Column(name="id")
 	private int id;
 	
-	
-	
 	@Column(name="fechaHora")
 	private LocalDateTime fechaHora;
 	

@@ -3,7 +3,6 @@ package com.unla.grupo6.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-//@Id
 
 
 public class DispositivoModel {	
