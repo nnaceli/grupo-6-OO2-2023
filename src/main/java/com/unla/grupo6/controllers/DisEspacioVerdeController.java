@@ -29,31 +29,31 @@ public class DisEspacioVerdeController {
 //		return "DisEspacioVerde/helloWorld";
 //	}
 	
-	@GetMapping("/index")
+	@GetMapping("/index") //me lo muestra raro
 	public String index() {
 		return ViewRouterHelper.ESPACIOVERDE_INDEX;
 	}
 	
-	@GetMapping("estadoEspacioVerde")
+	@GetMapping("estadoespacioverde")
 	public String estadoEspacioVerde() {
 		return "DisEspacioVerde/estadoEspacioVerde";
 	}
 	
-	@GetMapping("/agregar/{sector}")
+	@GetMapping("/agregar/{sector}") //me da al login sospecho que es por el model
 	public ModelAndView agregarDisEspacioverde(@PathVariable("sector") String sector) {
 		ModelAndView mV = new ModelAndView(ViewRouterHelper.ESPACIOVERDE_AGREGAR);
 		mV.addObject("sector", sector);
 		return mV;
 	}
 	
-	@GetMapping("/agregar")
+	@GetMapping("/agregar") //ME DABA ERROR PORQUE HAY UN PROBLEMAS CON LOS IMPUTS DE ESTE TEMPLATE LO SAQUE Y FUNCIONO SIN PROBLEMAS PERRO
 	public String agregarDisEspacioVerde(Model model) {
 		model.addAttribute("agregar", new DisEspacioVerdeModel());
 		return ViewRouterHelper.ESPACIOVERDE_AGREGAR;
 	}
 	
 	
-	@PostMapping("/espacioverdeagregado")
+	@PostMapping("/espacioverdeagregado") //me da al login sospecho que es por el model
 	public ModelAndView dispositivoAgregado(@Valid @ModelAttribute("agregar") DispositivoModel nuevoDispositivo, BindingResult bindingResult) {
 		ModelAndView mV = new ModelAndView();
 		if(bindingResult.hasErrors()) {

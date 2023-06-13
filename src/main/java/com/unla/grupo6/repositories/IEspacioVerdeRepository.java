@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+@Repository("espacioVerdeRepository")
 public interface IEspacioVerdeRepository extends JpaRepository<DisEspacioVerde, Serializable> {
 	
 	public abstract DisEspacioVerde findBybajaHumedad (boolean bajaHumedad);
