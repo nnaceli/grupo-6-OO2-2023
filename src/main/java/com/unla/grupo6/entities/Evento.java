@@ -26,17 +26,17 @@ public class Evento {
 	@Column(name="fechaHora")
 	private LocalDateTime fechaHora;
 	
-	public Evento() {}
-	
 //	@ManyToOne (fetch=FetchType.LAZY, mappedBy="evento")
 //	private Dispositivo dispositivo = new Dispositivo();
 	
 	@ManyToOne
-	@JoinColumn(name = "idDispositivo")
+	@JoinColumn(name = "idDispositivo", nullable=false)
 	//@Column(name="dispositivo")
 	private Dispositivo dispositivo;
 	//private Dispositivo dispositivo;
 
+	public Evento() {}
+	
 	//constructor
 	public Evento(int id, Dispositivo dispositivo, LocalDateTime fechaHora) {
 		super();
