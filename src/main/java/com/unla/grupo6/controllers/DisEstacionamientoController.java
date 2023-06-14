@@ -53,7 +53,7 @@ public class DisEstacionamientoController {
 	}
 	
 	@PostMapping("/dispositivoAgregado")
-	public ModelAndView dispositivoAgregado(@ModelAttribute("agregar") DispositivoModel nuevoDispositivo) {
+	public ModelAndView dispositivoAgregado(@ModelAttribute("agregar") DisEstacionamientoModel nuevoDispositivo) {
 		ModelAndView mV = new ModelAndView();
 		mV.setViewName(ViewRouterHelper.ESTACIONAMIENTO_AGREGADO);
 		mV.addObject("agregar", nuevoDispositivo);

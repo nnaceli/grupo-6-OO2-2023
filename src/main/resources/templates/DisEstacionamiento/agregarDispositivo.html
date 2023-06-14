@@ -14,17 +14,16 @@
 	<form action="#" th:action="@{dispositivoAgregado}" th:object="${nuevoDispositivo}" method="post">
 
 		<p> id: <input type="number" th:field="*{id}" /></p>
-		<p> nombre: <input type="text" th:field="*{nombre}" /></p>
-		<p> descripcion: <input type="text" th:field="*{descripcion}" /></p>
-		<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}" /></p>
-		<p> ocupado: <input type="checkbox" th:field="*{ocupado}" /></p>
-		<p> sector: <input type="text" th:field="*{sector}" /></p>
-		<p> tipoEstacionameinto: <input type="number" th:field="*{tipoEstacionamiento}" /></p>
 
 		<input type="submit" />
 	</form>
-	
-	<form th:action="@{/views/clientes/save}" th:object="${cliente}" method="post">
+
+</body>
+
+</html>
+
+<!-- 	
+				<form th:action="@{/views/clientes/save}" th:object="${cliente}" method="post">
 					<div class="form-group row">
 						<input type="hidden" th:field="*{id}">
 						<label class="col-md-2" for="nombre">Nombres:</label>
@@ -56,12 +55,7 @@
 						<input type="submit" class="btn btn-primary btn-sm" value="Guardar"/>
 					</div>
 				</form>
-
-</body>
-
-</html>
-
-<!-- 	
+			
 			
 			<p> id: <input type="number" th:field="*{id}"/></p>
 			<p> nombre: <input type="text" th:field="*{nombre}"/></p>
