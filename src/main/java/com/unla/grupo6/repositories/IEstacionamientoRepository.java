@@ -11,7 +11,7 @@ import com.unla.grupo6.entities.DisEstacionamiento;
 @Repository("estacionamientoRepository")
 public interface IEstacionamientoRepository extends JpaRepository<DisEstacionamiento, Serializable> {
 	
-	public abstract DisEstacionamiento findById(int id);
+	//public abstract DisEstacionamiento findById(int id);
 	
 	public abstract List<DisEstacionamiento> findBySector(String sector);
 	
