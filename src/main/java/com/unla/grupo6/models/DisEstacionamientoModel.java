@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+@Getter @Setter @NoArgsConstructor
 public class DisEstacionamientoModel extends DispositivoModel{
 	
 	private boolean ocupado;
@@ -36,39 +36,5 @@ public class DisEstacionamientoModel extends DispositivoModel{
 	
 	public boolean verificarDisponibilidad() {
 		return ocupado;
-	}
-	
-	public int liberarPlaza() {
-		ocupado = false;
-		return 1;
-	}
-	
-	public int ocuparPlaza() {
-		ocupado = true;
-		return 1;
-	}
-
-	public boolean isOcupado() {
-		return ocupado;
-	}
-
-	public void setOcupado(boolean ocupado) {
-		this.ocupado = ocupado;
-	}
-
-	public String getSector() {
-		return sector;
-	}
-
-	public void setSector(String sector) {
-		this.sector = sector;
-	}
-
-	public int getTipoEstacionamiento() {
-		return tipoEstacionamiento;
-	}
-
-	public void setTipoEstacionamiento(int tipoEstacionamiento) {
-		this.tipoEstacionamiento = tipoEstacionamiento;
 	}
 }

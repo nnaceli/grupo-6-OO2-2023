@@ -1,30 +1,64 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8"\>
-		<title>Agregar dispositivo estacionamiento</title>
-	</head>
-	<body>
-		<h1>Carga de nuevo dispositivo</h1>
-		
-		<h2>Ingrese los datos para el formulario</h2>
-		
-		<form action="#" th:action="@{dispositivoAgregado}" th:object="${nuevoDispositivo}" method="post">
 
-			<p> id: <input type="number" th:field="*{id}"/></p>
-			<p> nombre: <input type="text" th;field="*{nombre}"/></p>
-			<p> descripcion: <input type="text" th:field="*{descripcion}"/></p>
-			<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}"/></p>
-			<p> ocupado: <input type="checkbox" th:field="*{ocupado}"/></p>
-			<p> sector: <input type="text" th:field="*{sector}"/></p>
-			<p th:if="${#fields.hasErrors('sector')}" th:errors="*{sector}"/>
-			<p> tipoEstacionameinto: <input type="number" th:field="*{tipoEstacionamiento}"/></p>
-			<p th:if="${#fields.hasErrors('tipoEstacionamiento')}" th:errors="*{tipoEstacionamiento}"/>
+<head>
+	<meta charset="UTF-8" \>
+	<title>Agregar dispositivo estacionamiento</title>
+</head>
 
-			<input type="submit" /> 
-		</form>
+<body>
+	<h1>Carga de nuevo dispositivo</h1>
 
-	</body>
+	<h2>Ingrese los datos para el formulario</h2>
+
+	<form action="#" th:action="@{dispositivoAgregado}" th:object="${nuevoDispositivo}" method="post">
+
+		<p> id: <input type="number" th:field="*{id}" /></p>
+		<p> nombre: <input type="text" th:field="*{nombre}" /></p>
+		<p> descripcion: <input type="text" th:field="*{descripcion}" /></p>
+		<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}" /></p>
+		<p> ocupado: <input type="checkbox" th:field="*{ocupado}" /></p>
+		<p> sector: <input type="text" th:field="*{sector}" /></p>
+		<p> tipoEstacionameinto: <input type="number" th:field="*{tipoEstacionamiento}" /></p>
+
+		<input type="submit" />
+	</form>
+	
+	<form th:action="@{/views/clientes/save}" th:object="${cliente}" method="post">
+					<div class="form-group row">
+						<input type="hidden" th:field="*{id}">
+						<label class="col-md-2" for="nombre">Nombres:</label>
+						<input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6" id="nombre" placeholder="Nombres del cliente">
+						<small></small>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="apellido">Apellidos:</label>
+						<input type="text" th:field="*{apellido}" class="form-control form-control-sm col-md-6" id="apellido" placeholder="Apellidos del cliente">
+						<small></small>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="telefono">Telefono:</label>
+						<input type="text" th:field="*{telefono}" class="form-control form-control-sm col-md-6" id="telefono" placeholder="Telefono del cliente">
+						<small></small>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="email">Email:</label>
+						<input type="text" th:field="*{email}" class="form-control form-control-sm col-md-6" id="email" placeholder="Email del cliente">
+						<small></small>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="ciudad">Ciudad:</label>
+						<select th:field="*{ciudad}" class="form-control form-control-sm col-md-6" id="ciudad">
+							<option th:each="ciudad : ${ciudades}" th:value="${ciudad.id}" th:text="${ciudad.ciudad}"></option>
+						</select>
+					</div>
+					<div class="card-footer bg-dark">
+						<input type="submit" class="btn btn-primary btn-sm" value="Guardar"/>
+					</div>
+				</form>
+
+</body>
+
 </html>
 
 <!-- 	

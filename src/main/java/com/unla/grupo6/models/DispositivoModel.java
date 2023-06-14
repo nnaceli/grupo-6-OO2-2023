@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+@Getter @Setter @NoArgsConstructor
 public class DispositivoModel {	
 	
 	private int id;
@@ -25,38 +25,5 @@ public class DispositivoModel {
 		this.descripcion = descripcion;
 		this.enFuncionamiento = enFuncionamiento;
 	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public boolean isEnFuncionamiento() {
-		return enFuncionamiento;
-	}
-
-	public void setEnFuncionamiento(boolean enFuncionamiento) {
-		this.enFuncionamiento = enFuncionamiento;
-	}
-	
 	
 }

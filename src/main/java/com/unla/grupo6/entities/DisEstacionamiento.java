@@ -12,11 +12,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 @Table(name="dis_estacionamiento")
 public class DisEstacionamiento extends Dispositivo{
 	
