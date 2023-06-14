@@ -28,7 +28,7 @@ public class UserController {
 	
 	@GetMapping("/loginsuccess")
 	public String loginCheck() {
-		return "redirect:/index";
+		return "redirect:/Dispositivo/index";
 	}
 	
 //	public class TestByCryptPasswordEncoder{

@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,6 +47,7 @@ public class DisEspacioVerdeController {
 		return mV;
 	}
 	
+	//@PreAuthorize("hasRole('administrador')") <- probablemente asi se desgine la manera de donde un admin o auditor puede ingresar a la vista
 	@GetMapping("/agregar") //ME DABA ERROR PORQUE HAY UN PROBLEMAS CON LOS IMPUTS DE ESTE TEMPLATE LO SAQUE Y FUNCIONO SIN PROBLEMAS PERRO
 	public String agregarDisEspacioVerde(Model model) {
 		model.addAttribute("agregar", new DisEspacioVerdeModel());
