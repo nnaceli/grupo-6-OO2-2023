@@ -32,7 +32,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .requestMatchers("/css/", "/imgs/", "/js/", "/estacionamiento/**", "/baño/**", "/espacioverde/**", "/dispositivo/**", "/lucesautomaticas/**").permitAll()
+                .requestMatchers("/css/", "/imgs/", "/js/", "/estacionamiento/**", "/baño/**", "/espacioverde/**", "/dispositivo/**", "/lucesautomaticas/**", "/login/**").permitAll()
                 .anyRequest().authenticated()
             .and()
                 .formLogin().loginPage("/login").loginProcessingUrl("/loginprocess")
