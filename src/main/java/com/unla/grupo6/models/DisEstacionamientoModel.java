@@ -19,15 +19,15 @@ public class DisEstacionamientoModel extends DispositivoModel{
 	
 	private boolean ocupado;
 	
-	@Size(min=4, max=18)
+	//@Size(min=4, max=18)
 	private String sector;
 	
-	@Size(min=1, max=2)
+	//@Size(min=1, max=2)
 	private int tipoEstacionamiento;
 	
-	public DisEstacionamientoModel(int id, String nombre, String descripcion, boolean enFuncionamiento, String sector, int tipoEstacionamiento) {
+	public DisEstacionamientoModel(int id, String nombre, String descripcion, boolean enFuncionamiento, boolean ocupado, String sector, int tipoEstacionamiento) {
 		super(id, nombre, descripcion, enFuncionamiento);
-		this.ocupado = false;
+		this.ocupado = ocupado;
 		this.sector = sector;
 		this.tipoEstacionamiento = tipoEstacionamiento;
 	}
