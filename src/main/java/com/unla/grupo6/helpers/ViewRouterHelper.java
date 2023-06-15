@@ -31,8 +31,11 @@ public class ViewRouterHelper {
 	public final static String BAÑO_INDEX = "DisBaño/index";
 	
 	//LUCES
-	
-	
+	public final static String LUCES_INDEX = "DisLucesAuto/index";
+	public final static String LUCES_AGREGAR = "DisLucesAuto/agregarLuces";
+	public final static String LUCES_MODIFICAR= "DisLucesAuto/modificarLuces";
+	public final static String LUCES_ELIMINAR= "DisLucesAuto/eliminarLuces";
+	public final static String LUCES_CAMBIAR_ESTADO= "DisLucesAuto/cambiarEstado";
 	
 	//USER
 	public final static String USER_LOGIN = "User/login";

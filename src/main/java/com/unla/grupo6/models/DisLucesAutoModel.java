@@ -1,5 +1,7 @@
 package com.unla.grupo6.models;
 
+import java.time.LocalTime;
+
 public class DisLucesAutoModel extends DispositivoModel {
 	private boolean estado;
 
@@ -10,10 +12,9 @@ public class DisLucesAutoModel extends DispositivoModel {
 
 	}
 
-	public DisLucesAutoModel(int id, String nombre, String descripcion, boolean enFuncionamiento, boolean estado,
-			int nroAula) {
+	public DisLucesAutoModel(int id, String nombre, String descripcion, boolean enFuncionamiento, int nroAula) {
 		super(id, nombre, descripcion, enFuncionamiento);
-		this.estado = estado;
+		this.estado = false;
 		this.nroAula = nroAula;
 	}
 
@@ -33,16 +34,15 @@ public class DisLucesAutoModel extends DispositivoModel {
 		this.nroAula = nroAula;
 	}
 
-//	public boolean verificarLuz(double cantLuz) {
-//		boolean luz = false;
-//		if (cantLuz > 40) {
-//			cambiarEstado();
-//		}
-//		return luz;
-//	}
-//
-//	public boolean cambiarEstado() {
-//		this.setEstado(!isEstado());
-//		return true;
-//	}
+	public int verificarLuz(LocalTime hora) {
+		if (hora.isAfter(LocalTime.of(17, 55)) || hora.isAfter(LocalTime.of(7, 0))) {
+			cambiarEstado();
+		}
+		return 1;
+	}
+
+	public boolean cambiarEstado() {
+		this.setEstado(!isEstado());
+		return true;
+	}
 }
