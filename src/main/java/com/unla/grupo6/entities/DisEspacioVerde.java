@@ -23,9 +23,9 @@ public class DisEspacioVerde extends Dispositivo {
 	
 	
 	//constructor
-	public DisEspacioVerde(int id, String nombre, String descripcion, boolean enFuncionamiento, boolean bajaHumedad,
+	public DisEspacioVerde(String nombre, String descripcion, boolean enFuncionamiento, boolean bajaHumedad,
 			float humedad, String sector) {
-		super(id, nombre, descripcion, enFuncionamiento);
+		super(nombre, descripcion, enFuncionamiento);
 		this.bajaHumedad = false;
 		this.humedad = humedad;
 		this.sector = sector;

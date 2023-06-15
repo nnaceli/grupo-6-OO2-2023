@@ -32,8 +32,7 @@ public class Dispositivo {
 	@Column(name="enFuncionamiento")
 	protected boolean enFuncionamiento;
 
-	public Dispositivo(int id, String nombre, String descripcion, boolean enFuncionamiento) {
-		this.idDispositivo = id;
+	public Dispositivo(String nombre, String descripcion, boolean enFuncionamiento) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.enFuncionamiento = enFuncionamiento;

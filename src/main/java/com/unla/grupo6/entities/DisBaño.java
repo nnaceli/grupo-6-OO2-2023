@@ -22,8 +22,8 @@ public class DisBaño extends Dispositivo {
 	private String sector;
 
 
-	public DisBaño(int id, String nombre, String descripcion, boolean enFuncionamiento, String sector) {
-		super(id, nombre, descripcion, enFuncionamiento);
+	public DisBaño(String nombre, String descripcion, boolean enFuncionamiento, String sector) {
+		super(nombre, descripcion, enFuncionamiento);
 		this.habilitado= true;
 		this.personaLimpiando = false;
 		this.sector = sector;
