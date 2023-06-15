@@ -29,10 +29,6 @@ import com.unla.grupo6.servicies.IEstacionamientoService;
 @Controller
 @RequestMapping("/estacionamiento")
 public class DisEstacionamientoController {
-	
-	@Autowired
-	@Qualifier("estacionamientoService")
-	private IEstacionamientoService estacionamientoService;
 
 	@GetMapping("/estacionamientoDisponibles")
 	public String estacionamientoDisponibles() {
