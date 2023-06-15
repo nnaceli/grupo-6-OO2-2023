@@ -14,7 +14,7 @@ import com.unla.grupo6.servicies.IEstacionamientoService;
 public class EstacionamientoService implements IEstacionamientoService{
 	
 	@Autowired
-	@Qualifier("estacionamientoRespository")
+	@Qualifier("estacionamientoRepository")
 	private IEstacionamientoRepository estacionamientoRepository;
 	
 	@Override

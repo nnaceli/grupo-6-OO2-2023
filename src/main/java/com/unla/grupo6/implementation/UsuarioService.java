@@ -33,7 +33,7 @@ public class UsuarioService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-		com.unla.grupo6.entities.User user = userRepository.findByUsernameAndFetchUserAdministradoresEagerly(username);
+		com.unla.grupo6.entities.User user = userRepository.findByUsernameAndFetchUserRolesEagerly(username);
 		return buildUser(user, buildGrantedAuthorities(user.getUserRoles()));
 		
 	}
@@ -48,8 +48,8 @@ public class UsuarioService implements UserDetailsService{
 	private List<GrantedAuthority> buildGrantedAuthorities(Set<UserRole> userRoles){
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
 		
-		for(UserRole userAdministrador : userRoles) {
-			grantedAuthorities.add(new SimpleGrantedAuthority(userAdministrador.getRole()));
+		for(UserRole userRole : userRoles) {
+			grantedAuthorities.add(new SimpleGrantedAuthority(userRole.getRole()));
 		}
 		
 		return new ArrayList<GrantedAuthority>(grantedAuthorities);

@@ -28,11 +28,11 @@ public class DisLucesAutoController {
 		return "DisLucesAuto/estadoDisLucesAuto";
 	}
 
-	@GetMapping("/agregarLuces")
-	public String agregarLuces(Model model){
-		model.addAttribute("agregar", new DisLucesAutoModel());
-		return ViewRouterHelper.LUCES_AGREGAR;
-	}
+//	@GetMapping("/agregarLuces")
+//	public String agregarLuces(Model model){
+//		model.addAttribute("agregar", new DisLucesAutoModel());
+//		return ViewRouterHelper.LUCES_AGREGAR;
+//	}
 	
 	@GetMapping("/modificar")
 	public String modificar() {

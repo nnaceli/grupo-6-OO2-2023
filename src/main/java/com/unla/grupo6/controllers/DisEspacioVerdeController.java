@@ -35,6 +35,7 @@ public class DisEspacioVerdeController {
 		return ViewRouterHelper.ESPACIOVERDE_INDEX;
 	}
 	
+	//@PreAuthorize("hasRole('administrador')")
 	@GetMapping("estadoespacioverde")
 	public String estadoEspacioVerde() {
 		return "DisEspacioVerde/estadoEspacioVerde";
@@ -50,7 +51,7 @@ public class DisEspacioVerdeController {
 	//@PreAuthorize("hasRole('administrador')") <- probablemente asi se desgine la manera de donde un admin o auditor puede ingresar a la vista
 	@GetMapping("/agregar") //ME DABA ERROR PORQUE HAY UN PROBLEMAS CON LOS IMPUTS DE ESTE TEMPLATE LO SAQUE Y FUNCIONO SIN PROBLEMAS PERRO
 	public String agregarDisEspacioVerde(Model model) {
-		model.addAttribute("agregar", new DisEspacioVerdeModel());
+		model.addAttribute("agregar", new DisEspacioVerdeModel(0, null, null, false));
 		return ViewRouterHelper.ESPACIOVERDE_AGREGAR;
 	}
 	

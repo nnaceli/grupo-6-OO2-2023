@@ -15,6 +15,11 @@
 			<p> descripcion: <input type="text" field="*{descripcion}"/></p>
 			<p> sector: <input type="text" field="*{sector}"/></p>
 			
+			<select name="sector" th:field="*{sector}">
+				<option value="Plaza Malvinas">Plaza Malvinas</option>
+				<option value="Plaza abuelas">Plaza abuelas</option>
+			</select>
+		</p>
 			
 			<input type="submit" /> 
 		</form>

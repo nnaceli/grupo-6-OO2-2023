@@ -46,11 +46,11 @@ public class DisEstacionamientoController {
 
 	}
 	
-	@GetMapping("/agregar")
-	public String agregarDisEstacionamiento(Model model) {
-		model.addAttribute("agregar", new DisEstacionamientoModel());
-		return ViewRouterHelper.ESTACIONAMIENTO_AGREGAR;
-	}
+//	@GetMapping("/agregar")
+//	public String agregarDisEstacionamiento(Model model) {
+//		model.addAttribute("agregar", new DisEstacionamientoModel());
+//		return ViewRouterHelper.ESTACIONAMIENTO_AGREGAR;
+//	}
 	
 	@PostMapping("/dispositivoAgregado")
 	public ModelAndView dispositivoAgregado(@Valid @ModelAttribute("agregar") DisEstacionamientoModel nuevoDisEstacionamiento, BindingResult bindingResult) {

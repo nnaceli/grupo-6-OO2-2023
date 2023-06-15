@@ -14,9 +14,11 @@ public class DisEspacioVerdeModel extends DispositivoModel {
 	private String sector;
 
 	//construcotr vacio
-	public DisEspacioVerdeModel() {
-		super();
+	public DisEspacioVerdeModel(int id, String nombre, String descripcion, boolean enFuncionamiento) {
+		super(id, nombre, descripcion, enFuncionamiento);
 	}
+
+
 
 	//constructor
 	public DisEspacioVerdeModel(int id, String nombre, String descripcion, boolean enFuncionamiento,
