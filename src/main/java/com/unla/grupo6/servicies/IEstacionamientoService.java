@@ -1,5 +1,13 @@
 package com.unla.grupo6.servicies;
 
-public interface IEstacionamientoService {
+import java.util.List;
 
+import com.unla.grupo6.entities.DisEstacionamiento;
+
+public interface IEstacionamientoService {
+	
+	public List<DisEstacionamiento> getAll();
+	
+	
+	
 }
