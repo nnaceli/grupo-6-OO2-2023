@@ -9,6 +9,6 @@ public interface IEstacionamientoService {
 	
 	public List<DisEstacionamiento> getAll();
 	
-	//public DisEstacionamientoModel inserOrUpdate(DisEstacionamientoModel objDisEstacionamiento);
+	public DisEstacionamientoModel inserOrUpdate(DisEstacionamientoModel objDisEstacionamiento);
 	
 }

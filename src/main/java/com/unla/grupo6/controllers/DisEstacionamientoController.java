@@ -3,6 +3,8 @@ package com.unla.grupo6.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,7 @@ import com.unla.grupo6.helpers.ViewRouterHelper;
 //import com.unla.grupo6.models.DisEstacionamientoModel;
 import com.unla.grupo6.models.DisEstacionamientoModel;
 import com.unla.grupo6.models.DispositivoModel;
+import com.unla.grupo6.servicies.IEstacionamientoService;
 
 
 
@@ -27,12 +30,9 @@ import com.unla.grupo6.models.DispositivoModel;
 @RequestMapping("/estacionamiento")
 public class DisEstacionamientoController {
 	
-	@GetMapping("/index")
-	public String index() {
-		return ViewRouterHelper.ESTACIONAMIENTO_INDEX;
-	}
-
-	 
+	@Autowired
+	@Qualifier("estacionamientoService")
+	private IEstacionamientoService estacionamientoService;
 
 	@GetMapping("/estacionamientoDisponibles")
 	public String estacionamientoDisponibles() {
