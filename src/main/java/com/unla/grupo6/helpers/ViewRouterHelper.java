@@ -28,7 +28,9 @@ public class ViewRouterHelper {
 
 	
 	//BAÑOS
-	public final static String BAÑO_INDEX = "DisBaño/index";
+	public final static String BAÑO_INDEX = "baño/index";
+	public final static String BAÑO_LISTA = "baño/lista";
+	public final static String BAÑO_CREAR = "baño/crear";
 	
 	//LUCES
 	public final static String LUCES_INDEX = "DisLucesAuto/index";

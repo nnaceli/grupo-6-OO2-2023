@@ -15,19 +15,12 @@ public class DisBaño extends Dispositivo {
 	@Column(name="habilitado")
 	private boolean habilitado;
 	
-	@Column(name="personaLimpiando")
-	private boolean personaLimpiando;
+	@Column(name="higienizandose")
+	private boolean higienizandose;
 	
 	@Column(name="sector")
 	private String sector;
-
-
-	public DisBaño(String nombre, String descripcion, boolean enFuncionamiento, String sector) {
-		super(nombre, descripcion, enFuncionamiento);
-		this.habilitado= true;
-		this.personaLimpiando = false;
-		this.sector = sector;
-	}
+	
 	
 	/*
 	public boolean verificarBaño() {
