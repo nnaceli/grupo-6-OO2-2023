@@ -13,7 +13,7 @@ public class DisEspacioVerdeModel extends DispositivoModel {
 	@Size(min=5, max=20)
 	private String sector;
 
-	//construcotr vacio
+	
 
 
 
@@ -27,7 +27,7 @@ public class DisEspacioVerdeModel extends DispositivoModel {
 	}
 
 	
-
+	//constructor vacio
 	public DisEspacioVerdeModel() {
 		super();
 	}

@@ -12,9 +12,10 @@ public class ViewRouterHelper {
 	public final static String ESPACIOVERDE_AGREGAR = "DisEspacioVerde/agregarEspacioVerde";
 	public final static String ESPACIOVERDE_MODIFICAR = "DisEspacioVerde/modificarEspacioVerde";
 	public final static String ESPACIOVERDE_ELIMINAR = "DisEspacioVerde/eliminarEspacioVerde";
-	public final static String ESPACIOVERDE_AGREGADO = "DisEstacionamiento/espacioVerdeAgregado";
+	public final static String ESPACIOVERDE_AGREGADO = "DisEspacioVerde/espacioVerdeAgregado";
+	public final static String ESPACIOVERDE_CARGAR = "DisEspacioVerde/cargarEspacioVerde";
 	
-	public final static String ESPACIOVERDE_ROUTE_INDEX = "index";
+	public final static String ESPACIOVERDE_ROUTE_INDEX = "/index";
 	
 	//ESTACIONAMIENTO
 	public final static String ESTACIONAMIENTO_INDEX = "DisEstacionamiento/index";

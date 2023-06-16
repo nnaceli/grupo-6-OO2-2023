@@ -33,13 +33,13 @@ public class DisEstacionamientoController {
 	@Qualifier("estacionamientoService")
 	private IEstacionamientoService estacionamientoService;
 
-//	@GetMapping("/cargar")
-//	public ModelAndView index() {
-//		ModelAndView mAV = new ModelAndView(ViewRouterHelper.ESTACIONAMIENTO_CARGAR);
-//		mAV.addObject("estacionamientos", estacionamientoService.getAll());
-//		mAV.addObject("estacionamiento", new DisEstacionamientoModel());
-//		return mAV;
-//	}
+	@GetMapping("/cargar")
+	public ModelAndView index() {
+		ModelAndView mAV = new ModelAndView(ViewRouterHelper.ESTACIONAMIENTO_CARGAR);
+		mAV.addObject("estacionamientos", estacionamientoService.getAll());
+		mAV.addObject("estacionamiento", new DisEstacionamientoModel());
+		return mAV;
+	}
 	
 	@PostMapping("/cargar")
 	public RedirectView cargar(@ModelAttribute("estacionamiento") DisEstacionamientoModel nuevoDisEstacionamiento) {

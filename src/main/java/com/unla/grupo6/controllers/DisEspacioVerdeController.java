@@ -17,9 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo6.helpers.ViewRouterHelper;
+import com.unla.grupo6.implementation.EspacioVerdeService;
 import com.unla.grupo6.models.DisEspacioVerdeModel;
 import com.unla.grupo6.models.DisEstacionamientoModel;
 import com.unla.grupo6.models.DispositivoModel;
+import com.unla.grupo6.servicies.IEspacioVerdeService;
+import com.unla.grupo6.servicies.IEstacionamientoService;
 
 @Controller
 @RequestMapping("/espacioverde")
@@ -30,8 +33,13 @@ public class DisEspacioVerdeController {
 //		return "DisEspacioVerde/helloWorld";
 //	}
 	
+	@Autowired
+	@Qualifier("espacioVerdeService")
+	private IEspacioVerdeService espacioVerdeService;
+	
+	
 	@GetMapping("/index") //me lo muestra raro
-	public String index() {
+	public String indexTest() {
 		return ViewRouterHelper.ESPACIOVERDE_INDEX;
 	}
 	
@@ -64,6 +72,14 @@ public class DisEspacioVerdeController {
 			mV.addObject("agregar", nuevoDisEspacioVerde);
 		}
 		return mV;
+	}
+	
+	@GetMapping("/cargar")
+	public ModelAndView index() {
+		ModelAndView mAV = new ModelAndView(ViewRouterHelper.ESPACIOVERDE_CARGAR);
+		mAV.addObject("espaciosverdes", espacioVerdeService.getAll());
+		mAV.addObject("espacioverde", new DisEspacioVerdeModel());
+		return mAV;
 	}
 	
 	
