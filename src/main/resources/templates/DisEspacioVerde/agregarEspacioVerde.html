@@ -1,5 +1,57 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+	<meta charset="UTF-8" \>
+	<title>Agregar dispositivo estacionamiento</title>
+</head>
+
+<body>
+	<h1>Carga de nuevo dispositivo</h1>
+
+	<h2>Ingrese los datos para el formulario</h2>
+
+	<form action="#" th:action="@{dispositivoAgregado}" th:object="${agregar}" method="post">
+		
+		
+		<p> baja humedad: <input type="checkbox" th:field="*{bajaHumedad}"/></p>
+		<p> humedad: <input type="float" th:field="*{humedad}"/></p>
+		<p> sector: <input type="text" th:field ="*{sector}"/></p>
+		<input type="submit" />
+	</form>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<!DOCTYPE html>
+<html>
 	<head>
 		<meta charset="UTF-8"\>
 		<title>Agregar dispositivo espacio verde</title>
@@ -26,6 +78,8 @@
 
 	</body>
 </html>
+ 
+ -->
  
 <!-- 
 		

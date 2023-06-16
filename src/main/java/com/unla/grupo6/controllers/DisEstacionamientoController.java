@@ -33,13 +33,13 @@ public class DisEstacionamientoController {
 	@Qualifier("estacionamientoService")
 	private IEstacionamientoService estacionamientoService;
 
-	@GetMapping("/cargar")
-	public ModelAndView index() {
-		ModelAndView mAV = new ModelAndView(ViewRouterHelper.ESTACIONAMIENTO_CARGAR);
-		mAV.addObject("estacionamientos", estacionamientoService.getAll());
-		mAV.addObject("estacionamiento", new DisEstacionamientoModel());
-		return mAV;
-	}
+//	@GetMapping("/cargar")
+//	public ModelAndView index() {
+//		ModelAndView mAV = new ModelAndView(ViewRouterHelper.ESTACIONAMIENTO_CARGAR);
+//		mAV.addObject("estacionamientos", estacionamientoService.getAll());
+//		mAV.addObject("estacionamiento", new DisEstacionamientoModel());
+//		return mAV;
+//	}
 	
 	@PostMapping("/cargar")
 	public RedirectView cargar(@ModelAttribute("estacionamiento") DisEstacionamientoModel nuevoDisEstacionamiento) {
@@ -58,11 +58,11 @@ public class DisEstacionamientoController {
 
 	}
 	
-//	@GetMapping("/agregar")
-//	public String agregarDisEstacionamiento(Model model) {
-//		model.addAttribute("agregar", new DisEstacionamientoModel());
-//		return ViewRouterHelper.ESTACIONAMIENTO_AGREGAR;
-//	}
+	@GetMapping("/agregar")
+	public String agregarDisEstacionamiento(Model model) {
+		model.addAttribute("agregar", new DisEstacionamientoModel());
+		return ViewRouterHelper.ESTACIONAMIENTO_AGREGAR;
+	}
 	
 	@PostMapping("/dispositivoAgregado")
 	public ModelAndView dispositivoAgregado(@Valid @ModelAttribute("agregar") DisEstacionamientoModel nuevoDisEstacionamiento, BindingResult bindingResult) {

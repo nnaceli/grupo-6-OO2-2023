@@ -14,9 +14,6 @@ public class DisEspacioVerdeModel extends DispositivoModel {
 	private String sector;
 
 	//construcotr vacio
-	public DisEspacioVerdeModel(int id, String nombre, String descripcion, boolean enFuncionamiento) {
-		super(id, nombre, descripcion, enFuncionamiento);
-	}
 
 
 
@@ -28,6 +25,18 @@ public class DisEspacioVerdeModel extends DispositivoModel {
 		this.humedad = humedad;
 		this.sector = sector;
 	}
+
+	
+
+	public DisEspacioVerdeModel() {
+		super();
+	}
+
+
+
+	
+
+
 
 	public boolean isBajaHumedad() {
 		return bajaHumedad;

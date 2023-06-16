@@ -12,6 +12,11 @@ import lombok.Setter;
 @Table(name="dis_baño")
 public class DisBaño extends Dispositivo {
 	
+	public DisBaño(String nombre) {
+		super(nombre);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Column(name="habilitado")
 	private boolean habilitado;
 	

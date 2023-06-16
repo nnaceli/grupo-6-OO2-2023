@@ -41,19 +41,38 @@ public class DisEspacioVerdeController {
 		return "DisEspacioVerde/estadoEspacioVerde";
 	}
 	
-	@GetMapping("/agregar/{sector}") //me da al login sospecho que es por el model
+	@GetMapping("/agregar/{sector}") 
 	public ModelAndView agregarDisEspacioverde(@PathVariable("sector") String sector) {
 		ModelAndView mV = new ModelAndView(ViewRouterHelper.ESPACIOVERDE_AGREGAR);
 		mV.addObject("sector", sector);
 		return mV;
 	}
 	
-	//@PreAuthorize("hasRole('administrador')") <- probablemente asi se desgine la manera de donde un admin o auditor puede ingresar a la vista
-	@GetMapping("/agregar") //ME DABA ERROR PORQUE HAY UN PROBLEMAS CON LOS IMPUTS DE ESTE TEMPLATE LO SAQUE Y FUNCIONO SIN PROBLEMAS PERRO
-	public String agregarDisEspacioVerde(Model model) {
-		model.addAttribute("agregar", new DisEspacioVerdeModel(0, null, null, false));
+	@GetMapping("/agregar")
+	public String agregarDisEstacionamiento(Model model) {
+		model.addAttribute("agregar", new DisEspacioVerdeModel());
 		return ViewRouterHelper.ESPACIOVERDE_AGREGAR;
 	}
+	
+	@PostMapping("/dispositivoAgregado")
+	public ModelAndView dispositivoAgregado(@Valid @ModelAttribute("agregar") DisEspacioVerdeModel nuevoDisEspacioVerde, BindingResult bindingResult) {
+		ModelAndView mV = new ModelAndView();
+		if(bindingResult.hasErrors()) {
+			mV.setViewName(ViewRouterHelper.ESPACIOVERDE_AGREGAR);
+		}else {
+			mV.setViewName(ViewRouterHelper.ESPACIOVERDE_AGREGADO);
+			mV.addObject("agregar", nuevoDisEspacioVerde);
+		}
+		return mV;
+	}
+	
+	
+	//@PreAuthorize("hasRole('administrador')") <- probablemente asi se desgine la manera de donde un admin o auditor puede ingresar a la vista
+//	@GetMapping("/agregar") //ME DABA ERROR PORQUE HAY UN PROBLEMAS CON LOS IMPUTS DE ESTE TEMPLATE LO SAQUE Y FUNCIONO SIN PROBLEMAS PERRO
+//	public String agregarDisEspacioVerde(Model model) {
+//		model.addAttribute("agregar", new DisEspacioVerdeModel(0, null, null, false, false, 0, null));
+//		return ViewRouterHelper.ESPACIOVERDE_AGREGAR;
+//	}
 	
 	
 	@PostMapping("/espacioverdeagregado") //me da al login sospecho que es por el model

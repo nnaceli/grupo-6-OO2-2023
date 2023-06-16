@@ -39,7 +39,7 @@ public class DisBañoController {
 	
 	@GetMapping("/crear")
 	public String crear(Model model) {
-		DisBaño disBaño = new DisBaño();
+		DisBaño disBaño = new DisBaño(null);
 		model.addAttribute("titulo", "Formulario: Nuevo Cliente");
 		model.addAttribute("cliente", disBaño);
 		model.addAttribute("ciudades", bañoService.getAll());

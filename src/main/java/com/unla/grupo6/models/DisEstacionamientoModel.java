@@ -32,6 +32,10 @@ public class DisEstacionamientoModel extends DispositivoModel{
 		this.tipoEstacionamiento = tipoEstacionamiento;
 	}
 	
+	public DisEstacionamientoModel() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public boolean verificarDisponibilidad() {
 		return ocupado;
 	}
