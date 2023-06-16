@@ -33,9 +33,9 @@ public class EstacionamientoService implements IEstacionamientoService{
 	}
 
 	@Override
-	public DisEstacionamientoModel inserOrUpdate(DisEstacionamientoModel objDisEstacionamiento) {
-		DisEstacionamiento disEstacionamiento = estacionamientoRepository.save(disEstacionamientoConvert.modelToEntity(objDisEstacionamiento));
-		return disEstacionamientoConvert.etityToModel(disEstacionamiento);
+	public DisEstacionamientoModel insertOrUpdate(DisEstacionamientoModel objDisEstacionamiento) {
+		DisEstacionamiento disEstacionamiento = estacionamientoRepository.save(modelMapper.map(objDisEstacionamiento, DisEstacionamiento.class));
+		return modelMapper.map(disEstacionamiento, DisEstacionamientoModel.class);
 	}
 
 }

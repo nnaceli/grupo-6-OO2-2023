@@ -21,7 +21,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 //import com.unla.grupo6.models.DisEstacionamientoModel;
 import com.unla.grupo6.models.DisEstacionamientoModel;
-import com.unla.grupo6.models.DispositivoModel;
 import com.unla.grupo6.servicies.IEstacionamientoService;
 
 
@@ -29,11 +28,28 @@ import com.unla.grupo6.servicies.IEstacionamientoService;
 @Controller
 @RequestMapping("/estacionamiento")
 public class DisEstacionamientoController {
+	
+	@Autowired
+	@Qualifier("estacionamientoService")
+	private IEstacionamientoService estacionamientoService;
 
+	@GetMapping("/cargar")
+	public ModelAndView index() {
+		ModelAndView mAV = new ModelAndView(ViewRouterHelper.ESTACIONAMIENTO_CARGAR);
+		mAV.addObject("estacionamientos", estacionamientoService.getAll());
+		mAV.addObject("estacionamiento", new DisEstacionamientoModel());
+		return mAV;
+	}
+	
+	@PostMapping("/cargar")
+	public RedirectView cargar(@ModelAttribute("estacionamiento") DisEstacionamientoModel nuevoDisEstacionamiento) {
+		estacionamientoService.insertOrUpdate(nuevoDisEstacionamiento);
+		return new RedirectView(ViewRouterHelper.ESTACIONAMIENTO_CARGAR);
+	}
+	
 	@GetMapping("/estacionamientoDisponibles")
 	public String estacionamientoDisponibles() {
 		return "DisEstacionamiento/estacionamientosGeneral";
-
 	}
 
 	@GetMapping("/plazasDisponibles")
@@ -69,11 +85,6 @@ public class DisEstacionamientoController {
 	public String eliminar() {
 		return ViewRouterHelper.ESTACIONAMIENTO_ELIMINAR;
 
-	}
-
-	@GetMapping("/")
-	public RedirectView redirectToHomeIntex() {
-		return new RedirectView(ViewRouterHelper.ESTACIONAMIENTO_ROUTE_INDEX);
 	}
 
 }
