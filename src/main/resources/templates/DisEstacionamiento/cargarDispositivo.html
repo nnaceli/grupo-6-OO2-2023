@@ -27,7 +27,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<form action="#" th:action="@{/estacionamientos/}" th:object="${estacionamiento}" method="post">
+	<form action="#" th:action="@{estacionamientos}" th:object="${estacionamiento}" method="post">
 		<p> nombre: <input type="text" th:field="*{nombre}" /></p>
 		<p> descripcion: <input type="text" th:field="*{descripcion}" /></p>
 		<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}" /></p>

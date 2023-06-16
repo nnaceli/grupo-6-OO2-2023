@@ -44,7 +44,7 @@ public class DisEstacionamientoController {
 	@PostMapping("/cargar")
 	public RedirectView cargar(@ModelAttribute("estacionamiento") DisEstacionamientoModel nuevoDisEstacionamiento) {
 		estacionamientoService.insertOrUpdate(nuevoDisEstacionamiento);
-		return new RedirectView(ViewRouterHelper.ESTACIONAMIENTO_CARGAR);
+		return new RedirectView(ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISPONIBLES);
 	}
 	
 	@GetMapping("/estacionamientoDisponibles")
