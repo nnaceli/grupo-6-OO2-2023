@@ -96,7 +96,7 @@ public class DisEspacioVerdeController {
 	}
 	
 	@GetMapping("/crear")
-	public String crear(Model model) {
+	public String crearVerdes(Model model) {
 		DisEspacioVerde disEspacioVerde = new DisEspacioVerde();
 		model.addAttribute("titulo", "Formulario: Nuevo Sensor");
 		model.addAttribute("espacio verde", disEspacioVerde);
@@ -109,7 +109,7 @@ public class DisEspacioVerdeController {
 	
 
 	@PostMapping("/save")
-	public String guardar(@Valid @ModelAttribute DisEspacioVerde disEspacioVerde, BindingResult result, Model model,
+	public String guardarVerdes(@Valid @ModelAttribute DisEspacioVerde disEspacioVerde, BindingResult result, Model model,
 			RedirectAttributes attribute) {
 
 		if (result.hasErrors()) {
@@ -127,8 +127,8 @@ public class DisEspacioVerdeController {
 
 	}
 	
-	@GetMapping("/lista")
-	public String listarBaños(Model model) {
+	@GetMapping("/listaverde")
+	public String listarVerdes(Model model) {
 		model.addAttribute("titulo", "Lista de sensores espacio verde");
 		model.addAttribute("lista", espacioVerdeService.getAll());
 		return ViewRouterHelper.BAÑO_LISTA;
