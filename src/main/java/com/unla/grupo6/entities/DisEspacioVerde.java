@@ -12,7 +12,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-
 public class DisEspacioVerde extends Dispositivo {
 
 	private boolean bajaHumedad;
@@ -31,7 +30,9 @@ public class DisEspacioVerde extends Dispositivo {
 		this.sector = sector;
 	}
 
-
+//	public DisEspacioVerde() {
+//		
+//	}
 
 
 	// falta el o los metodos

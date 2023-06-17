@@ -38,6 +38,7 @@ public class Dispositivo {
 	
 	@Column(name="enFuncionamiento")
 	@NotNull(message = "El campo no debe ser nulo") 
+
 	protected boolean enFuncionamiento;
 
 	public Dispositivo(String nombre, String descripcion, boolean enFuncionamiento) {
@@ -45,10 +46,41 @@ public class Dispositivo {
 		this.descripcion = descripcion;
 		this.enFuncionamiento = enFuncionamiento;
 	}
-	
-	
+
 	public Dispositivo(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
+	public int getIdDispositivo() {
+		return idDispositivo;
+	}
+
+	public void setIdDispositivo(int idDispositivo) {
+		this.idDispositivo = idDispositivo;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public boolean isEnFuncionamiento() {
+		return enFuncionamiento;
+	}
+
+	public void setEnFuncionamiento(boolean enFuncionamiento) {
+		this.enFuncionamiento = enFuncionamiento;
+	}
+
 }

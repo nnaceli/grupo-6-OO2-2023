@@ -2,12 +2,24 @@
 <html>
 
 <head>
-	<meta charset="UTF-8" \>
-	<title>agregar Luces Automaticas</title>
+	<meta charset="UTF-8" />
+	<title>Agregar Luces Automaticas</title>
 </head>
 
 <body>
-	<p>agregar lucesAutomaticas</p>
+	<h1><b>agregar Dispositivo de Luces Automaticas</b></h1>
+	<h2>Ingresar los datos del dispositivo</h2>
+
+	<form action="#" th:action="@{lucesAgregada}" th:object="${agregar}" method="post">
+		<p> id: <input type="number" th:field="*{idDispositivo}" /></p>
+		<p> nombre: <input type="text" th:field="*{nombre}" /></p>
+		<p> descripcion: <input type="text" th:field="*{descripcion}" /></p>
+		<p> ¿Funciona?: <input type="number" th:field="*{enFuncionamiento}" /></p>
+		<p> numero de aula: <input type="number" th:field="*{nroAula}" /></p>
+		<p> estado: <input type="number" th:field="*{estado}" /></p>
+		<input type="submit" />
+	</form>
+
 </body>
 
 </html>

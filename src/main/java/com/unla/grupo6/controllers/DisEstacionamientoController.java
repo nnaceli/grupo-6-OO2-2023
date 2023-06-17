@@ -33,8 +33,10 @@ public class DisEstacionamientoController {
 	@Qualifier("estacionamientoService")
 	private IEstacionamientoService estacionamientoService;
 
+	
+	//usar el contructor vacio de entities 
 	@GetMapping("/cargar")
-	public ModelAndView index() {
+	public ModelAndView cargar() {
 		ModelAndView mAV = new ModelAndView(ViewRouterHelper.ESTACIONAMIENTO_CARGAR);
 		mAV.addObject("estacionamientos", estacionamientoService.getAll());
 		mAV.addObject("estacionamiento", new DisEstacionamientoModel());
