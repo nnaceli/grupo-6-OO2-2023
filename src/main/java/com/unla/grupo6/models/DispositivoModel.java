@@ -24,8 +24,6 @@ public class DispositivoModel {
 		this.enFuncionamiento = enFuncionamiento;
 	}
 
-	public DispositivoModel() {
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 }
