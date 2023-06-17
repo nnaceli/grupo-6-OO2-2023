@@ -29,6 +29,9 @@ public class DisEspacioVerdeModel extends DispositivoModel {
 	//constructor vacio
 	
 
+
+
+
 	public boolean isBajaHumedad() {
 		return bajaHumedad;
 	}

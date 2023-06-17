@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:fragment="head">
+	<meta charset="UTF-8" />
+	<title>FORMULARIO CREAR NUEVO SENSOR</title>
+	<link rel="stylesheet" 
+		th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+</head>
+
+
+<body>
+
+
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+			<div class="card-body">
+				<form th:action="@{/espacioverde/save}" th:object="${espacioverde}" method="post">
+					<div class="form-group row">
+						<input type="hidden" th:field="*{idDispositivo}">
+						<label class="col-md-2" for="nombre">Humedad:</label>
+						<input type="text" th:field="*{humedad}" class="form-control form-control-sm col-md-6"
+							id="humedad" placeholder="Humedad del dispositivo">
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="sector">Sector:</label> <select
+							class="form-control form-control-sm col-md-6" id="sector">
+							<option>plaza abuelas</option>
+							<option>plaza malvinas</option>
+						</select>
+					</div>
+
+
+					<div class="card-footer bg-dark">
+						<input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

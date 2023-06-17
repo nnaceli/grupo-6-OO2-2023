@@ -14,6 +14,10 @@ public class ViewRouterHelper {
 	public final static String ESPACIOVERDE_ELIMINAR = "DisEspacioVerde/eliminarEspacioVerde";
 	public final static String ESPACIOVERDE_AGREGADO = "DisEspacioVerde/espacioVerdeAgregado";
 	public final static String ESPACIOVERDE_CARGAR = "DisEspacioVerde/cargarEspacioVerde";
+	public final static String ESPACIOVERDE_CREAR = "DisEspacioVerde/crearVerde";
+	public final static String ESPACIOVERDE_LISTA = "DisEspacioVerde/listaVerde";
+	public final static String ESPACIOVERDE_REDIRECT_LISTA = "redirect:/espacioverde/listaVerde";
+	
 	
 	public final static String ESPACIOVERDE_ROUTE_INDEX = "/index";
 	

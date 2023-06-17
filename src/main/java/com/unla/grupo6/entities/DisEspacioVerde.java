@@ -1,6 +1,9 @@
 package com.unla.grupo6.entities;
 
+import javax.validation.constraints.NotNull;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
@@ -12,15 +15,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@DiscriminatorValue("espacioVerde")
+@Table(name="dis_espacio_verde")
 public class DisEspacioVerde extends Dispositivo {
 
-	private boolean bajaHumedad;
-	
-	private float humedad;
-	
-	private String sector;
-	
-	
 	//constructor
 	public DisEspacioVerde(String nombre, String descripcion, boolean enFuncionamiento, boolean bajaHumedad,
 			float humedad, String sector) {
@@ -29,54 +27,41 @@ public class DisEspacioVerde extends Dispositivo {
 		this.humedad = humedad;
 		this.sector = sector;
 	}
+	
+	@Column(name="bajaHumedad")
+	@NotNull(message = "El campo no debe ser nulo")
+	private boolean bajaHumedad;
+	
+	@Column(name="humedad")
+	@NotNull(message = "El campo no debe ser nulo")
+	private float humedad;
+	
+	@Column(name="sector")
+	@NotNull(message = "El campo no debe estar vacio")
+	private String sector;
+	
+	
+
 
 //	public DisEspacioVerde() {
 //		
 //	}
 
 
-	// falta el o los metodos
-	public String regar (boolean bajaHumedad) {
-		String riego;
-		
-		if(bajaHumedad == true) {
-			 riego = "EMPAZAR A REGAR";
-		}else {
-			riego = "NO REGAR";
-		}
-		
-		return riego;
-	}
-
-
-	//getters y setters
-	public boolean isBajaHumedad() {
-		return bajaHumedad;
-	}
-
-
-	public void setBajaHumedad(boolean bajaHumedad) {
-		this.bajaHumedad = bajaHumedad;
-	}
-
-
-	public float getHumedad() {
-		return humedad;
-	}
-
-
-	public void setHumedad(float humedad) {
-		this.humedad = humedad;
-	}
-	
-	public String getSector() {
-		return sector;
-	}
-
-
-	public void setSector(String sector) {
-		this.sector = sector;
-	}
+//	// falta el o los metodos
+//	public String regar (boolean bajaHumedad) {
+//		String riego;
+//		
+//		if(bajaHumedad == true) {
+//			 riego = "EMPAZAR A REGAR";
+//		}else {
+//			riego = "NO REGAR";
+//		}
+//		
+//		return riego;
+//	}
+//
+//
 
 	
 //	public int verificarHumedad() {
