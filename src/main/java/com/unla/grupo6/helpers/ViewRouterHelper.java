@@ -33,6 +33,7 @@ public class ViewRouterHelper {
 	public final static String BAÑO_INDEX = "baño/index";
 	public final static String BAÑO_LISTA = "baño/lista";
 	public final static String BAÑO_CREAR = "baño/crear";
+	public final static String BAÑO_REDIRECT_LISTA = "redirect:/baño/lista";
 	
 	//LUCES
 	public final static String LUCES_INDEX = "DisLucesAuto/index";
