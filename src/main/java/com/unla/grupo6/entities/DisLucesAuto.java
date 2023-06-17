@@ -4,11 +4,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
+
 @Table(name = "dis_luces_auto")
 public class DisLucesAuto extends Dispositivo {
 	@Column(name = "estado")
@@ -21,6 +21,10 @@ public class DisLucesAuto extends Dispositivo {
 		super(nombre, descripcion, enFuncionamiento);
 		this.estado = false;
 		this.nroAula = nroAula;
+	}
+
+	public DisLucesAuto() {
+		super(null);
 	}
 
 	public boolean isEstado() {

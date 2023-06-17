@@ -2,16 +2,16 @@ package com.unla.grupo6.models;
 
 import java.time.LocalTime;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+
 public class DisLucesAutoModel extends DispositivoModel {
 	private boolean estado;
 
 	// @Max(23)
 	private int nroAula;
-
-//	public DisLucesAutoModel() {
-//
-//	}
-
+	
 	public DisLucesAutoModel(int id, String nombre, String descripcion, boolean enFuncionamiento, int nroAula) {
 		super(id, nombre, descripcion, enFuncionamiento);
 		this.estado = false;

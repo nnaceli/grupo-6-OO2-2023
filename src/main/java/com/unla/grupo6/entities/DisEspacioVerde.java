@@ -11,7 +11,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 
 public class DisEspacioVerde extends Dispositivo {
 
@@ -31,7 +30,9 @@ public class DisEspacioVerde extends Dispositivo {
 		this.sector = sector;
 	}
 
-
+//	public DisEspacioVerde() {
+//		
+//	}
 
 
 	// falta el o los metodos
