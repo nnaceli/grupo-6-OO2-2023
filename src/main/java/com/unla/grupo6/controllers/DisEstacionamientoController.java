@@ -34,7 +34,7 @@ public class DisEstacionamientoController {
 	private IEstacionamientoService estacionamientoService;
 
 	@GetMapping("/cargar")
-	public ModelAndView index() {
+	public ModelAndView cargar() {
 		ModelAndView mAV = new ModelAndView(ViewRouterHelper.ESTACIONAMIENTO_CARGAR);
 		mAV.addObject("estacionamientos", estacionamientoService.getAll());
 		mAV.addObject("estacionamiento", new DisEstacionamientoModel());
