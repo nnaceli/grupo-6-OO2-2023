@@ -99,59 +99,14 @@ public class DisEspacioVerdeController {
 		return new RedirectView(ViewRouterHelper.ESPACIOVERDE_ROUTE_INDEX);
 	}
 	
-//	@GetMapping("/crear")
-//	public String crearVerdes(Model model) {
-//		DisEspacioVerde disEspacioVerde = new DisEspacioVerde();
-//		model.addAttribute("titulo", "Formulario: Nuevo Sensor");
-//		model.addAttribute("espacio verde", disEspacioVerde);
-//		model.addAttribute("lista", espacioVerdeService.getAll());
-//		
-//		return ViewRouterHelper.ESPACIOVERDE_CREAR;
-//	}
-	
-	
-	@GetMapping("/sensores")
-	public String listarEspacioverde(Model modelo) {
-		modelo.addAttribute("espacioverde", espacioVerdeService.getAll());
-		return "espacioverde"; // nos retorna archivo estudiantes
-	}
-
-	
-	
-	
-	@GetMapping("sensores/nuevo")
-	public String mostrarFormularioDeEspacioVerde(Model modelo) {
-		DisEspacioVerde espacioverde = new DisEspacioVerde();
-		modelo.addAttribute("espacioverde", espacioverde);
-		return "DisEspacioVerde/agregarEspacioVerde";
-	}
-
-	@PostMapping("/sensores")
-	public String guardarEspacioVerde(@ModelAttribute("espacioverde") DisEspacioVerde espacioverde) {
-		espacioVerdeService.saveVerde(espacioverde);
-		return "redirect:/sensores";
-	}
-	
-	
-	
-
-	@PostMapping("/save")
-	public String guardarVerdes(@Valid @ModelAttribute DisEspacioVerde disEspacioVerde, BindingResult result, Model model,
-			RedirectAttributes attribute) {
-
-		if (result.hasErrors()) {
-			model.addAttribute("titulo", "Formulario: Nuevo Dispositivo");
-			model.addAttribute("espacio verde", disEspacioVerde);
-			model.addAttribute("lista", espacioVerdeService.getAll());
-			System.out.println("Existieron errores en el formulario");
-			return ViewRouterHelper.ESPACIOVERDE_CREAR;
-		}
+	@GetMapping("/crear")
+	public String crearVerdes(Model model) {
+		DisEspacioVerde disEspacioVerde = new DisEspacioVerde();
+		model.addAttribute("titulo", "Formulario: Nuevo Sensor");
+		model.addAttribute("espacioverde", disEspacioVerde);
+		model.addAttribute("lista", espacioVerdeService.getAll());
 		
-		espacioVerdeService.saveVerde(disEspacioVerde);
-		System.out.println("guardado con exito!");
-		attribute.addFlashAttribute("success", "Dispositivo espacio verde ");
-		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
-
+		return ViewRouterHelper.ESPACIOVERDE_CREAR;
 	}
 	
 	@GetMapping("/listaverde")
@@ -161,23 +116,93 @@ public class DisEspacioVerdeController {
 		return ViewRouterHelper.ESPACIOVERDE_LISTA;
 	}
 	
-	@GetMapping("listaverde/modificar/{id}")
-	public String mostrarFormularioDeEditar(@PathVariable Long id, Model modelo) {
-		modelo.addAttribute("disEspacioVerde", espacioVerdeService.buscarVerde(id));
-		return "modificarEspacioVerde";
-	}
+	@PostMapping("/save")
+	public String guardarVerdes(@Valid @ModelAttribute DisEspacioVerde disEspacioVerde, BindingResult result, Model model,
+			RedirectAttributes attribute) {
 
-	@PostMapping("/listaverde/{id}")
-	public String actualizarEspacioVerde(@PathVariable Long id, @ModelAttribute("disEspacioVerde") DisEspacioVerde disEspacioVerde,
-			Model model) {
-		DisEspacioVerde espacioVerdeExistente = espacioVerdeService.buscarVerde(id);
-		espacioVerdeExistente.setIdDispositivo(id);
-		espacioVerdeExistente.setHumedad(disEspacioVerde.getHumedad());
-		espacioVerdeExistente.setSector(disEspacioVerde.getSector());
+		if (result.hasErrors()) {
+			model.addAttribute("titulo", "Formulario: Nuevo Dispositivo");
+			model.addAttribute("espacioverde", disEspacioVerde);
+			model.addAttribute("lista", espacioVerdeService.getAll());
+			System.out.println("Existieron errores en el formulario");
+			return ViewRouterHelper.ESPACIOVERDE_CREAR;
+		}
 		
-		espacioVerdeService.actualizarDisEspacioVerde(espacioVerdeExistente);
+		espacioVerdeService.saveVerde(disEspacioVerde);
+		System.out.println("guardado con exito!");
+		attribute.addFlashAttribute("success", "Dispositivo espacio verde ");
+		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
 		
-		return "redirect:/estudiantes";
+
 	}
+	
+	@GetMapping("listaverde/edit/{idDispositivo}")
+	public String editar(@PathVariable("idDispositivo") Long idDispositivo, Model model, RedirectAttributes attribute ) {
+		
+		DisEspacioVerde disespacioverde = espacioVerdeService.buscarVerde(idDispositivo);
+		model.addAttribute("titulo", "Formulario: Editar sensor espacio verde");
+		model.addAttribute("espacioverde", disespacioverde);
+		model.addAttribute("listaverde", espacioVerdeService.getAll());
+		
+		return ViewRouterHelper.ESPACIOVERDE_CREAR;
+	}
+	
+	@GetMapping("listaverde/delete/{idDispositivo}")
+	public String eliminar(@PathVariable("idDispositivo") Long idDispositivo, RedirectAttributes attribute) {
+		espacioVerdeService.eliminarVerde(idDispositivo);
+		System.out.println("Registro eliminado con exito");
+		attribute.addFlashAttribute("warning", "Dispositivo eliminado con exito");
+		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
+	}
+	
+	
+	
+//	@GetMapping("/sensores")
+//	public String listarEspacioverde(Model modelo) {
+//		modelo.addAttribute("espacioverde", espacioVerdeService.getAll());
+//		return "espacioverde"; // nos retorna archivo estudiantes
+//	}
+//
+//	
+//	
+//	
+//	@GetMapping("sensores/nuevo")
+//	public String mostrarFormularioDeEspacioVerde(Model modelo) {
+//		DisEspacioVerde espacioverde = new DisEspacioVerde();
+//		modelo.addAttribute("espacioverde", espacioverde);
+//		return "DisEspacioVerde/agregarEspacioVerde";
+//	}
+//
+//	@PostMapping("/sensores")
+//	public String guardarEspacioVerde(@ModelAttribute("espacioverde") DisEspacioVerde espacioverde) {
+//		espacioVerdeService.saveVerde(espacioverde);
+//		return "redirect:/sensores";
+//	}
+//	
+//	
+//	
+//
+
+//	
+
+//	
+//	@GetMapping("listaverde/modificar/{id}")
+//	public String mostrarFormularioDeEditar(@PathVariable Long id, Model modelo) {
+//		modelo.addAttribute("disEspacioVerde", espacioVerdeService.buscarVerde(id));
+//		return "modificarEspacioVerde";
+//	}
+//
+//	@PostMapping("/listaverde/{id}")
+//	public String actualizarEspacioVerde(@PathVariable Long id, @ModelAttribute("disEspacioVerde") DisEspacioVerde disEspacioVerde,
+//			Model model) {
+//		DisEspacioVerde espacioVerdeExistente = espacioVerdeService.buscarVerde(id);
+//		espacioVerdeExistente.setIdDispositivo(id);
+//		espacioVerdeExistente.setHumedad(disEspacioVerde.getHumedad());
+//		espacioVerdeExistente.setSector(disEspacioVerde.getSector());
+//		
+//		espacioVerdeService.actualizarDisEspacioVerde(espacioVerdeExistente);
+//		
+//		return "redirect:/estudiantes";
+//	}
 	
 }
