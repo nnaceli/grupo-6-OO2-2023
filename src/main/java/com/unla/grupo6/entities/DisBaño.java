@@ -1,12 +1,13 @@
 package com.unla.grupo6.entities;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,16 @@ import lombok.Setter;
 @Table(name="dis_baño")
 public class DisBaño extends Dispositivo {
 	
+	@Column(name="habilitado")
+	private boolean habilitado;
+	
+	@Column(name="higienizandose")
+	private boolean higienizandose;
+	
+	@Column(name="sector")
+	@NotEmpty(message="el campo no debe estar vacio")
+	private String sector;
+	
 	public DisBaño(String nombre, String descripcion, boolean enFuncionamiento, boolean habilitado,
 			boolean higienizandose, String sector) {
 		super(nombre, descripcion, enFuncionamiento);
@@ -25,19 +36,6 @@ public class DisBaño extends Dispositivo {
 		this.sector = sector;
 	}
 
-
-
-	@Column(name="habilitado")
-	@NotNull(message = "El campo no debe ser nulo")
-	private boolean habilitado;
-	
-	@Column(name="higienizandose")
-	@NotNull(message = "El campo no debe ser nulo") 
-	private boolean higienizandose;
-	
-	@Column(name="sector")
-	@NotEmpty(message="el campo no debe estar vacio")
-	private String sector;
 	
 	
 	/*

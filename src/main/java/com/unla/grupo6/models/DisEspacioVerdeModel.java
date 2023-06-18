@@ -1,8 +1,9 @@
 package com.unla.grupo6.models;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Size;
 
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Size;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

@@ -1,8 +1,10 @@
 package com.unla.grupo6.controllers;
 
-import javax.validation.Valid;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +20,8 @@ import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.DisLucesAuto;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 import com.unla.grupo6.servicies.ILucesAutoService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/lucesautomaticas")
@@ -52,7 +56,7 @@ public class DisLucesAutoController {
 		return ViewRouterHelper.LUCES_AGREGADAS;
 	}
 
-	@PostMapping("/save")
+	/*@PostMapping("/save")
 	public String guardar(@Valid @ModelAttribute DisLucesAuto disLucesAuto, BindingResult result, Model model,
 			RedirectAttributes attribute) {
 
@@ -67,7 +71,7 @@ public class DisLucesAutoController {
 		lucesService.save(disLucesAuto);
 		attribute.addFlashAttribute("correcta", "Dispositivo Luces Automaticas guardado de forma ");
 		return ViewRouterHelper.BAÑO_REDIRECT_LISTA;
-	}
+	}*/
 
 	@GetMapping("/modificarLuces")
 	public String modificar() {

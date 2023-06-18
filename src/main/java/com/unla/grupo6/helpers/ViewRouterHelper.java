@@ -35,10 +35,10 @@ public class ViewRouterHelper {
 	public final static String ESTACIONAMIENTO_ELIMINAR = "DisEstacionamiento/eliminarDispositivo";
 	
 	//BAÑOS
-	public final static String BAÑO_INDEX = "banio/index";
+	public final static String BANIO_INDEX = "banio/index";
 	public final static String BANIO_LISTA = "banio/lista";
-	public final static String BAÑO_CREAR = "banio/crear";
-	public final static String BAÑO_REDIRECT_LISTA = "redirect:/banio/lista";
+	public final static String BANIO_CREAR = "banio/crear";
+	public final static String BANIO_REDIRECT_LISTA = "redirect:/banio/lista";
 	
 	//LUCES
 	public final static String LUCES_INDEX = "DisLucesAuto/index";
