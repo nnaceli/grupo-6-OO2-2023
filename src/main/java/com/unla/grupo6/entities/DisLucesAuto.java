@@ -17,8 +17,8 @@ public class DisLucesAuto extends Dispositivo {
 	@Column(name = "nroAula")
 	private int nroAula;
 
-	public DisLucesAuto(String nombre, String descripcion, boolean enFuncionamiento, int nroAula) {
-		super(nombre, descripcion, enFuncionamiento);
+	public DisLucesAuto(String nombre, boolean enFuncionamiento, int nroAula) {
+		super(nombre, enFuncionamiento);
 		this.estado = false;
 		this.nroAula = nroAula;
 	}

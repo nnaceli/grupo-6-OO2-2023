@@ -1,5 +1,7 @@
 package com.unla.grupo6.helpers;
 
+
+
 public class ViewRouterHelper {
 	/**** Views ****/
 	
@@ -34,10 +36,10 @@ public class ViewRouterHelper {
 	public final static String ESTACIONAMIENTO_ELIMINAR = "DisEstacionamiento/eliminarDispositivo";
 	
 	//BAÑOS
-	public final static String BAÑO_INDEX = "baño/index";
-	public final static String BAÑO_LISTA = "baño/lista";
-	public final static String BAÑO_CREAR = "baño/crear";
-	public final static String BAÑO_REDIRECT_LISTA = "redirect:/baño/lista";
+	public final static String BANIO_INDEX = "banio/index";
+	public final static String BANIO_LISTA = "banio/lista";
+	public final static String BANIO_CREAR = "banio/crear";
+	public final static String BANIO_REDIRECT_LISTA = "redirect:/banio/lista";
 	
 	//LUCES
 	public final static String LUCES_INDEX = "DisLucesAuto/index";

@@ -1,9 +1,9 @@
 package com.unla.grupo6.entities;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+
 
 import jakarta.persistence.Column;
+
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
-
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,18 +33,11 @@ public class Dispositivo {
 	@NotEmpty(message="el campo no debe estar vacio") 
 	protected String nombre;
 	
-	@Column(name="descripcion")
-	@NotEmpty(message="el campo no debe estar vacio") 
-	protected String descripcion;
-	
-	@Column(name="enFuncionamiento")
-	@NotNull(message = "El campo no debe ser nulo") 
-
+	@Column(name="enFuncionamiento", nullable = false)
 	protected boolean enFuncionamiento;
 
-	public Dispositivo(String nombre, String descripcion, boolean enFuncionamiento) {
+	public Dispositivo(String nombre, boolean enFuncionamiento) {
 		this.nombre = nombre;
-		this.descripcion = descripcion;
 		this.enFuncionamiento = enFuncionamiento;
 	}
 	
@@ -66,14 +60,6 @@ public class Dispositivo {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
 	}
 
 	public boolean isEnFuncionamiento() {

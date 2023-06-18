@@ -1,12 +1,13 @@
 package com.unla.grupo6.entities;
 
-import javax.validation.constraints.NotNull;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,9 +21,9 @@ import lombok.Setter;
 public class DisEspacioVerde extends Dispositivo {
 
 	//constructor
-	public DisEspacioVerde(String nombre, String descripcion, boolean enFuncionamiento, boolean bajaHumedad,
+	public DisEspacioVerde(String nombre, boolean enFuncionamiento, boolean bajaHumedad,
 			float humedad, String sector) {
-		super(nombre, descripcion, enFuncionamiento);
+		super(nombre, enFuncionamiento);
 		this.bajaHumedad = bajaHumedad;
 		this.humedad = humedad;
 		this.sector = sector;

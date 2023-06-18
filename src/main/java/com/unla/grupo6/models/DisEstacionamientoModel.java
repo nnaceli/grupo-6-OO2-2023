@@ -16,8 +16,8 @@ public class DisEstacionamientoModel extends DispositivoModel{
 	//@Size(min=1, max=2)
 	private int tipoEstacionamiento;
 	
-	public DisEstacionamientoModel(int id, String nombre, String descripcion, boolean enFuncionamiento, boolean ocupado, String sector, int tipoEstacionamiento) {
-		super(id, nombre, descripcion, enFuncionamiento);
+	public DisEstacionamientoModel(int id, String nombre, boolean enFuncionamiento, boolean ocupado, String sector, int tipoEstacionamiento) {
+		super(id, nombre, enFuncionamiento);
 		this.ocupado = ocupado;
 		this.sector = sector;
 		this.tipoEstacionamiento = tipoEstacionamiento;

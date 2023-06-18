@@ -11,16 +11,13 @@ public class DispositivoModel {
 
 	private String nombre;
 	
-	private String descripcion;
-	
 	private boolean enFuncionamiento;
 
 	//constructor
-	public DispositivoModel(int id, String nombre, String descripcion, boolean enFuncionamiento) {
+	public DispositivoModel(int id, String nombre, boolean enFuncionamiento) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.descripcion = descripcion;
 		this.enFuncionamiento = enFuncionamiento;
 	}
 

@@ -17,13 +17,14 @@
 		<div class="card bg-light">
 			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 			<div class="card-body">
-				<form th:action="@{/baño/save}" th:object="${banio}" method="post">
+				<form th:action="@{/banio/save}" th:object="${banio}" method="post">
 					<div class="form-group row">
 						<input type="hidden" th:field="*{idDispositivo}"> 
 						<label class="col-md-2" for="nombre">Nombres:</label>
 						<input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6" id="nombre" placeholder="Nombres del dispositivo"> 
 						<small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 					</div>
+					
 					<p> descripcion: <input type="text" th:field="*{descripcion}"/></p>
 					
 	
@@ -46,24 +47,26 @@
 						</div>
 					</div>
 					
-					<div class="form-group row">
-						<label class="col-md-2" for="sector">Sector:</label> <select
-							class="form-control form-control-sm col-md-6" id="sector">
-							<option>Edificio Hernandez</option>
-							<option>Edificio Scalabrini</option>
-						</select>
-					</div>
+					<label class="col-md-2" for="sector">Sector:</label>
+                        <input type="text" th:field="*{sector}" class="form-control form-control-sm col-md-6"
+                            id="sector" placeholder="sector de la UNLa">
 					
 					<div class="form-group row">
-						<label class="col-md-2" for="habilitado">Habilitado:</label>
-						<input type="text" th:field="*{habilitado}" class="form-control form-control-sm col-md-6" id="habilitado" placeholder="Habilitado">
-						<small class="form-text text-danger" th:if="${#fields.hasErrors('habilitado')}" th:errors="*{habilitado}"></small>
-					</div>
-					
-					<div class="form-group row">
-						<label class="col-md-2" for="higienizandose">Higienizandose:</label>
-						<input type="text" th:field="*{higienizandose}" class="form-control form-control-sm col-md-6" id="higienizandose" placeholder="Apellidos del cliente">
-						<small class="form-text text-danger" th:if="${#fields.hasErrors('higienizandose')}" th:errors="*{higienizandose}"></small>
+						<label class="col-md-2" for="booleano">¿Esta siendo higienizado?</label>
+						<div class="col-md-6">
+							<div class="form-check">
+								<input type="radio" th:field="*{higienizandose}"
+									class="form-check-input" id="si" value="true"> <label
+									class="form-check-label" for="si">Sí</label>
+							</div>
+							<div class="form-check">
+								<input type="radio" th:field="*{higienizandose}"
+									class="form-check-input" id="no" value="false"> <label
+									class="form-check-label" for="no">No</label>
+							</div>
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('higienizandose')}" th:errors="*{higienizandose}"></small>
+						</div>
 					</div>
 					
 					<div class="card-footer bg-dark">
