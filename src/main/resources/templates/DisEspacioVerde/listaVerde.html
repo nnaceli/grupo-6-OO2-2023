@@ -34,8 +34,8 @@
 					<th scope="col">Sector</th>
 					<th scope="col">Funcionamiento</th>
 					<th scope="col">Humedad</th>
-					<th scope="col">estado-humedad</th>
-					<th scope="col">Ver Dispositivo</th>
+					<th scope="col">baja-humedad</th>
+					<th scope="col">regando</th>
 					<th scope="col">Editar</th>
 					<th scope="col">Eliminar</th>
 				</tr>
@@ -47,6 +47,7 @@
 					<td scope="row" th:text="${li.enFuncionamiento}"></td>
 					<td scope="row" th:text="${li.humedad}"></td>
 					<td scope="row" th:text="${li.bajaHumedad}"></td>
+					<td scope="row" th:text="${li.regando}"></td>
 
 					<td><a class="btn btn-success btn-sm"
 							th:href="@{/espacioverde/listaverde/edit/}+${li.idDispositivo}" th:text="'Editar'"

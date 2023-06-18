@@ -125,13 +125,24 @@ public class DisEspacioVerdeController {
 			return ViewRouterHelper.ESPACIOVERDE_CREAR;
 		}
 		
+		if(disEspacioVerde.getHumedad() < 30) {
+			disEspacioVerde.setBajaHumedad(true);
+			disEspacioVerde.setRegando("Empezar regado");
+			}else {
+				disEspacioVerde.setBajaHumedad(false);
+				disEspacioVerde.setRegando("No empezar el regado");
+			}
+		
 		espacioVerdeService.saveVerde(disEspacioVerde);
 		System.out.println("guardado con exito!");
 		attribute.addFlashAttribute("success", "Dispositivo espacio verde ");
 		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
+		}
+		
+		
 		
 
-	}
+	
 	
 	@GetMapping("listaverde/edit/{idDispositivo}")
 	public String editar(@PathVariable("idDispositivo") Long idDispositivo, Model model, RedirectAttributes attribute ) {

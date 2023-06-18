@@ -40,6 +40,9 @@ public class DisEspacioVerde extends Dispositivo {
 	@NotNull(message = "El campo no debe estar vacio")
 	private String sector;
 	
+	@Column(name="regando")
+	private String regando;
+	
 	
 //7NO PODRIA HACER UN SET DE BAJA HUMEDAD CON UN IF DEL VALOR HUMEDAD QUE LA CAMBIE DE TRUE A FALSE DEPENDIENDO EL VALOR? PARA PENSAR
 	
