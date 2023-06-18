@@ -1,4 +1,4 @@
-package com.unla.grupo6.controllers;
+/*package com.unla.grupo6.controllers;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -37,4 +37,4 @@ public class UserController {
 //			System.out.println(pe.encode("user"));
 //		}
 //	}
-}
+}*/

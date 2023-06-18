@@ -1,4 +1,4 @@
-package com.unla.grupo6.entities;
+/*package com.unla.grupo6.entities;
 
 //import java.time.LocalDateTime;
 //
@@ -205,3 +205,4 @@ public class UserRole {
 	
 	
 }
+*/

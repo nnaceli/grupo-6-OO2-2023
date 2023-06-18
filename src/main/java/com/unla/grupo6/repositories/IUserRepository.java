@@ -1,4 +1,4 @@
-package com.unla.grupo6.repositories;
+/*package com.unla.grupo6.repositories;
 
 
 import java.io.Serializable;
@@ -19,4 +19,4 @@ public interface IUserRepository extends JpaRepository <User, Serializable> {
 	public abstract User findByUsernameAndFetchUserRolesEagerly(@Param("username") String username);
 	
 	
-}
+}*/

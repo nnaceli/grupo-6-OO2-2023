@@ -1,4 +1,4 @@
-package com.unla.grupo6.entities;
+/*package com.unla.grupo6.entities;
 
 
 
@@ -245,7 +245,7 @@ public class User {
 	}
 	
 	
-}
+}*/
 
 
 	
