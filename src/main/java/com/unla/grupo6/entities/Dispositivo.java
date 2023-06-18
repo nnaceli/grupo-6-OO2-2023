@@ -46,7 +46,8 @@ public class Dispositivo {
 		this.descripcion = descripcion;
 		this.enFuncionamiento = enFuncionamiento;
 	}
-
+	
+	
 	public Dispositivo(String nombre) {
 		this.nombre = nombre;
 	}

@@ -25,6 +25,8 @@ public class DisBaño extends Dispositivo {
 		this.sector = sector;
 	}
 
+
+
 	@Column(name="habilitado")
 	@NotNull(message = "El campo no debe ser nulo")
 	private boolean habilitado;

@@ -23,6 +23,7 @@ public class DisEstacionamientoModel extends DispositivoModel{
 		this.tipoEstacionamiento = tipoEstacionamiento;
 	}
 
+
 	public boolean verificarDisponibilidad() {
 		return ocupado;
 	}
