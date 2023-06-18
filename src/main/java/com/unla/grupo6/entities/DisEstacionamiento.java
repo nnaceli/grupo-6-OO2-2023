@@ -1,7 +1,7 @@
 package com.unla.grupo6.entities;
 
 import jakarta.persistence.Column;
-
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +15,7 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
+@DiscriminatorColumn(name = "estacionamiento")
 @Table(name="dis_estacionamiento")
 public class DisEstacionamiento extends Dispositivo{
 	

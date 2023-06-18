@@ -32,18 +32,18 @@
 			</thead>
 			<tbody>
 				<tr class="table-info" th:each="li:${lista}">
-					<th scope="row" th:text="${li.id}"></th>
+					<th scope="row" th:text="${li.idDispositivo}"></th>
 					<td scope="row" th:text="${li.sector}"></td>
-					<td scope="row" th:text="${li.funcionamiento}"></td>
+					<td scope="row" th:text="${li.enFuncionamiento}"></td>
 					
 					<td><a class="btn btn-success btn-sm"
-						th:href="@{/bañolista/verCamara/}+${li.id}"
+						th:href="@{/bañolista/verCamara/}+${li.idDispositivo}"
 						th:text="'Ver Camara'" title="Ver Camara"></a></td>
 					<td><a class="btn btn-success btn-sm"
-						th:href="@{/baño/lista/edit/}+${li.id}"
+						th:href="@{/baño/lista/edit/}+${li.idDispositivo}"
 						th:text="'Editar'" title="Editar Registro"></a></td>
 					<td><a class="btn btn-danger btn-sm"
-						th:href="@{/baño/lista/delete/}+${li.id}"
+						th:href="@{/baño/lista/delete/}+${li.idDispositivo}"
 						th:text="'Eliminar'" title="Eliminar Registro"
 						onclick="return confirm('¿Estás seguro de eliminar el registro?')"></a></td>
 				</tr>
