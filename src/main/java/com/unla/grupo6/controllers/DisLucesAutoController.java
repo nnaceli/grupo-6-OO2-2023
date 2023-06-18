@@ -3,7 +3,6 @@ package com.unla.grupo6.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,12 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.DisLucesAuto;
 import com.unla.grupo6.helpers.ViewRouterHelper;
-import com.unla.grupo6.models.DisLucesAutoModel;
 import com.unla.grupo6.servicies.ILucesAutoService;
 
 @Controller
@@ -33,41 +32,41 @@ public class DisLucesAutoController {
 	private ILucesAutoService lucesService;
 
 	@GetMapping("/index")
-	public ModelAndView index() {
-		ModelAndView mV = new ModelAndView(ViewRouterHelper.LUCES_INDEX);
-		mV.addObject("Luces Automaticas", lucesService.getAll());
-		mV.addObject("Luz Automatica", new DisLucesAuto());
-		return mV;
-	}
-
-//	@PostMapping("/index")
-//	public RedirectView nombre(@ModelAttribute("Luz Automatica") DisLucesAutoModel disLucesAutoModel) {
-//		lucesService.insertOrUpdate(disLucesAutoModel);
-//		return new RedirectView(ViewRouterHelper.LUCES_ALGO);
-//	}
-
-	@GetMapping("/estadoDisLucesAuto")
-	public String estadoDisLucesAuto() {
-		return "DisLucesAuto/estadoDisLucesAuto";
+	public String index() {
+		return ViewRouterHelper.LUCES_INDEX;
 	}
 
 	@GetMapping("/agregarLuces")
-	public String agregarLuces(Model model) {
-		model.addAttribute("agregar", new DisLucesAuto());
+	public String agregar(Model model) {
+		DisLucesAuto disLucesAuto = new DisLucesAuto();
+		model.addAttribute("titulo", "Formulario: Nuevo Dispositivo");
+		model.addAttribute("disLucesAuto", disLucesAuto);
+		model.addAttribute("lista", lucesService.getAll());
 		return ViewRouterHelper.LUCES_AGREGAR;
 	}
+	
+	@GetMapping("/listaLucesAuto")
+	public String listarBaños(Model model) {
+		model.addAttribute("titulo", "Lista de Luces Automaticas");
+		model.addAttribute("lista", lucesService.getAll());
+		return ViewRouterHelper.LUCES_AGREGADAS;
+	}
 
-	@PostMapping("/lucesAgregada")
-	public ModelAndView lucesAgregado(@Valid @ModelAttribute("agregar") DisLucesAutoModel agregarLucesAuto,
-			BindingResult bindingResult) {
-		ModelAndView mV = new ModelAndView();
-		if (bindingResult.hasErrors()) {
-			mV.setViewName(ViewRouterHelper.LUCES_AGREGAR);
-		} else {
-			mV.setViewName(ViewRouterHelper.LUCES_AGREGADO);
-			mV.addObject("agregar", agregarLucesAuto);
+	@PostMapping("/save")
+	public String guardar(@Valid @ModelAttribute DisLucesAuto disLucesAuto, BindingResult result, Model model,
+			RedirectAttributes attribute) {
+
+		if (result.hasErrors()) {
+			model.addAttribute("titulo", "Formulario: Nuevo Dispositivo");
+			model.addAttribute("luces automaticas", disLucesAuto);
+			model.addAttribute("lista", lucesService.getAll());
+			System.out.println("Existieron errores en el formulario");
+			return ViewRouterHelper.LUCES_AGREGAR;
 		}
-		return mV;
+		
+		lucesService.save(disLucesAuto);
+		attribute.addFlashAttribute("correcta", "Dispositivo Luces Automaticas guardado de forma ");
+		return ViewRouterHelper.BAÑO_REDIRECT_LISTA;
 	}
 
 	@GetMapping("/modificarLuces")
@@ -78,11 +77,6 @@ public class DisLucesAutoController {
 	@GetMapping("/eliminarLuces")
 	public String eliminar() {
 		return ViewRouterHelper.LUCES_ELIMINAR;
-	}
-
-	@GetMapping("/verificarLuz")
-	public String verificarLuz() {
-		return ViewRouterHelper.LUCES_VERIFICAR_LUZ;
 	}
 
 	@GetMapping("/")

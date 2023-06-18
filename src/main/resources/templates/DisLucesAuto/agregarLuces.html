@@ -1,24 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
-<head>
+
+<head th:fragment="head">
 	<meta charset="UTF-8" />
-	<title>Agregar Luces Automaticas</title>
+	<title>FORMULARIO AGREGAR LUCES AUTOMATICAS</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 </head>
 
 <body>
-	<h1><b>agregar Dispositivo de Luces Automaticas</b></h1>
-	<h2>Ingresar los datos del dispositivo</h2>
 
-	<form action="#" th:action="@{lucesAgregada}" th:object="${agregar}" method="post">
-		<p> id: <input type="number" th:field="*{idDispositivo}" /></p>
-		<p> nombre: <input type="text" th:field="*{nombre}" /></p>
-		<p> descripcion: <input type="text" th:field="*{descripcion}" /></p>
-		<p> ¿Funciona?: <input type="number" th:field="*{enFuncionamiento}" /></p>
-		<p> numero de aula: <input type="number" th:field="*{nroAula}" /></p>
-		<p> estado: <input type="number" th:field="*{estado}" /></p>
-		<input type="submit" />
-	</form>
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+			<div class="card-body">
+				<form th:action="@{/lucesautomaticas/save}" th:object="${disLucesAuto}" method="post">
+					<div class="form-group row">
+						<input type="hidden" th:field="*{idDispositivo}">
+						<label class="col-md-2" for="nombre">Nombres:</label>
+						<input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6"
+							id="nombre" placeholder="Nombres del dispositivo">
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
+							th:errors="*{nombre}"></small>
+					</div>
+					<p> descripcion: <input type="text" th:field="*{descripcion}" /></p>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="booleano">¿Funciona?</label>
+						<div class="col-md-6">
+							<div class="form-check">
+								<input type="radio" th:field="*{enFuncionamiento}" class="form-check-input" id="si"
+									value="true"> <label class="form-check-label" for="si">Sí</label>
+							</div>
+							<div class="form-check">
+								<input type="radio" th:field="*{enFuncionamiento}" class="form-check-input" id="no"
+									value="false"> <label class="form-check-label" for="no">No</label>
+							</div>
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('enFuncionamiento')}"
+								th:errors="*{enFuncionamiento}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="booleano">Estado</label>
+						<div class="col-md-6">
+							<div class="form-check">
+								<input type="radio" th:field="*{estado}" class="form-check-input" id="si"
+									value="true"> <label class="form-check-label" for="encendido">Encendido</label>
+							</div>
+							<div class="form-check">
+								<input type="radio" th:field="*{estado}" class="form-check-input" id="no"
+									value="false"> <label class="form-check-label" for="apagado">Apagado</label>
+							</div>
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('estado')}"
+								th:errors="*{enFuncionamiento}"></small>
+						</div>
+					</div>
+					<p> Numero de Aula: <input type="number" th:field="*{nroAula}" /></p>
+
+					<div class="card-footer bg-dark">
+						<input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
 
 </body>
 
