@@ -40,12 +40,11 @@ public class ViewRouterHelper {
 	
 	//LUCES
 	public final static String LUCES_INDEX = "DisLucesAuto/index";
-	public final static String LUCES_HOLA = "DisLucesAuto/helloworld";
+	//public final static String LUCES_HOLA = "DisLucesAuto/helloworld";
 	public final static String LUCES_AGREGAR = "DisLucesAuto/agregarLuces";
-	public final static String LUCES_AGREGADO = "DisLucesAuto/lucesAgregada";
+	public final static String LUCES_AGREGADAS = "DisLucesAuto/listaLucesAuto";
 	public final static String LUCES_MODIFICAR= "DisLucesAuto/modificarLuces";
 	public final static String LUCES_ELIMINAR= "DisLucesAuto/eliminarLuces";
-	public final static String LUCES_VERIFICAR_LUZ= "DisLucesAuto/verificarLuz";
 	
 	//USER
 	public final static String USER_LOGIN = "User/login";
