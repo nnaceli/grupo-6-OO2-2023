@@ -17,7 +17,7 @@
 		<div class="card bg-light">
 			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 			<div class="card-body">
-				<form th:action="@{/baño/save}" th:object="${banio}" method="post">
+				<form th:action="@{/banio/save}" th:object="${banio}" method="post">
 					<div class="form-group row">
 						<input type="hidden" th:field="*{idDispositivo}"> 
 						<label class="col-md-2" for="nombre">Nombres:</label>

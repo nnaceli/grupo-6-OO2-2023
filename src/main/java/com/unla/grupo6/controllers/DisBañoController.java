@@ -2,6 +2,7 @@ package com.unla.grupo6.controllers;
 
 import java.util.List;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,23 +13,19 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.unla.grupo6.servicies.IBañoService;
-
-
-
-
-
 import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 
 
 @Controller
-@RequestMapping("/baño")
+@RequestMapping("/banio")
 public class DisBañoController {
 	
 	@Autowired
@@ -44,7 +41,7 @@ public class DisBañoController {
 	public String listarBaños(Model model) {
 		model.addAttribute("titulo", "Lista de Baños");
 		model.addAttribute("lista", bañoService.getAll());
-		return ViewRouterHelper.BAÑO_LISTA;
+		return ViewRouterHelper.BANIO_LISTA;
 	}
 	
 	@GetMapping("/crear")
@@ -74,5 +71,26 @@ public class DisBañoController {
 		attribute.addFlashAttribute("success", "Dispositivo Baño guardado con ");
 		return ViewRouterHelper.BAÑO_REDIRECT_LISTA;
 	}
+	
+	@GetMapping("lista/edit/{idDispositivo}")
+	public String editar(@PathVariable("idDispositivo") Long idDispositivo, Model model, RedirectAttributes attribute ) {
+		
+		DisBaño disBaño= bañoService.buscar(idDispositivo);
+		
+		model.addAttribute("titulo", "Formulario: Editar Camara Baño");
+		model.addAttribute("banio", disBaño);
+		model.addAttribute("lista", bañoService.getAll());
+		
+		return ViewRouterHelper.BAÑO_CREAR;
+	}
+	
+	@GetMapping("lista/delete/{idDispositivo}")
+	public String eliminar(@PathVariable("idDispositivo") Long idDispositivo, RedirectAttributes attribute) {
+		bañoService.eliminar(idDispositivo);
+		System.out.println("Registro eliminado con exito");
+		attribute.addFlashAttribute("warning", "Dispositivo eliminado con exito");
+		return ViewRouterHelper.BAÑO_REDIRECT_LISTA;
+	}
+
 	
 }
