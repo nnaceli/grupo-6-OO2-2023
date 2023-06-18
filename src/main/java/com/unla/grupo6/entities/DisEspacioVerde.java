@@ -30,7 +30,6 @@ public class DisEspacioVerde extends Dispositivo {
 	}
 	
 	@Column(name="bajaHumedad")
-	@NotNull(message = "El campo no debe ser nulo")
 	private boolean bajaHumedad;
 	
 	@Column(name="humedad")

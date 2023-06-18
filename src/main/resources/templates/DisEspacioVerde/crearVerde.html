@@ -19,6 +19,9 @@
 				<form th:action="@{/espacioverde/save}" th:object="${espacioverde}" method="post">
 					<div class="form-group row">
 						<input type="hidden" th:field="*{idDispositivo}">
+						<label class="col-md-2" for="nombre">Nombre:</label>
+						<input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6"
+							id="humedad" placeholder="nombre del dispositivo">
 						<label class="col-md-2" for="nombre">Humedad:</label>
 						<input type="text" th:field="*{humedad}" class="form-control form-control-sm col-md-6"
 							id="humedad" placeholder="Humedad del dispositivo">
