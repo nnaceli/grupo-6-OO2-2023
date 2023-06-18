@@ -23,7 +23,7 @@ public class DisEspacioVerde extends Dispositivo {
 	public DisEspacioVerde(String nombre, String descripcion, boolean enFuncionamiento, boolean bajaHumedad,
 			float humedad, String sector) {
 		super(nombre, descripcion, enFuncionamiento);
-		this.bajaHumedad = false;
+		this.bajaHumedad = bajaHumedad;
 		this.humedad = humedad;
 		this.sector = sector;
 	}
@@ -41,11 +41,21 @@ public class DisEspacioVerde extends Dispositivo {
 	private String sector;
 	
 	
-
-
-//	public DisEspacioVerde() {
+//7NO PODRIA HACER UN SET DE BAJA HUMEDAD CON UN IF DEL VALOR HUMEDAD QUE LA CAMBIE DE TRUE A FALSE DEPENDIENDO EL VALOR? PARA PENSAR
+	
+	//OTRA OPCION ESTE METODO AUNQUE NO SE DONDE APLICARLO PARA PENSAR
+	//NO FUNCIONA ESTE METODO
+//	public boolean estadoHumedad () {
+//		if(this.humedad >= 60) {
+//			this.bajaHumedad=false;
+//		}else {
+//			this.bajaHumedad=true;
+//		}
 //		
+//		return this.bajaHumedad;
 //	}
+
+
 
 
 //	// falta el o los metodos

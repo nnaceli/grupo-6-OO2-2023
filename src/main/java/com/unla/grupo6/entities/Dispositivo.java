@@ -26,7 +26,7 @@ public class Dispositivo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int idDispositivo;
+	protected Long idDispositivo;
 	
 	@Column(name="nombre")
 	@NotEmpty(message="el campo no debe estar vacio") 
@@ -52,12 +52,12 @@ public class Dispositivo {
 		this.nombre = nombre;
 	}
 
-	public int getIdDispositivo() {
+	public Long getIdDispositivo() {
 		return idDispositivo;
 	}
 
-	public void setIdDispositivo(int idDispositivo) {
-		this.idDispositivo = idDispositivo;
+	public void setIdDispositivo(Long id) {
+		this.idDispositivo = id;
 	}
 
 	public String getNombre() {

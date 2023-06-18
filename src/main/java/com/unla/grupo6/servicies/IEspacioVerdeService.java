@@ -19,6 +19,8 @@ public interface IEspacioVerdeService {
 	public void eliminarVerde(long id);
 
 	public void saveVerde(@Valid DisEspacioVerde disEspacioVerde);
+	
+	public DisEspacioVerde actualizarDisEspacioVerde(DisEspacioVerde disEspacioVerde);
 
 
 

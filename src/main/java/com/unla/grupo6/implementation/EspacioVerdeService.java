@@ -44,13 +44,18 @@ public class EspacioVerdeService implements IEspacioVerdeService {
 
 	@Override
 	public DisEspacioVerde buscarVerde(long id) {
-		return espacioVerdeRepository.findById(id).orElse(null);
+		return espacioVerdeRepository.findById(id).get();
 	}
 
 	@Override
 	public void eliminarVerde(long id) {
 		espacioVerdeRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public DisEspacioVerde actualizarDisEspacioVerde(DisEspacioVerde disEspacioVerde) {
+		return espacioVerdeRepository.save(disEspacioVerde);
 	}
 
 

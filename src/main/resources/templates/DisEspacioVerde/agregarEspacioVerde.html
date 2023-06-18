@@ -3,23 +3,18 @@
 
 <head>
 	<meta charset="UTF-8" \>
-	<title>Agregar dispositivo estacionamiento</title>
+	<title>sensor espacio verde</title>
 </head>
 
 <body>
-	<h1>Carga de nuevo dispositivo</h1>
-
-	<h2>Ingrese los datos para el formulario</h2>
-
-	<form action="#" th:action="@{dispositivoAgregado}" th:object="${agregar}" method="post">
-		
-		
-		<p> baja humedad: <input type="checkbox" th:field="*{bajaHumedad}"/></p>
-		<p> humedad: <input type="float" th:field="*{humedad}"/></p>
-		<p> sector: <input type="text" th:field ="*{sector}"/></p>
-		<input type="submit" />
+	<h1>Cargar sensor espacio verde</h1>
+	
+	<form th:action="@{/listaverde}" th:object="${espacioverde}" method="post">
+		<p>Sector: <input type="text" name="sector" th:field="*{sector}" placeholder="Digite su sector"></p>
+		<p>Humedad: <input type="float" name="humedad" th:field="*{humedad}" placeholder="Digite su humedad"></p>
+		<input type="submit">
 	</form>
-
+	
 </body>
 
 </html>

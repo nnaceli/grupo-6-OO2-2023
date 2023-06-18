@@ -20,6 +20,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.DisEspacioVerde;
 import com.unla.grupo6.entities.DisEstacionamiento;
+import com.unla.grupo6.entities.Dispositivo;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 import com.unla.grupo6.implementation.EspacioVerdeService;
 import com.unla.grupo6.models.DisEspacioVerdeModel;
@@ -95,14 +96,37 @@ public class DisEspacioVerdeController {
 		return new RedirectView(ViewRouterHelper.ESPACIOVERDE_ROUTE_INDEX);
 	}
 	
-	@GetMapping("/crear")
-	public String crearVerdes(Model model) {
-		DisEspacioVerde disEspacioVerde = new DisEspacioVerde();
-		model.addAttribute("titulo", "Formulario: Nuevo Sensor");
-		model.addAttribute("espacio verde", disEspacioVerde);
-		model.addAttribute("lista", espacioVerdeService.getAll());
-		
-		return ViewRouterHelper.ESPACIOVERDE_CREAR;
+//	@GetMapping("/crear")
+//	public String crearVerdes(Model model) {
+//		DisEspacioVerde disEspacioVerde = new DisEspacioVerde();
+//		model.addAttribute("titulo", "Formulario: Nuevo Sensor");
+//		model.addAttribute("espacio verde", disEspacioVerde);
+//		model.addAttribute("lista", espacioVerdeService.getAll());
+//		
+//		return ViewRouterHelper.ESPACIOVERDE_CREAR;
+//	}
+	
+	
+	@GetMapping("/sensores")
+	public String listarEspacioverde(Model modelo) {
+		modelo.addAttribute("espacioverde", espacioVerdeService.getAll());
+		return "espacioverde"; // nos retorna archivo estudiantes
+	}
+
+	
+	
+	
+	@GetMapping("sensores/nuevo")
+	public String mostrarFormularioDeEspacioVerde(Model modelo) {
+		DisEspacioVerde espacioverde = new DisEspacioVerde();
+		modelo.addAttribute("espacioverde", espacioverde);
+		return "DisEspacioVerde/agregarEspacioVerde";
+	}
+
+	@PostMapping("/sensores")
+	public String guardarEspacioVerde(@ModelAttribute("espacioverde") DisEspacioVerde espacioverde) {
+		espacioVerdeService.saveVerde(espacioverde);
+		return "redirect:/sensores";
 	}
 	
 	
@@ -128,10 +152,29 @@ public class DisEspacioVerdeController {
 	}
 	
 	@GetMapping("/listaverde")
-	public String listarVerdes(Model model) {
+	public String listaVerdes(Model model) {
 		model.addAttribute("titulo", "Lista de sensores espacio verde");
 		model.addAttribute("lista", espacioVerdeService.getAll());
-		return ViewRouterHelper.BAÑO_LISTA;
+		return ViewRouterHelper.ESPACIOVERDE_LISTA;
+	}
+	
+	@GetMapping("listaverde/modificar/{id}")
+	public String mostrarFormularioDeEditar(@PathVariable Long id, Model modelo) {
+		modelo.addAttribute("disEspacioVerde", espacioVerdeService.buscarVerde(id));
+		return "modificarEspacioVerde";
+	}
+
+	@PostMapping("/listaverde/{id}")
+	public String actualizarEspacioVerde(@PathVariable Long id, @ModelAttribute("disEspacioVerde") DisEspacioVerde disEspacioVerde,
+			Model model) {
+		DisEspacioVerde espacioVerdeExistente = espacioVerdeService.buscarVerde(id);
+		espacioVerdeExistente.setIdDispositivo(id);
+		espacioVerdeExistente.setHumedad(disEspacioVerde.getHumedad());
+		espacioVerdeExistente.setSector(disEspacioVerde.getSector());
+		
+		espacioVerdeService.actualizarDisEspacioVerde(espacioVerdeExistente);
+		
+		return "redirect:/estudiantes";
 	}
 	
 }
