@@ -21,9 +21,9 @@ import lombok.Setter;
 public class DisEspacioVerde extends Dispositivo {
 
 	//constructor
-	public DisEspacioVerde(String nombre, String descripcion, boolean enFuncionamiento, boolean bajaHumedad,
+	public DisEspacioVerde(String nombre, boolean enFuncionamiento, boolean bajaHumedad,
 			float humedad, String sector) {
-		super(nombre, descripcion, enFuncionamiento);
+		super(nombre, enFuncionamiento);
 		this.bajaHumedad = bajaHumedad;
 		this.humedad = humedad;
 		this.sector = sector;

@@ -33,16 +33,11 @@ public class Dispositivo {
 	@NotEmpty(message="el campo no debe estar vacio") 
 	protected String nombre;
 	
-	@Column(name="descripcion")
-	@NotEmpty(message="el campo no debe estar vacio") 
-	protected String descripcion;
-	
 	@Column(name="enFuncionamiento", nullable = false)
 	protected boolean enFuncionamiento;
 
-	public Dispositivo(String nombre, String descripcion, boolean enFuncionamiento) {
+	public Dispositivo(String nombre, boolean enFuncionamiento) {
 		this.nombre = nombre;
-		this.descripcion = descripcion;
 		this.enFuncionamiento = enFuncionamiento;
 	}
 	
@@ -65,14 +60,6 @@ public class Dispositivo {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
 	}
 
 	public boolean isEnFuncionamiento() {

@@ -28,8 +28,8 @@ public class DisEstacionamiento extends Dispositivo{
 	@Column(name="tipoEstacionamiento")
 	private int tipoEstacionamiento;
 	
-	public DisEstacionamiento(String nombre, String descripcion, boolean enFuncionamiento, boolean ocupado, String sector, int tipoEstacionamiento) {
-		super(nombre, descripcion, enFuncionamiento);
+	public DisEstacionamiento(String nombre, boolean enFuncionamiento, boolean ocupado, String sector, int tipoEstacionamiento) {
+		super(nombre, enFuncionamiento);
 		this.ocupado = ocupado;
 		this.sector = sector;
 		this.tipoEstacionamiento = tipoEstacionamiento;

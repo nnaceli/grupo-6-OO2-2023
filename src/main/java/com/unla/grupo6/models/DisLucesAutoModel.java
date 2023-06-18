@@ -12,8 +12,8 @@ public class DisLucesAutoModel extends DispositivoModel {
 	// @Max(23)
 	private int nroAula;
 	
-	public DisLucesAutoModel(int id, String nombre, String descripcion, boolean enFuncionamiento, int nroAula) {
-		super(id, nombre, descripcion, enFuncionamiento);
+	public DisLucesAutoModel(int id, String nombre, boolean enFuncionamiento, int nroAula) {
+		super(id, nombre, enFuncionamiento);
 		this.estado = false;
 		this.nroAula = nroAula;
 	}

@@ -17,7 +17,6 @@ public interface IDispositivoRepository extends JpaRepository <Dispositivo, Seri
 		
 		public abstract Dispositivo findByNombre(String nombre);
 		
-		public abstract Dispositivo findByDescripcion(String descripcion);
 		
 		public abstract Dispositivo findByEnFuncionamiento(boolean enFuncionamiento);
 		

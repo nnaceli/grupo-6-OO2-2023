@@ -28,9 +28,9 @@ public class DisBaño extends Dispositivo {
 	@NotEmpty(message="el campo no debe estar vacio")
 	private String sector;
 	
-	public DisBaño(String nombre, String descripcion, boolean enFuncionamiento, boolean habilitado,
+	public DisBaño(String nombre, boolean enFuncionamiento, boolean habilitado,
 			boolean higienizandose, String sector) {
-		super(nombre, descripcion, enFuncionamiento);
+		super(nombre, enFuncionamiento);
 		this.habilitado = habilitado;
 		this.higienizandose = higienizandose;
 		this.sector = sector;
