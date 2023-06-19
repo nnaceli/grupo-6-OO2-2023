@@ -36,6 +36,7 @@ public class ViewRouterHelper {
 	public final static String BANIO_INDEX = "banio/index";
 	public final static String BANIO_LISTA = "banio/lista";
 	public final static String BANIO_CREAR = "banio/crear";
+	public final static String BANIO_VER_CAMARA = "banio/verCamara";
 	public final static String BANIO_REDIRECT_LISTA = "redirect:/banio/lista";
 	
 	//LUCES

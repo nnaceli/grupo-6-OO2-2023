@@ -76,7 +76,7 @@ public class DisBañoController {
 		
 		bañoService.save(disBaño);
 		System.out.println("Dispositivo Baño guardado con exito!");
-		attribute.addFlashAttribute("success", "Dispositivo Baño guardado con ");
+		attribute.addFlashAttribute("success", "Dispositivo Baño guardado con exito ");
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 	}
 	
@@ -98,6 +98,22 @@ public class DisBañoController {
 		attribute.addFlashAttribute("warning", "Dispositivo eliminado con exito");
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 	}
+	
+	@GetMapping("lista/verCamara/{idDispositivo}")
+	public String verCamara(@PathVariable("idDispositivo") Long idDispositivo, Model model, RedirectAttributes attribute ) {
+		
+		DisBaño disBaño= bañoService.buscar(idDispositivo);
+		
+		if(disBaño.isEnFuncionamiento()== false) {
+			 attribute.addFlashAttribute("error","ATENCION: La camara seleccionada no se puede ver porque no funciona");
+			 return ViewRouterHelper.BANIO_REDIRECT_LISTA;
+		}
+		
+		model.addAttribute("titulo", "Ver Camara");
+		model.addAttribute("banio", disBaño);
+		return ViewRouterHelper.BANIO_VER_CAMARA;
+	}
+	
 	
 	
 

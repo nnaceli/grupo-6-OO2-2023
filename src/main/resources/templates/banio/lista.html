@@ -12,7 +12,14 @@
 
 	<div class="container">
 		<h1 th:text="${titulo}"></h1>
+		
+		<div th:if="${error}" class="alert alert-danger">
+			<p th:text="${error}"></p>
+		</div>
+		
 	</div>
+	
+	
 
 	<div class="container">
 
@@ -34,9 +41,9 @@
 				<tr class="table-info" th:each="li:${lista}">
 					<th scope="row" th:text="${li.idDispositivo}"></th>
 					<td scope="row" th:text="${li.sector}"></td>
-					<td scope="row" th:text="${li.enFuncionamiento}"></td>
+					<td scope="row" th:text="${li.enFuncionamiento} ? 'SI' : 'NO'"></td>
 					
-					<td><a class="btn btn-success btn-sm"
+					<td><a class="btn btn-dark btn-sm"
 						th:href="@{/banio/lista/verCamara/}+${li.idDispositivo}"
 						th:text="'Ver Camara'" title="Ver Camara"></a></td>
 					<td><a class="btn btn-success btn-sm"
@@ -51,18 +58,6 @@
 		</table>
 	</div>
 
-	<footer th:fragment="footer"
-		class="bg-info text-center text-white fixed-bottom">
-		<div class="container">
-			<p>Baños</p>
-		</div>
-
-		<script type="text/javascript"
-			th:src="@{vendor/bootstrap/jquery/jquery.slim.min.js}"></script>
-		<script type="text/javascript"
-			th:src="@{vendor/bootstrap/js/popper.min.js}"></script>
-		<script type="text/javascript"
-			th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
-	</footer>
+	
 </body>
 </html>

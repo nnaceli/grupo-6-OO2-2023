@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<title>Baños</title>
+<link rel="stylesheet"
+	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+</head>
+
+<body>
+
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+
+		
+	</div>
+
+	<div class="container">
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Higienizandose</th>
+					<th scope="col">Habilitado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table-info" th:object="${banio}">
+					<th scope="row" th:text="${higienizandose}"></th>
+					<td scope="row" th:text="${habilitado}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+</body>
+</html>
