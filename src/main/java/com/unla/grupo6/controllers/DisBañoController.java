@@ -56,13 +56,23 @@ public class DisBañoController {
 	public String guardar(@Valid @ModelAttribute DisBaño disBaño, BindingResult result, Model model,
 			RedirectAttributes attribute ) {
 		
+	    
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario: Nuevo Dispositivo");
 			model.addAttribute("banio", disBaño);
 			model.addAttribute("lista", bañoService.getAll());
+			
 			System.out.println("Existieron errores en el formulario");
 			return ViewRouterHelper.BANIO_CREAR;
 		}
+		
+		if (disBaño.isHigienizandose()) {
+			disBaño.setHabilitado(false);
+		} else {
+			disBaño.setHabilitado(true);
+		}
+		
+		disBaño.setNombre("Dispositivo Baño");
 		
 		bañoService.save(disBaño);
 		System.out.println("Dispositivo Baño guardado con exito!");
@@ -88,6 +98,8 @@ public class DisBañoController {
 		attribute.addFlashAttribute("warning", "Dispositivo eliminado con exito");
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 	}
+	
+	
 
 	
 }
