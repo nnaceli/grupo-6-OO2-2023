@@ -37,11 +37,12 @@ public class DisEstacionamientoController {
 	//usar el contructor vacio de entities 
 	@GetMapping("/listaDispositivos")
 	public String listarDisEstacionamiento(Model modelo) {
-		modelo.addAttribute("estacionamientos", estacionamientoService.listaDispositivos());
+		modelo.addAttribute("titulo", "Lista de Estacionamientos");
+		modelo.addAttribute("estacionamientos", estacionamientoService.getAll());
 		return "DisEstacionamiento/lista_dispositivos";
 	}
 	
-	
+
 	@GetMapping("/agregar")
 	public String mostrarFormularioDeAgregarDispositivo(Model modelo) {
 		DisEstacionamiento disEstacionamiento = new DisEstacionamiento();
@@ -50,13 +51,40 @@ public class DisEstacionamientoController {
 	}
 	
 	
-	@PostMapping("/listaDispositivos")
+	@PostMapping("/guardar")
 	public String agregar(@ModelAttribute("estacionamiento") DisEstacionamiento nuevoEstacionamiento) {
 		estacionamientoService.insertOrUpdate(nuevoEstacionamiento);
-		return "redirect:/listaDispositivos";
+		return "redirect:listaDispositivos";
 	}
 	
+	@GetMapping("/editar/{idDispositivo}")
+	public String mostrarFormularioDeEditar(@PathVariable Long idDispositivo, Model modelo) {
+		modelo.addAttribute("estacionamiento", estacionamientoService.obtenerEstacionamiento(idDispositivo));
+		return "DisEstacionamiento/modificar_dispositivo";
+	}
+
+	@PostMapping("/{idDispositivo}")
+	public String actualizarEstacionamiento(@PathVariable Long idDispositivo, @ModelAttribute("estacionamiento") DisEstacionamiento disEstacionamiento,
+			Model model) {
+		DisEstacionamiento disEstacionamientoExistente = estacionamientoService.obtenerEstacionamiento(idDispositivo);
+		disEstacionamientoExistente.setIdDispositivo(idDispositivo);
+		disEstacionamientoExistente.setSector(disEstacionamiento.getSector());
+		disEstacionamientoExistente.setEnFuncionamiento(disEstacionamiento.isEnFuncionamiento());
+		disEstacionamientoExistente.setOcupado(disEstacionamiento.isOcupado());
+		disEstacionamientoExistente.setTipoEstacionamiento(disEstacionamiento.getTipoEstacionamiento());
+		
+		estacionamientoService.insertOrUpdate(disEstacionamientoExistente);
+		
+		return "redirect:/estacionamientos/listaDispositivos";
+	}
 	/*
+	@GetMapping("/{id}")
+	public String eliminarEstudiante(@PathVariable Long id) {
+		servicio.eliminarEstudiante(id);
+		return "redirect:/estudiantes";
+	}
+	
+	
 	@GetMapping("/estacionamientoDisponibles")
 	public String estacionamientoDisponibles() {
 		return "DisEstacionamiento/estacionamientosGeneral";

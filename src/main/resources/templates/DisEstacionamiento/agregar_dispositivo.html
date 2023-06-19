@@ -9,7 +9,7 @@
 <body>
 	<h1>Dar de alta dispositivo</h1>
 	
-	<form action="#" th:action="@{listaDispositivos}" th:object="${estacionamiento}" method="post">
+	<form action="#" th:action="@{guardar}" th:object="${estacionamiento}" method="post">
 		<p> nombre: <input type="text" th:field="*{nombre}" /></p>
 		<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}" /></p>
 		<p> ocupado: <input type="checkbox" th:field="*{ocupado}" /></p>

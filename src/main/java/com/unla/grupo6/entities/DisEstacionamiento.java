@@ -35,19 +35,5 @@ public class DisEstacionamiento extends Dispositivo{
 		this.tipoEstacionamiento = tipoEstacionamiento;
 	}
 	
-	public boolean verificarDisponibilidad() {
-		return ocupado;
-	}
-	
-	public int liberarPlaza() {
-		ocupado = false;
-		return 1;
-	}
-	
-	public int ocuparPlaza() {
-		ocupado = true;
-		return 1;
-	}
-	
 	
 }

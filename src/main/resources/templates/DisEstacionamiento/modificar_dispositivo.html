@@ -9,9 +9,7 @@
 <body>
 	<h1>Modificacion de dispositivo</h1>
 	
-	<form action="#" th:action="@{/estacionamientos/}" th:object="${estacionamiento}" method="post">
-		<p> nombre: <input type="text" th:field="*{nombre}" /></p>
-		<p> descripcion: <input type="text" th:field="*{descripcion}" /></p>
+	<form th:action="@{/estacionamientos/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}" th:object="${estacionamiento}" method="post">
 		<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}" /></p>
 		<p> ocupado: <input type="checkbox" th:field="*{ocupado}" /></p>
 		<p> sector:

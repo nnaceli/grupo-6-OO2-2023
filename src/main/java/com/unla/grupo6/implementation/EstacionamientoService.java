@@ -1,6 +1,7 @@
 package com.unla.grupo6.implementation;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +25,26 @@ public class EstacionamientoService implements IEstacionamientoService{
 //	@Qualifier("disEstacionamientoConvert")
 //	private DisEstacionamientoConvert disEstacionamientoConvert;
 	
-	private ModelMapper modelMapper = new ModelMapper();
 
 	
 	@Override
-	public List<DisEstacionamiento> listaDispositivos() {
+	public List<DisEstacionamiento> getAll() {
 		return estacionamientoRepository.findAll();
 	}
 
 	@Override
 	public DisEstacionamiento insertOrUpdate(DisEstacionamiento objDisEstacionamiento) {
 		return estacionamientoRepository.save(objDisEstacionamiento);
+	}
+
+	@Override
+	public DisEstacionamiento obtenerEstacionamiento(Long id) {
+		return estacionamientoRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public void eliminarEstacionamiento(Long id) {
+		estacionamientoRepository.deleteById(id);
 	}
 
 }

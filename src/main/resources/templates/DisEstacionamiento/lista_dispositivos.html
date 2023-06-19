@@ -19,11 +19,14 @@
 		</thead>
 		<tbody>
 			<tr th:each="estacionamiento : ${estacionamientos}">
-				<td><span th:text="${estacionamiento.id}" /></td>
+				<td><span th:text="${estacionamiento.idDispositivo}" /></td>
 				<td><span th:text="${estacionamiento.enFuncionamiento}" /></td>
 				<td><span th:text="${estacionamiento.sector}" /></td>
 				<td><span th:text="${estacionamiento.ocupado}" /></td>
 				<td><span th:text="${estacionamiento.tipoEstacionamiento}" /></td>
+				<td>
+					<a th:href="@{/estacionamientos/editar/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Editar</a>
+				</td>
 			</tr>
 		</tbody>
 	</table>
