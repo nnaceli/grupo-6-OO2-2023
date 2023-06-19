@@ -77,6 +77,13 @@ public class DisEstacionamientoController {
 		
 		return "redirect:/estacionamientos/listaDispositivos";
 	}
+	
+	@GetMapping("/{id}")
+	public String eliminarEstacionamiento(@PathVariable Long id) {
+		estacionamientoService.eliminarEstacionamiento(id);
+		return "redirect:/estacionamientos/listaDispositivos";
+	}
+	
 	/*
 	@GetMapping("/{id}")
 	public String eliminarEstudiante(@PathVariable Long id) {
