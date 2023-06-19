@@ -37,7 +37,7 @@ public class DisBañoController {
 	
 	@GetMapping("/lista")
 	public String listarBaños(Model model) {
-		model.addAttribute("titulo", "Lista de Baños");
+		model.addAttribute("titulo", "BAÑOS");
 		model.addAttribute("lista", bañoService.getAll());
 		return ViewRouterHelper.BANIO_LISTA;
 	}

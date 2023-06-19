@@ -19,7 +19,7 @@
 
 	<div class="container">
 
-		<table class="table">
+		<table class="table" style="background-color: #6A0E1A; color: white;">
 			<thead>
 				<tr>
 					<th scope="col">Higienizandose</th>
@@ -27,13 +27,24 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="table-info" th:object="${banio}">
-					<th scope="row" th:text="${higienizandose}"></th>
-					<td scope="row" th:text="${habilitado}"></td>
+				<tr class="table" th:object="${banio}" style="background-color: #FAD9DD; color: black;">
+					<td scope="row" th:text="${banio.higienizandose} ? 'SI' : 'NO'"></td>
+					<td scope="row" th:text="${banio.habilitado}  ? 'El baño se encuentra habilitado para su uso' : 'El baño esta siendo higienizado por lo cual no esta habilitado para su uso'">
+						
+					
+					</td>
+					
+					
 				</tr>
 			</tbody>
 		</table>
+		
+		
+		
 	</div>
+	
+	<img th:if="${banio.higienizandose}" src="/images/higienizandose.png" alt="Imagen 1" style="width: 200px; display: block; margin: 0 auto;">
+<img th:unless="${banio.higienizandose}" src="/images/noHigienizandose.jpg" alt="Imagen 2" style="width: 200px; display: block; margin: 0 auto;">
 
 
 </body>
