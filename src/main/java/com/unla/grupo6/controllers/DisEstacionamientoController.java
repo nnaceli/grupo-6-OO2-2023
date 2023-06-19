@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unla.grupo6.entities.DisEstacionamiento;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 import com.unla.grupo6.models.DisEstacionamientoModel;
 import com.unla.grupo6.servicies.IEstacionamientoService;
@@ -25,7 +26,7 @@ import jakarta.validation.Valid;
 
 
 @Controller
-@RequestMapping("/estacionamiento")
+@RequestMapping("/estacionamientos")
 public class DisEstacionamientoController {
 	
 	@Autowired
@@ -34,20 +35,28 @@ public class DisEstacionamientoController {
 
 	
 	//usar el contructor vacio de entities 
-	@GetMapping("/cargar")
-	public ModelAndView cargar() {
-		ModelAndView mAV = new ModelAndView(ViewRouterHelper.ESTACIONAMIENTO_CARGAR);
-		mAV.addObject("estacionamientos", estacionamientoService.getAll());
-		mAV.addObject("estacionamiento", new DisEstacionamientoModel());
-		return mAV;
+	@GetMapping("/listaDispositivos")
+	public String listarDisEstacionamiento(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.listaDispositivos());
+		return "DisEstacionamiento/lista_dispositivos";
 	}
 	
-	@PostMapping("/cargar")
-	public RedirectView cargar(@ModelAttribute("estacionamiento") DisEstacionamientoModel nuevoDisEstacionamiento) {
-		estacionamientoService.insertOrUpdate(nuevoDisEstacionamiento);
-		return new RedirectView(ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISPONIBLES);
+	
+	@GetMapping("/agregar")
+	public String mostrarFormularioDeAgregarDispositivo(Model modelo) {
+		DisEstacionamiento disEstacionamiento = new DisEstacionamiento();
+		modelo.addAttribute("estacionamiento", disEstacionamiento);
+		return "DisEstacionamiento/agregar_dispositivo";
 	}
 	
+	
+	@PostMapping("/listaDispositivos")
+	public String agregar(@ModelAttribute("estacionamiento") DisEstacionamiento nuevoEstacionamiento) {
+		estacionamientoService.insertOrUpdate(nuevoEstacionamiento);
+		return "redirect:/listaDispositivos";
+	}
+	
+	/*
 	@GetMapping("/estacionamientoDisponibles")
 	public String estacionamientoDisponibles() {
 		return "DisEstacionamiento/estacionamientosGeneral";
@@ -86,6 +95,6 @@ public class DisEstacionamientoController {
 	public String eliminar() {
 		return ViewRouterHelper.ESTACIONAMIENTO_ELIMINAR;
 
-	}
+	}*/
 
 }

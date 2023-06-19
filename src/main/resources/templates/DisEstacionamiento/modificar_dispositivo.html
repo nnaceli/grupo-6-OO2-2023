@@ -3,31 +3,13 @@
 
 <head>
 	<meta charset="UTF-8" \>
-	<title>carga de dispositivo</title>
+	<title>Smart UNLa - Estacionamientos</title>
 </head>
 
 <body>
-	<table>
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>En funcionamiento</th>
-				<th>Sector</th>
-				<th>Ocupado</th>
-				<th>Tipo de plaza</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="estacionamiento : ${estacionamientos}">
-				<td><span th:text="${estacionamiento.id}" /></td>
-				<td><span th:text="${estacionamiento.enFuncionamiento}" /></td>
-				<td><span th:text="${estacionamiento.sector}" /></td>
-				<td><span th:text="${estacionamiento.ocupado}" /></td>
-				<td><span th:text="${estacionamiento.tipoEstacionamiento}" /></td>
-			</tr>
-		</tbody>
-	</table>
-	<form action="#" th:action="@{estacionamientos}" th:object="${estacionamiento}" method="post">
+	<h1>Modificacion de dispositivo</h1>
+	
+	<form action="#" th:action="@{/estacionamientos/}" th:object="${estacionamiento}" method="post">
 		<p> nombre: <input type="text" th:field="*{nombre}" /></p>
 		<p> descripcion: <input type="text" th:field="*{descripcion}" /></p>
 		<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}" /></p>

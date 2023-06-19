@@ -7,8 +7,8 @@ import com.unla.grupo6.models.DisEstacionamientoModel;
 
 public interface IEstacionamientoService {
 	
-	public List<DisEstacionamiento> getAll();
+	public List<DisEstacionamiento> listaDispositivos();
 	
-	public DisEstacionamientoModel insertOrUpdate(DisEstacionamientoModel objDisEstacionamiento);
+	public DisEstacionamiento insertOrUpdate(DisEstacionamiento objDisEstacionamiento);
 	
 }

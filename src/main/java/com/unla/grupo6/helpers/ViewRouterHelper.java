@@ -26,14 +26,11 @@ public class ViewRouterHelper {
 	
 	//ESTACIONAMIENTO
 	public final static String ESTACIONAMIENTO_INDEX = "DisEstacionamiento/index";
-	public final static String ESTACIONAMIENTO_ROUTE_INDEX = "DisEstacionamiento/";
-	public final static String ESTACIONAMIENTO_PLAZAS_DISPONIBLES = "DisEstacionamiento/estacionamientosGeneral";
+	public final static String ESTACIONAMIENTO_LISTA = "DisEstacionamiento/lista_dispositivos";
+	public final static String ESTACIONAMIENTO_REDIRECT_LISTA = "redirect:/estacionamientos/listaDispositivos";
 	
 	public final static String ESTACIONAMIENTO_CARGAR = "DisEstacionamiento/cargarDispositivo";
-	public final static String ESTACIONAMIENTO_AGREGAR = "DisEstacionamiento/agregarDispositivo";
-	public final static String ESTACIONAMIENTO_AGREGADO = "DisEstacionamiento/dispositivoAgregado";
 	public final static String ESTACIONAMIENTO_MODIFICAR = "DisEstacionamiento/modificarDispositivo";
-	public final static String ESTACIONAMIENTO_ELIMINAR = "DisEstacionamiento/eliminarDispositivo";
 	
 	//BAÑOS
 	public final static String BANIO_INDEX = "banio/index";

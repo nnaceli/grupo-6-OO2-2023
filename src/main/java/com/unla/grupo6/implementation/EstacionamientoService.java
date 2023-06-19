@@ -28,14 +28,13 @@ public class EstacionamientoService implements IEstacionamientoService{
 
 	
 	@Override
-	public List<DisEstacionamiento> getAll() {
+	public List<DisEstacionamiento> listaDispositivos() {
 		return estacionamientoRepository.findAll();
 	}
 
 	@Override
-	public DisEstacionamientoModel insertOrUpdate(DisEstacionamientoModel objDisEstacionamiento) {
-		DisEstacionamiento disEstacionamiento = estacionamientoRepository.save(modelMapper.map(objDisEstacionamiento, DisEstacionamiento.class));
-		return modelMapper.map(disEstacionamiento, DisEstacionamientoModel.class);
+	public DisEstacionamiento insertOrUpdate(DisEstacionamiento objDisEstacionamiento) {
+		return estacionamientoRepository.save(objDisEstacionamiento);
 	}
 
 }
