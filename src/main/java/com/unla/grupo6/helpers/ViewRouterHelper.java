@@ -47,6 +47,7 @@ public class ViewRouterHelper {
 	public final static String LUCES_AGREGADAS = "DisLucesAuto/listaLucesAuto";
 	public final static String LUCES_REDIRECT_AGREGADAS= "redirect:/lucesautomaticas/listaLucesAuto";
 	public final static String LUCES_ELIMINAR= "DisLucesAuto/eliminarLuces";
+	public final static String LUCES_VER_AULA= "DisLucesAuto/verAula";
 	
 	//USER
 	public final static String USER_LOGIN = "User/login";
