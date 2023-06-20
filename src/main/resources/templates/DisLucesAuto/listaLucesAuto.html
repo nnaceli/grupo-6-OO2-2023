@@ -4,7 +4,7 @@
 
 <head th:fragment="head">
 	<meta charset="UTF-8" />
-	<title>Baños</title>
+	<title>LISTA DE DISPOSITIVOS DE LUCES AUTOMATICAS</title>
 	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 </head>
 
@@ -25,7 +25,7 @@
 					<th scope="col">ID</th>
 					<th scope="col">Nro Aula</th>
 					<th scope="col">Funcionamiento</th>
-					<th scope="col">Ver Luz Auto.</th>
+					<th scope="col">Ver</th>
 					<th scope="col">Editar</th>
 					<th scope="col">Eliminar</th>
 				</tr>
@@ -35,10 +35,9 @@
 					<th scope="row" th:text="${li.idDispositivo}"></th>
 					<td scope="row" th:text="${li.nroAula}"></td>
 					<td scope="row" th:text="${li.enFuncionamiento}"></td>
-					-- ver las redirecciones de editar y ver
 					<td><a class="btn btn-success btn-sm"
-						th:href="@{/lucesautomaticas/listaLucesAuto/verCamara/}+${li.idDispositivo}"
-						th:text="'Ver Camara'" title="Ver Camara"></a></td>
+						th:href="@{/lucesautomaticas/listaLucesAuto/verAula/}+${li.idDispositivo}"
+						th:text="'Ver Aula'" title="Ver Aula"></a></td>
 					<td><a class="btn btn-success btn-sm"
 						th:href="@{/lucesautomaticas/listaLucesAuto/modificarLuces/}+${li.idDispositivo}"
 						th:text="'Editar'" title="Editar Registro"></a></td>

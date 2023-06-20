@@ -45,10 +45,10 @@ public class DisLucesAutoService implements ILucesAutoService {
 		return false;
 	}
 
-//	@Override
-//	public DisLucesAuto buscar(long id) {
-//		// TODO Auto-generated method stub
-//		return lucesAutoRepository.findById(id);
-//	}
+	@Override
+	public DisLucesAuto buscar(long id) {
+		// TODO Auto-generated method stub
+		return lucesAutoRepository.findById(id).orElse(null);
+	}
 
 }

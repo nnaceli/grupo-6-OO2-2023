@@ -13,7 +13,7 @@ public interface ILucesAutoService {
 
 	public boolean remove(int id);
 
-	//public DisLucesAuto buscar(long id);
+	public DisLucesAuto buscar(long id);
 
 	public DisLucesAutoModel insertOrUpdate(DisLucesAutoModel disLucesAutoModel);
 
