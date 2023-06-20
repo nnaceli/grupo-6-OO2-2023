@@ -6,9 +6,9 @@
 	<title>Baños</title>
 	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 	
-	<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="/index">
-    	    <img src="/images/consultorios.png" width="58" height="45" alt="">
+    	    <img src="/images/logo.png" width="68" height="65" alt="">
   		   </a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
@@ -49,6 +49,7 @@
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
+					<th scope="col">Dispositivo</th>
 					<th scope="col">Edificio</th>
 					<th scope="col">Funcionamiento</th>
 					<th scope="col">Ver Camara</th>
@@ -59,6 +60,7 @@
 			<tbody>
 				<tr class="table" th:each="li:${lista}" style="background-color: #FAD9DD; color: black;">
 					<th scope="row" th:text="${li.idDispositivo}"></th>
+					<th scope="row" th:text="${li.nombre}"></th>
 					<td scope="row" th:text="${li.sector}"></td>
 					<td scope="row" th:text="${li.enFuncionamiento} ? 'FUNCIONA' : 'NO FUNCIONA'"></td>
 					

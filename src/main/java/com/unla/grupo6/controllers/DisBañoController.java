@@ -1,5 +1,6 @@
 package com.unla.grupo6.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,6 +19,7 @@ import com.unla.grupo6.servicies.IBañoService;
 
 import jakarta.validation.Valid;
 
+import com.certant.Consultorio.entities.Usuario;
 import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 
@@ -37,8 +39,17 @@ public class DisBañoController {
 	
 	@GetMapping("/lista")
 	public String listarBaños(Model model) {
+		List<DisBaño> baniosLista = bañoService.getAll();
+		List<DisBaño> lista = new ArrayList<DisBaño>();
+		
+		for(DisBaño b: baniosLista) {
+			if (b.isBaja() == false){
+				lista.add(b);
+			}
+		}
+		
 		model.addAttribute("titulo", "BAÑOS");
-		model.addAttribute("lista", bañoService.getAll());
+		model.addAttribute("lista", lista);
 		return ViewRouterHelper.BANIO_LISTA;
 	}
 	
@@ -93,7 +104,10 @@ public class DisBañoController {
 	
 	@GetMapping("lista/delete/{idDispositivo}")
 	public String eliminar(@PathVariable("idDispositivo") Long idDispositivo, RedirectAttributes attribute) {
-		bañoService.eliminar(idDispositivo);
+		DisBaño disBaño= bañoService.buscar(idDispositivo); 
+		
+		disBaño.setBaja(true);
+		bañoService.save(disBaño);
 		System.out.println("Registro eliminado con exito");
 		attribute.addFlashAttribute("warning", "Dispositivo eliminado con exito");
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;

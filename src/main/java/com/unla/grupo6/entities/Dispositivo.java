@@ -35,39 +35,17 @@ public class Dispositivo {
 	
 	@Column(name="enFuncionamiento", nullable = false)
 	protected boolean enFuncionamiento;
+	
+	@Column(name="baja", nullable = false )
+	protected boolean baja;
 
-	public Dispositivo(String nombre, boolean enFuncionamiento) {
+	public Dispositivo(String nombre, boolean enFuncionamiento, boolean baja) {
 		this.nombre = nombre;
 		this.enFuncionamiento = enFuncionamiento;
+		this.baja = false;
 	}
 	
 	
-	public Dispositivo(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public Long getIdDispositivo() {
-		return idDispositivo;
-	}
-
-	public void setIdDispositivo(Long id) {
-		this.idDispositivo = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public boolean isEnFuncionamiento() {
-		return enFuncionamiento;
-	}
-
-	public void setEnFuncionamiento(boolean enFuncionamiento) {
-		this.enFuncionamiento = enFuncionamiento;
-	}
+	
 
 }

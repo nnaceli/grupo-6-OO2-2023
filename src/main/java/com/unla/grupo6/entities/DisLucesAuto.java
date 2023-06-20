@@ -17,14 +17,14 @@ public class DisLucesAuto extends Dispositivo {
 	@Column(name = "nroAula")
 	private int nroAula;
 
-	public DisLucesAuto(String nombre, boolean enFuncionamiento, int nroAula) {
-		super(nombre, enFuncionamiento);
-		this.estado = false;
+	public DisLucesAuto(String nombre, boolean enFuncionamiento, boolean baja, boolean estado, int nroAula) {
+		super(nombre, enFuncionamiento, baja);
+		this.estado = estado;
 		this.nroAula = nroAula;
 	}
 
 	public DisLucesAuto() {
-		super(null);
+		
 	}
 
 	public boolean isEstado() {
