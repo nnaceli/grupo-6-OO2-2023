@@ -19,7 +19,6 @@ import com.unla.grupo6.servicies.IBañoService;
 
 import jakarta.validation.Valid;
 
-import com.certant.Consultorio.entities.Usuario;
 import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 
