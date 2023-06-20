@@ -25,6 +25,7 @@ public class EventoController {
 	@Qualifier("eventoService")
 	private IEventoService eventoService;
 
+<<<<<<< HEAD
 //	@GetMapping("/lista")
 //	public String listarEventos(Model model) {
 //
@@ -35,5 +36,15 @@ public class EventoController {
 //
 //		return ViewRouterHelper.;
 //	}
+=======
+	@GetMapping("/lista")
+	public String listarEventos(Model model) {
+
+		model.addAttribute("titulo", "Eventos");
+		model.addAttribute("lista", eventoService.getAll());
+
+		return ViewRouterHelper.EVENTO_LISTA;
+	}
+>>>>>>> 1fd163cd8d7b2228f94770c186ed052e6f46e674
 
 }

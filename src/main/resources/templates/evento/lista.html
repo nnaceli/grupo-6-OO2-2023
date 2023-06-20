@@ -50,6 +50,7 @@
 					<th scope="col">Id Dispositivo</th>
 					<th scope="col">Fecha y Hora</th>
 					<th scope="col">Ver Evento</th>
+<<<<<<< HEAD:src/main/resources/templates/evento/listaBanio.html
 				</tr>
 			</thead>
 			<tbody>
@@ -62,6 +63,24 @@
 						<a class="btn btn-dark btn-sm" th:href="@{/evento/lista/verEvento/{id}(id=${li.id})}"
 							th:text="'Ver Evento'" title="Ver Evento"></a>
 					</td>
+=======
+				
+		
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table" th:each="li:${lista}" style="background-color: #FAD9DD; color: black;">
+					<th scope="row" th:text="${li.id}"></th>
+					<th scope="row" th:text="${li.dispositivo.nombre}"></th>
+					<th scope="row" th:text="${li.dispositivo.idDispositivo}"></th>
+					<td scope="row" th:text="${li.fechaHora}"></td>
+					
+					<td><a class="btn btn-dark btn-sm"
+						th:href="@{/evento/lista/verEvento/}+${li.id}"
+						th:text="'Ver Evento'" title="Ver Evento"></a></td>
+					
+				
+>>>>>>> 1fd163cd8d7b2228f94770c186ed052e6f46e674:src/main/resources/templates/evento/lista.html
 				</tr>
 			</tbody>
 		</table>
