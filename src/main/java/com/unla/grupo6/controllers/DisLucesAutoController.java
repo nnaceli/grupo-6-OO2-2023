@@ -46,9 +46,9 @@ public class DisLucesAutoController {
 	}
 
 	@GetMapping("/listaLucesAuto")
-	public String listarBaños(Model model) {
-		model.addAttribute("titulo", "Lista de Luces Automaticas");
-		model.addAttribute("lista", lucesService.getAll());
+	public String listarLuces(Model model) {
+		model.addAttribute("titulo", "Lista de Luces Automáticas");
+		model.addAttribute("lista", lucesService.getByBaja(false));
 		return ViewRouterHelper.LUCES_AGREGADAS;
 	}
 
@@ -96,14 +96,9 @@ public class DisLucesAutoController {
 		return ViewRouterHelper.LUCES_VER_AULA;
 	}
 
-	@GetMapping("listaLucesAuto/eliminarLuces/{id}")
-	public String eliminar(@PathVariable("id") Long id, RedirectAttributes attribute) {
-		DisLucesAuto disLucesAuto = lucesService.buscar(id);
-
-		if (disLucesAuto == null) {
-			attribute.addFlashAttribute("error", "No se encontró el dispositivo de luces automáticas");
-			return ViewRouterHelper.LUCES_REDIRECT_AGREGADAS;
-		}
+	@GetMapping("listaLucesAuto/eliminarLuces/{idDispositivo}")
+	public String eliminar(@PathVariable("idDispositivo") Long idDispositivo, RedirectAttributes attribute) {
+		DisLucesAuto disLucesAuto = lucesService.buscar(idDispositivo);
 
 		// Realiza la baja lógica del dispositivo
 		disLucesAuto.setBaja(true);

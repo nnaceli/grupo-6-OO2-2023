@@ -13,10 +13,12 @@ public interface ILucesAutoService {
 
 	public void save(DisLucesAuto disLucesAuto);
 	
-	public boolean remove(long id);
+	public void remove(int id);
 
 	public DisLucesAuto buscar(long id);
 
 	public DisLucesAutoModel insertOrUpdate(DisLucesAutoModel disLucesAutoModel);
+	
+	public List<DisLucesAuto> getByBaja(boolean baja);
 
 }

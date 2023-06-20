@@ -2,7 +2,6 @@ package com.unla.grupo6.repositories;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -19,5 +18,5 @@ public interface IDisLucesAutoRepository extends JpaRepository<DisLucesAuto, Ser
 	public abstract List<DisLucesAuto> findByEstado(boolean estado);
 	// @Query ("SELECT d FROM DisLucesAuto d where d.nroAula = (:nroAula)")
 
-	public abstract Optional<DisLucesAuto> findByIdDispositivo(long id);
+	public abstract List<DisLucesAuto> findByBaja(boolean baja);
 }

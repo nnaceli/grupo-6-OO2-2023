@@ -39,17 +39,9 @@ public class DisLucesAutoService implements ILucesAutoService {
 		lucesAutoRepository.save(disLucesAuto);
 	}
 
-	// revisar
 	@Override
-	public boolean remove(long id) {
-	    Optional<DisLucesAuto> optionalLucesAuto = lucesAutoRepository.findById(id);
-	    if (optionalLucesAuto.isPresent()) {
-	        DisLucesAuto lucesAuto = optionalLucesAuto.get();
-	        lucesAuto.setBaja(true);
-	        lucesAutoRepository.delete(lucesAuto);
-	        return true;
-	    }
-	    return false;
+	public void remove(int id) {
+		
 	}
 
 	@Override
@@ -57,5 +49,10 @@ public class DisLucesAutoService implements ILucesAutoService {
 		// TODO Auto-generated method stub
 		return lucesAutoRepository.findById(id).orElse(null);
 	}
+	
+	@Override
+    public List<DisLucesAuto> getByBaja(boolean baja) {
+        return lucesAutoRepository.findByBaja(baja);
+    }
 
 }
