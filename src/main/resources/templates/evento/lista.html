@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+	<meta charset="UTF-8" />
+	<title>Baños</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/index"> <img src="/images/logo.png" width="48" height="45" alt="">
+		</a>
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true"
+						class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+						id="navbarDropdownBlog">Dispositivo</a>
+					<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+						<form th:action="@{/banio/lista}" method="post">
+							<input class="dropdown-item" style="cursor: pointer" type="submit"
+								value="Dispositivo baño" />
+						</form>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+
+	</nav>
+
+
+
+</head>
+
+<body>
+
+	<div class="container">
+		<h1 class="text-center" th:text="${titulo}"></h1>
+
+
+		<div th:if="${error}" class="alert alert-danger">
+			<p th:text="${error}"></p>
+		</div>
+
+	</div>
+
+
+
+	<div class="container">
+
+		<table class="table" style="background-color: #6A0E1A; color: white;">
+			<thead>
+				<tr>
+					<th scope="col">Id Evento</th>
+					<th scope="col">Dispositivo</th>
+					<th scope="col">Id Dispositivo</th>
+					<th scope="col">Fecha y Hora</th>
+					<th scope="col">Ver Evento</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table" th:each="li:${lista}" style="background-color: #FAD9DD; color: black;">
+					<th scope="row" th:text="${li.id}"></th>
+					<th scope="row" th:text="${li.dispositivo.nombre}"></th>
+					<th scope="row" th:text="${li.dispositivo.idDispositivo}"></th>
+					<td scope="row" th:text="${li.fechaHora}"></td>
+
+					<td><a class="btn btn-dark btn-sm" th:href="@{/evento/lista/verEvento/}+${li.id}"
+							th:text="'Ver Evento'" title="Ver Evento"></a></td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

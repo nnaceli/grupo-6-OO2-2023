@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.DisLucesAuto;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 import com.unla.grupo6.servicies.ILucesAutoService;
@@ -47,9 +46,9 @@ public class DisLucesAutoController {
 	}
 
 	@GetMapping("/listaLucesAuto")
-	public String listarBaños(Model model) {
-		model.addAttribute("titulo", "Lista de Luces Automaticas");
-		model.addAttribute("lista", lucesService.getAll());
+	public String listarLuces(Model model) {
+		model.addAttribute("titulo", "Lista de Luces Automáticas");
+		model.addAttribute("lista", lucesService.getByBaja(false));
 		return ViewRouterHelper.LUCES_AGREGADAS;
 	}
 
@@ -80,8 +79,6 @@ public class DisLucesAutoController {
 		return ViewRouterHelper.LUCES_AGREGAR;
 	}
 
-	// LUCES_VER_AULA
-
 	@GetMapping("listaLucesAuto/verAula/{idDispositivo}")
 	public String verCamara(@PathVariable("idDispositivo") Long idDispositivo, Model model,
 			RedirectAttributes attribute) {
@@ -99,9 +96,17 @@ public class DisLucesAutoController {
 		return ViewRouterHelper.LUCES_VER_AULA;
 	}
 
-	@GetMapping("/eliminarLuces")
-	public String eliminar() {
-		return ViewRouterHelper.LUCES_ELIMINAR;
+	@GetMapping("listaLucesAuto/eliminarLuces/{idDispositivo}")
+	public String eliminar(@PathVariable("idDispositivo") Long idDispositivo, RedirectAttributes attribute) {
+		DisLucesAuto disLucesAuto = lucesService.buscar(idDispositivo);
+
+		// Realiza la baja lógica del dispositivo
+		disLucesAuto.setBaja(true);
+		lucesService.save(disLucesAuto);
+
+		attribute.addFlashAttribute("success",
+				"El dispositivo de luces automáticas ha sido dado de baja correctamente");
+		return ViewRouterHelper.LUCES_REDIRECT_AGREGADAS;
 	}
 
 	@GetMapping("/")

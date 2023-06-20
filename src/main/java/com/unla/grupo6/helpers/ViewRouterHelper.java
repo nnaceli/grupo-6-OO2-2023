@@ -8,6 +8,8 @@ public class ViewRouterHelper {
 	//DISPOSITIVO
 	public final static String DISPOSITIVO_INDEX =  "Dispositivo/index";
 	
+	//EVENTO
+	public final static String EVENTO_LISTA = "evento/lista";
 	
 	//ESPACIO VERDE ver bien como hacerlas 
 	public final static String ESPACIOVERDE_INDEX =  "DisEspacioVerde/index";
@@ -20,8 +22,6 @@ public class ViewRouterHelper {
 	public final static String ESPACIOVERDE_LISTA = "DisEspacioVerde/listaVerde";
 	public final static String ESPACIOVERDE_REDIRECT_LISTA = "redirect:/espacioverde/listaverde";
 	public final static String ESPACIOVERDE_VER_SENSOR = "DisEspacioVerde/verSensor";
-	
-	
 	
 	public final static String ESPACIOVERDE_ROUTE_INDEX = "/index";
 	
