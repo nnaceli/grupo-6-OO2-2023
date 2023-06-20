@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+	<meta charset="UTF-8" />
+	<title>Baños</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="/index"> <img src="/images/logo.png"
+		width="48" height="45" alt="">
+	</a>
+	<button class="navbar-toggler navbar-toggler-right" type="button"
+		data-toggle="collapse" data-target="#navbarResponsive"
+		aria-controls="navbarResponsive" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+
+	</nav>
+
+
+
+</head>
+
+<body>
+
+	<div class="container">
+		<h1 class="text-center" th:text="${titulo}"></h1>
+
+
+		<div th:if="${error}" class="alert alert-danger">
+			<p th:text="${error}"></p>
+		</div>
+
+	</div>
+
+
+
+	<div class="container">
+
+		<table class="table" style="background-color: #6A0E1A; color: white;">
+			<thead>
+				<tr>
+					<th scope="col">Id Evento</th>
+					<th scope="col">Dispositivo</th>
+					<th scope="col">Id Dispositivo</th>
+					<th scope="col">Fecha y Hora</th>
+					<th scope="col">Higienizandose</th>
+					<th scope="col">Habilitado</th>
+		
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table" th:each="li:${lista}" style="background-color: #FAD9DD; color: black;">
+					<th scope="row" th:text="${li.id}"></th>
+					<th scope="row" th:text="${li.dispositivo.nombre}"></th>
+					<th scope="row" th:text="${li.dispositivo.idDispositivo}"></th>
+					<td scope="row" th:text="${li.fechaHora}"></td>
+					<td scope="row" th:text="${li.dispositivo.higienizandose} ? 'SI' : 'NO'"></td>
+					<td scope="row" th:text="${li.dispositivo.habilitado}  ? 'El baño se encuentra habilitado para su uso' : 'El baño esta siendo higienizado por lo cual no esta habilitado para su uso'">
+				
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

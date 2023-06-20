@@ -11,5 +11,5 @@ public interface IEventoService {
 	
 	public List<Evento> getAll();
 	public Evento saveEvento(Evento evento);
-	public Evento getEventoById (int id);
+	public Evento buscar (long id);
 }
