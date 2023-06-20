@@ -11,17 +11,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 //ESTO LO HICIMOS EN GRUPO
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 @Table(name="evento")
 public class Evento {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private Long id;
 	
 	@Column(name="fechaHora")
 	private LocalDateTime fechaHora;
@@ -35,10 +39,9 @@ public class Evento {
 	private Dispositivo dispositivo;
 	//private Dispositivo dispositivo;
 
-	public Evento() {}
 	
 	//constructor
-	public Evento(int id, Dispositivo dispositivo, LocalDateTime fechaHora) {
+	public Evento(Long id, Dispositivo dispositivo, LocalDateTime fechaHora) {
 		super();
 		this.id = id;
 		this.dispositivo = dispositivo;
@@ -52,30 +55,6 @@ public class Evento {
 		this.fechaHora = fechaHora;
 	}
 
-	//METODOS ACCESORES
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Dispositivo getDispositivo() {
-		return dispositivo;
-	}
-
-	public void setDispositivo(Dispositivo dispositivo) {
-		this.dispositivo = dispositivo;
-	}
-
-	public LocalDateTime getFechaHora() {
-		return fechaHora;
-	}
-
-	public void setFechaHora(LocalDateTime fechaHora) {
-		this.fechaHora = fechaHora;
-	}
 	
 	
 	

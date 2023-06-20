@@ -99,8 +99,10 @@ public class DisBañoController {
 		bañoService.save(disBaño);
 		System.out.println("Dispositivo Baño guardado con exito!");
 		attribute.addFlashAttribute("success", "Dispositivo Baño guardado con exito ");
+		
 		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now());
 		eventoService.saveEvento(nuevoEvento);
+		
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 	}
 	
@@ -111,6 +113,9 @@ public class DisBañoController {
 		model.addAttribute("titulo", "Formulario: Editar Camara Baño");
 		model.addAttribute("banio", disBaño);
 		model.addAttribute("lista", bañoService.getAll());
+		
+		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now());
+		eventoService.saveEvento(nuevoEvento);
 		
 		return ViewRouterHelper.BANIO_CREAR;
 	}

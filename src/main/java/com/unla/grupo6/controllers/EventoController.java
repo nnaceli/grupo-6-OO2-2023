@@ -2,13 +2,20 @@ package com.unla.grupo6.controllers;
 
 
 
+import java.time.LocalDateTime;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.unla.grupo6.entities.DisBaño;
+import com.unla.grupo6.entities.Evento;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 import com.unla.grupo6.servicies.IEventoService;
 
@@ -23,10 +30,12 @@ public class EventoController {
 	
 	@GetMapping("/lista")
 	public String listarEventos(Model model) {
+		
 		model.addAttribute("titulo", "Eventos");
 		model.addAttribute("lista", eventoService.getAll());
-		return ViewRouterHelper.EVENTO_LISTA;
+		
+		return ViewRouterHelper.EVENTO_LISTA_BANIO;
 	}
 	
-	
+
 }

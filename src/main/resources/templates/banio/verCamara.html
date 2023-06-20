@@ -28,10 +28,8 @@
 			<tbody>
 				<tr class="table" th:object="${banio}" style="background-color: #FAD9DD; color: black;">
 					<td scope="row" th:text="${banio.higienizandose} ? 'SI' : 'NO'"></td>
-					<td scope="row"
-						th:text="${banio.habilitado}  ? 'El baño se encuentra habilitado para su uso' : 'El baño esta siendo higienizado por lo cual no esta habilitado para su uso'">
-
-
+					<td scope="row" th:text="${banio.habilitado}  ? 'El baño se encuentra habilitado para su uso' : 'El baño esta siendo higienizado por lo cual no esta habilitado para su uso'">
+					
 					</td>
 
 

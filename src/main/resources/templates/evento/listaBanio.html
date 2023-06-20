@@ -17,22 +17,6 @@
 		aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<div class="collapse navbar-collapse" id="navbarResponsive">
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item dropdown"><a aria-expanded="false"
-				aria-haspopup="true" class="nav-link dropdown-toggle"
-				data-toggle="dropdown" href="#" id="navbarDropdownBlog">Dispositivo</a>
-				<div aria-labelledby="navbarDropdownBlog"
-					class="dropdown-menu dropdown-menu-right">
-					<form th:action="@{/banio/lista}" method="post">
-						<input class="dropdown-item" style="cursor: pointer" type="submit"
-							value="Dispositivo baño" />
-					</form>
-				</div>
-				</li>
-				</ul>
-	</div>
-
 
 </nav>
 
@@ -63,7 +47,9 @@
 					<th scope="col">Dispositivo</th>
 					<th scope="col">Id Dispositivo</th>
 					<th scope="col">Fecha y Hora</th>
-					<th scope="col">Ver Evento</th>
+					<th scope="col">Higienizandose</th>
+					<th scope="col">Habilitado</th>
+		
 				</tr>
 			</thead>
 			<tbody>
@@ -73,11 +59,9 @@
 					<th scope="row" th:text="${li.dispositivo.nombre}"></th>
 					<th scope="row" th:text="${li.dispositivo.idDispositivo}"></th>
 					<td scope="row" th:text="${li.fechaHora}"></td>
-
-					<td><a class="btn btn-dark btn-sm"
-						th:href="@{/evento/lista/verEvento/}+${li.id}"
-						th:text="'Ver Evento'" title="Ver Evento"></a></td>
-
+					<td scope="row" th:text="${li.dispositivo.higienizandose} ? 'SI' : 'NO'"></td>
+					<td scope="row" th:text="${li.dispositivo.habilitado}  ? 'El baño se encuentra habilitado para su uso' : 'El baño esta siendo higienizado por lo cual no esta habilitado para su uso'">
+				
 				</tr>
 			</tbody>
 		</table>
