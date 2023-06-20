@@ -155,7 +155,7 @@ public class DisEspacioVerdeController {
 		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
 	}
 
-	@PreAuthorize("hasRole('administrador')")
+	
 	@GetMapping("listaverde/edit/{idDispositivo}")
 	public String editar(@PathVariable("idDispositivo") Long idDispositivo, Model model, RedirectAttributes attribute) {
 
