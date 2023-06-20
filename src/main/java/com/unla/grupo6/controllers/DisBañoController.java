@@ -1,6 +1,9 @@
 package com.unla.grupo6.controllers;
 
+import java.time.LocalDateTime;
+
 import java.util.ArrayList;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,13 +17,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import java.util.Random;
 import com.unla.grupo6.servicies.IBañoService;
+import com.unla.grupo6.servicies.IEventoService;
 
 import jakarta.validation.Valid;
-
-import com.certant.Consultorio.entities.Usuario;
 import com.unla.grupo6.entities.DisBaño;
+import com.unla.grupo6.entities.Evento;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 
 
@@ -31,6 +34,13 @@ public class DisBañoController {
 	@Autowired
 	@Qualifier("bañoService")
 	private IBañoService bañoService;
+	
+	
+	@Autowired
+	@Qualifier("eventoService")
+	private IEventoService eventoService;
+	
+	
 	
 	@GetMapping("/index")
 	public String index() {
@@ -88,6 +98,8 @@ public class DisBañoController {
 		bañoService.save(disBaño);
 		System.out.println("Dispositivo Baño guardado con exito!");
 		attribute.addFlashAttribute("success", "Dispositivo Baño guardado con exito ");
+		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now());
+		eventoService.saveEvento(nuevoEvento);
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 	}
 	
@@ -118,6 +130,17 @@ public class DisBañoController {
 		
 		DisBaño disBaño= bañoService.buscar(idDispositivo);
 		
+		 Random random = new Random();
+		 boolean randomValue = random.nextBoolean();
+		 disBaño.setHigienizandose(randomValue);
+		 if(randomValue) {
+			 disBaño.setHabilitado(false);
+			 bañoService.save(disBaño);
+		 }else {
+			 disBaño.setHabilitado(true);
+			 bañoService.save(disBaño);
+		 }
+		
 		if(disBaño.isEnFuncionamiento()== false) {
 			 attribute.addFlashAttribute("error","ATENCION: La camara seleccionada no se puede ver porque no funciona");
 			 return ViewRouterHelper.BANIO_REDIRECT_LISTA;
@@ -125,6 +148,11 @@ public class DisBañoController {
 		
 		model.addAttribute("titulo", "Ver Camara");
 		model.addAttribute("banio", disBaño);
+		
+	
+		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now());
+		eventoService.saveEvento(nuevoEvento);
+		
 		return ViewRouterHelper.BANIO_VER_CAMARA;
 	}
 	

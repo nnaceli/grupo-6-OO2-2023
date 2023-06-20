@@ -2,6 +2,8 @@ package com.unla.grupo6.entities;
 
 
 
+import java.time.LocalDate;
+
 //import java.time.LocalDateTime;
 //import java.util.Set;
 //import java.util.HashSet;
@@ -127,6 +129,7 @@ package com.unla.grupo6.entities;
 
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -168,6 +171,7 @@ public class User {
 	@Column(name="updatedat")
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
+	
 
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
 	private Set<UserRole> userRoles = new HashSet<>();
@@ -177,6 +181,8 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
+		
+		System.out.println(LocalTime.of(id, id));
 	}
 
 	public User(String username, String password, boolean enabled, Set<UserRole> userRoles) {
