@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" \>
+	<title>Smart UNLa - Estacionamientos</title>
+</head>
+
+<body>
+	<h1>Disponibilidad de plazas para discapacitados</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Disponibilidad</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="estacionamiento : ${estacionamientos}">
+				<td><span th:text="${estacionamiento.idDispositivo}" /></td>
+				<td><span th:text="${estacionamiento.ocupado}" /></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>

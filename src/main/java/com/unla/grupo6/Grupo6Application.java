@@ -1,12 +1,17 @@
 package com.unla.grupo6;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.unla.grupo6.repositories.IEspacioVerdeRepository;
+import com.unla.grupo6.repositories.IEstacionamientoRepository;
 import com.unla.grupo6.entities.DisEspacioVerde;
+import com.unla.grupo6.entities.DisEstacionamiento;
+import com.unla.grupo6.implementation.EstacionamientoService;
 
 @SpringBootApplication
 public class Grupo6Application implements CommandLineRunner{
@@ -19,13 +24,16 @@ public class Grupo6Application implements CommandLineRunner{
 	@Autowired
 	private IEspacioVerdeRepository repositorioEspacioVerde;
 	
+	@Autowired
+	private EstacionamientoService servicioEstacionamiento;
+	
 //	@Override
 	public void run(String... args) throws Exception{
 		
-//		DisEspacioVerde disespacioverde = new DisEspacioVerde("sensor prueba", "carga de datos con metodo run", true, true, 30, "plaza abuelas");
-//		repositorioEspacioVerde.save(disespacioverde);
-//		
-//		DisEspacioVerde disespacioverde2 = new DisEspacioVerde("sensor arbusto", "sensor que mide humedad arbusto", true, true, 70, "plaza malvinas");
-//		repositorioEspacioVerde.save(disespacioverde2);
+		List<DisEstacionamiento> Estacionamientos = servicioEstacionamiento.getPorSectorYfuncionamientoYtipo("29 de septiembre", true, 2);
+		
+		for(DisEstacionamiento estacionamiento : Estacionamientos)
+			System.out.println(estacionamiento.toString());
+		
 	}
 }
