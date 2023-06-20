@@ -25,18 +25,6 @@ public class EventoController {
 	@Qualifier("eventoService")
 	private IEventoService eventoService;
 
-<<<<<<< HEAD
-//	@GetMapping("/lista")
-//	public String listarEventos(Model model) {
-//
-//		List<Evento> listaEventos = eventoService.getAll();
-//
-//		model.addAttribute("titulo", "Eventos");
-//		model.addAttribute("lista", eventoService.getAll());
-//
-//		return ViewRouterHelper.;
-//	}
-=======
 	@GetMapping("/lista")
 	public String listarEventos(Model model) {
 
@@ -45,6 +33,32 @@ public class EventoController {
 
 		return ViewRouterHelper.EVENTO_LISTA;
 	}
->>>>>>> 1fd163cd8d7b2228f94770c186ed052e6f46e674
+	
+	@GetMapping("/lista/verEventoDispositivo")
+	public String verEventos(Model model) {
+	    // Obtener el dispositivo del evento
+		model.addAttribute("lista", eventoService.getAll());
+		List<Evento> listaEventos = eventoService.getAll();
 
+	    // Redireccionar a la vista correspondiente según el dispositivo
+		for (Evento evento : listaEventos) {
+	        switch (evento.getDispositivo().getNombre()) {
+	            case "Baño":
+	                return ViewRouterHelper.EVENTO_BANIO;
+	            case "Luces":
+	                return ViewRouterHelper.EVENTO_LUCES;
+	            case "Estacionamiento":
+	                return ViewRouterHelper.EVENTO_ESTACIONAMIENTO;
+	            case "Espacio Verde":
+	                return ViewRouterHelper.EVENTO_ESPACIO_VERDE;
+	            default:
+	                // Manejar otros casos o lanzar una excepción si es necesario
+	                break;
+	        }
+		}
+
+	    // Si no se encuentra el dispositivo, puedes manejarlo de acuerdo a tus necesidades
+	    return "error"; // Redireccionar a una página de error u otra vista adecuada
+	}
+	
 }
