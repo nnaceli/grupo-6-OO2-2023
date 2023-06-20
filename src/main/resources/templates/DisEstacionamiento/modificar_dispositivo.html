@@ -10,15 +10,16 @@
 	<h1>Modificacion de dispositivo</h1>
 	
 	<form th:action="@{/estacionamientos/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}" th:object="${estacionamiento}" method="post">
-		<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}" /></p>
-		<p> ocupado: <input type="checkbox" th:field="*{ocupado}" /></p>
-		<p> sector:
+		<p> Plaza ocupada: <input type="checkbox" th:field="*{ocupado}" /></p>
+		<p> Sector:
 			<select name="sector" th:field="*{sector}">
 				<option value="Buffet">Buffet</option>
 				<option value="29 de septiembre">29 de septiembre</option>
+				<option value="Pablo Nogues">Pablo Nogues</option>
+				<option value="José Malba">José Malba</option>
 			</select>
 		</p>
-		<p> tipoEstacionameinto:
+		<p> Tipo de estacionameinto:
 			<select name="sector" th:field="*{tipoEstacionamiento}">
 				<option value="1">Normal</option>
 				<option value="2">Para discapacitados</option>

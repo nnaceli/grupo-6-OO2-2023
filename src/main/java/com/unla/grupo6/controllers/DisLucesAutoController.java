@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.DisLucesAuto;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 import com.unla.grupo6.servicies.ILucesAutoService;
@@ -75,8 +76,27 @@ public class DisLucesAutoController {
 		model.addAttribute("titulo", "Formulario: Modificar Dispositivo");
 		model.addAttribute("disLucesAuto", disLucesAuto);
 		model.addAttribute("lista", lucesService.getAll());
-		
+
 		return ViewRouterHelper.LUCES_AGREGAR;
+	}
+
+	// LUCES_VER_AULA
+
+	@GetMapping("listaLucesAuto/verAula/{idDispositivo}")
+	public String verCamara(@PathVariable("idDispositivo") Long idDispositivo, Model model,
+			RedirectAttributes attribute) {
+
+		DisLucesAuto disLucesAuto = lucesService.buscar(idDispositivo);
+
+		if (disLucesAuto.isEnFuncionamiento() == false) {
+			attribute.addFlashAttribute("error",
+					"ATENCION: La camara del aula seleccionada no se puede ver porque no funciona");
+			return ViewRouterHelper.LUCES_REDIRECT_AGREGADAS;
+		}
+
+		model.addAttribute("titulo", "Ver Aula");
+		model.addAttribute("disLucesAuto", disLucesAuto);
+		return ViewRouterHelper.LUCES_VER_AULA;
 	}
 
 	@GetMapping("/eliminarLuces")
