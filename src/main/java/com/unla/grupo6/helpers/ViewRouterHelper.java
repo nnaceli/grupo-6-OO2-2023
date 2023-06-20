@@ -10,7 +10,7 @@ public class ViewRouterHelper {
 	
 	//EVENTO
 	public final static String EVENTO_LISTA = "evento/lista";
-	
+	public final static String EVENTO_BANIO = "evento/verEventoBanio";
 	
 	//ESPACIO VERDE ver bien como hacerlas 
 	public final static String ESPACIOVERDE_INDEX =  "DisEspacioVerde/index";

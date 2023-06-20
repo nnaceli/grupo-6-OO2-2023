@@ -11,8 +11,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.Evento;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 import com.unla.grupo6.servicies.IEventoService;
@@ -33,5 +36,21 @@ public class EventoController {
 
 		return ViewRouterHelper.EVENTO_LISTA;
 	}
+	
+	
+	@GetMapping("lista/verEvento/{id}")
+	public String verEvento(@PathVariable("id") Long id, Model model, RedirectAttributes attribute ) {
+		
+		Evento evento= eventoService.buscar(id);
+
+		
+		model.addAttribute("titulo", "Ver Camara");
+		model.addAttribute("evento", evento);
+		
+
+		
+		return ViewRouterHelper.EVENTO_BANIO;
+	}
+	
 
 }
