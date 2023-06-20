@@ -1,7 +1,10 @@
 package com.unla.grupo6.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.time.LocalDateTime;
+import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,7 +17,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo6.entities.DisLucesAuto;
+import com.unla.grupo6.entities.Evento;
 import com.unla.grupo6.helpers.ViewRouterHelper;
+import com.unla.grupo6.servicies.IEventoService;
 import com.unla.grupo6.servicies.ILucesAutoService;
 
 import jakarta.validation.Valid;
@@ -27,6 +32,10 @@ public class DisLucesAutoController {
 //	public String helloWorld() {
 //		return ViewRouterHelper.LUCES_HOLA;
 //	}
+
+	@Autowired
+	@Qualifier("eventoService")
+	private IEventoService eventoService;
 
 	@Autowired
 	private ILucesAutoService lucesService;
@@ -85,6 +94,11 @@ public class DisLucesAutoController {
 
 		DisLucesAuto disLucesAuto = lucesService.buscar(idDispositivo);
 
+		Random random = new Random();
+		boolean randomValue = random.nextBoolean();
+		disLucesAuto.setEstado(randomValue);
+		lucesService.save(disLucesAuto);
+
 		if (disLucesAuto.isEnFuncionamiento() == false) {
 			attribute.addFlashAttribute("error",
 					"ATENCION: La camara del aula seleccionada no se puede ver porque no funciona");
@@ -93,6 +107,9 @@ public class DisLucesAutoController {
 
 		model.addAttribute("titulo", "Ver Aula");
 		model.addAttribute("disLucesAuto", disLucesAuto);
+
+		Evento nuevoEvento = new Evento(disLucesAuto, LocalDateTime.now());
+		eventoService.saveEvento(nuevoEvento);
 		return ViewRouterHelper.LUCES_VER_AULA;
 	}
 
