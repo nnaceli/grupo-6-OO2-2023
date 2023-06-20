@@ -31,10 +31,5 @@ public class UserController {
 		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
 	}
 	
-//	public class TestByCryptPasswordEncoder{
-//		public static void main(String[] args) {
-//			BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
-//			System.out.println(pe.encode("user"));
-//		}
-//	}
+
 }
