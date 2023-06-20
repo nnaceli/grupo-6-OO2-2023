@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:fragment="head">
+	<meta charset="UTF-8" />
+	<title>Espacio verdes</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+</head>
+
+<body>
+
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+
+
+	</div>
+
+	<div class="container">
+
+		<table class="table" style="background-color: #6A0E1A; color: white;">
+			<thead>
+				<tr>
+					<th scope="col">Funcionamiento</th>
+					<th scope="col">Detalle</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table" th:object="${espacioverde}" style="background-color: #FAD9DD; color: black;">
+					<td scope="row" th:text="${espacioverde.enFuncionamineto} ? 'SI' : 'NO'"></td>
+					<td scope="row"
+						th:text="${espacioverde.bajaHumedad}  ? 'El espacio verde esta con baja humedad esta siendo regado' : 'El espacio verde esta con alta humedad no esta siendo regado'">
+
+
+					</td>
+
+
+				</tr>
+			</tbody>
+		</table>
+
+
+
+	</div>
+</body>
+
+</html>

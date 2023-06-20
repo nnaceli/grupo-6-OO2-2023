@@ -19,6 +19,7 @@ public class ViewRouterHelper {
 	public final static String ESPACIOVERDE_CREAR = "DisEspacioVerde/crearVerde";
 	public final static String ESPACIOVERDE_LISTA = "DisEspacioVerde/listaVerde";
 	public final static String ESPACIOVERDE_REDIRECT_LISTA = "redirect:/espacioverde/listaverde";
+	public final static String ESPACIOVERDE_VER_SENSOR = "DisEspacioVerde/verSensor";
 	
 	
 	
@@ -44,7 +45,7 @@ public class ViewRouterHelper {
 	//public final static String LUCES_HOLA = "DisLucesAuto/helloworld";
 	public final static String LUCES_AGREGAR = "DisLucesAuto/agregarLuces";
 	public final static String LUCES_AGREGADAS = "DisLucesAuto/listaLucesAuto";
-	public final static String LUCES_MODIFICAR= "DisLucesAuto/modificarLuces";
+	public final static String LUCES_REDIRECT_AGREGADAS= "redirect:/lucesautomaticas/listaLucesAuto";
 	public final static String LUCES_ELIMINAR= "DisLucesAuto/eliminarLuces";
 	
 	//USER
