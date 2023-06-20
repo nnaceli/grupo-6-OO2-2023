@@ -48,8 +48,8 @@
 					<th scope="col">Dispositivo</th>
 					<th scope="col">Id Dispositivo</th>
 					<th scope="col">Fecha y Hora</th>
-					<th scope="col">Higienizandose</th>
-					<th scope="col">Habilitado</th>
+					<th scope="col">Ver Evento</th>
+				
 		
 				</tr>
 			</thead>
@@ -59,8 +59,11 @@
 					<th scope="row" th:text="${li.dispositivo.nombre}"></th>
 					<th scope="row" th:text="${li.dispositivo.idDispositivo}"></th>
 					<td scope="row" th:text="${li.fechaHora}"></td>
-					<td scope="row" th:text="${li.dispositivo.higienizandose} ? 'SI' : 'NO'"></td>
-					<td scope="row" th:text="${li.dispositivo.habilitado}  ? 'El baño se encuentra habilitado para su uso' : 'El baño esta siendo higienizado por lo cual no esta habilitado para su uso'">
+					
+					<td><a class="btn btn-dark btn-sm"
+						th:href="@{/evento/lista/verEvento/}+${li.id}"
+						th:text="'Ver Evento'" title="Ver Evento"></a></td>
+					
 				
 				</tr>
 			</tbody>
