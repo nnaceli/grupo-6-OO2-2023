@@ -25,27 +25,15 @@ public class EventoController {
 	@Qualifier("eventoService")
 	private IEventoService eventoService;
 
-	@GetMapping("/lista")
-	public String listarEventos(Model model) {
-
-		List<Evento> listaEventos = eventoService.getAll();
-
-		model.addAttribute("titulo", "Eventos");
-		model.addAttribute("lista", eventoService.getAll());
-
-		for (Evento evento : listaEventos) {
-			switch (evento.getDispositivo().getNombre()) {
-			case "Dispositivo Baño":
-				return ViewRouterHelper.EVENTO_LISTA_BANIO;
-//			case "Luces Automaticas":
-//				return ViewRouterHelper.LUCES_REDIRECT_AGREGADAS;
-			default:
-				// Manejar otros casos o lanzar una excepción si es necesario
-				break;
-			}
-		}
-
-		return null;
-	}
+//	@GetMapping("/lista")
+//	public String listarEventos(Model model) {
+//
+//		List<Evento> listaEventos = eventoService.getAll();
+//
+//		model.addAttribute("titulo", "Eventos");
+//		model.addAttribute("lista", eventoService.getAll());
+//
+//		return ViewRouterHelper.;
+//	}
 
 }
