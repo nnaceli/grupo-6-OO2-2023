@@ -5,7 +5,7 @@ package com.unla.grupo6.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -99,6 +99,7 @@ public class DisEspacioVerdeController {
 		return new RedirectView(ViewRouterHelper.ESPACIOVERDE_ROUTE_INDEX);
 	}
 	
+	
 	@GetMapping("/crear")
 	public String crearVerdes(Model model) {
 		DisEspacioVerde disEspacioVerde = new DisEspacioVerde();
@@ -135,6 +136,9 @@ public class DisEspacioVerdeController {
 				disEspacioVerde.setBajaHumedad(false);
 				disEspacioVerde.setRegando("No empezar el regado");
 			}
+		if(disEspacioVerde.isEnFuncionamiento()==false) {
+			disEspacioVerde.setRegando("No se puede activar regado");
+		}
 		
 		espacioVerdeService.saveVerde(disEspacioVerde);
 		System.out.println("guardado con exito!");
@@ -165,6 +169,22 @@ public class DisEspacioVerdeController {
 		attribute.addFlashAttribute("warning", "Dispositivo eliminado con exito");
 		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
 	}
+	
+	@GetMapping("listaverde/versensor/{idDispositivo}")
+	public String verSensor(@PathVariable("idDispositivo") Long idDispositivo, Model model, RedirectAttributes attribute ) {
+		
+		DisEspacioVerde disespacioverde= espacioVerdeService.buscarVerde(idDispositivo);
+		
+		if(disespacioverde.isEnFuncionamiento()== false) {
+			 attribute.addFlashAttribute("error","ATENCION: El sensor seleccionad no se puede ver porque esta en mantenimiento y/o no funciona");
+			 return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
+		}
+		
+		model.addAttribute("titulo", "Ver Sensor");
+		model.addAttribute("espacioverde", disespacioverde);
+		return ViewRouterHelper.ESPACIOVERDE_VER_SENSOR;
+	}
+	
 	
 	
 	

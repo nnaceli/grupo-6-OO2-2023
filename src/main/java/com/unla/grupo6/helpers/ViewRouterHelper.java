@@ -19,6 +19,7 @@ public class ViewRouterHelper {
 	public final static String ESPACIOVERDE_CREAR = "DisEspacioVerde/crearVerde";
 	public final static String ESPACIOVERDE_LISTA = "DisEspacioVerde/listaVerde";
 	public final static String ESPACIOVERDE_REDIRECT_LISTA = "redirect:/espacioverde/listaverde";
+	public final static String ESPACIOVERDE_VER_SENSOR = "DisEspacioVerde/verSensor";
 	
 	
 	

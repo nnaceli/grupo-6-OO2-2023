@@ -3,10 +3,9 @@
 
 
 <head th:fragment="head">
-<meta charset="UTF-8" />
-<title>Baños</title>
-<link rel="stylesheet"
-	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	<meta charset="UTF-8" />
+	<title>Baños</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 </head>
 
 <body>
@@ -14,7 +13,7 @@
 	<div class="container">
 		<h1 th:text="${titulo}"></h1>
 
-		
+
 	</div>
 
 	<div class="container">
@@ -29,23 +28,27 @@
 			<tbody>
 				<tr class="table" th:object="${banio}" style="background-color: #FAD9DD; color: black;">
 					<td scope="row" th:text="${banio.higienizandose} ? 'SI' : 'NO'"></td>
-					<td scope="row" th:text="${banio.habilitado}  ? 'El baño se encuentra habilitado para su uso' : 'El baño esta siendo higienizado por lo cual no esta habilitado para su uso'">
-						
-					
+					<td scope="row"
+						th:text="${banio.habilitado}  ? 'El baño se encuentra habilitado para su uso' : 'El baño esta siendo higienizado por lo cual no esta habilitado para su uso'">
+
+
 					</td>
-					
-					
+
+
 				</tr>
 			</tbody>
 		</table>
-		
-		
-		
+
+
+
 	</div>
-	
-	<img th:if="${banio.higienizandose}" src="/images/higienizandose.png" alt="Imagen 1" style="width: 200px; display: block; margin: 0 auto;">
-<img th:unless="${banio.higienizandose}" src="/images/noHigienizandose.jpg" alt="Imagen 2" style="width: 200px; display: block; margin: 0 auto;">
+
+	<img th:if="${banio.higienizandose}" src="/images/higienizandose.png" alt="Imagen 1"
+		style="width: 200px; display: block; margin: 0 auto;">
+	<img th:unless="${banio.higienizandose}" src="/images/noHigienizandose.jpg" alt="Imagen 2"
+		style="width: 200px; display: block; margin: 0 auto;">
 
 
 </body>
+
 </html>

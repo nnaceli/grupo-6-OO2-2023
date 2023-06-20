@@ -1,4 +1,4 @@
-/*package com.unla.grupo6.controllers;
+package com.unla.grupo6.controllers;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ public class UserController {
 	
 	@GetMapping("/loginsuccess")
 	public String loginCheck() {
-		return "redirect:/index";
+		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
 	}
 	
 //	public class TestByCryptPasswordEncoder{
@@ -37,4 +37,4 @@ public class UserController {
 //			System.out.println(pe.encode("user"));
 //		}
 //	}
-}*/
+}
