@@ -8,25 +8,7 @@
 
 <body>
 	
-	<form action="#" th:action="@{/estacionamientos/}" th:object="${estacionamiento}" method="post">
-		<p> nombre: <input type="text" th:field="*{nombre}" /></p>
-		<p> descripcion: <input type="text" th:field="*{descripcion}" /></p>
-		<p> en funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}" /></p>
-		<p> ocupado: <input type="checkbox" th:field="*{ocupado}" /></p>
-		<p> sector:
-			<select name="sector" th:field="*{sector}">
-				<option value="Buffet">Buffet</option>
-				<option value="29 de septiembre">29 de septiembre</option>
-			</select>
-		</p>
-		<p> tipoEstacionameinto:
-			<select name="sector" th:field="*{tipoEstacionamiento}">
-				<option value="1">Normal</option>
-				<option value="2">Para discapacitados</option>
-			</select>
-		</p>
-		<input type="submit" />
-	</form>
+	<h1>Index estacionamientos</h1>
 </body>
 
 </html>

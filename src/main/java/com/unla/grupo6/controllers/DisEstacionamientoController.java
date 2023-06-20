@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -32,15 +33,72 @@ public class DisEstacionamientoController {
 	@Autowired
 	@Qualifier("estacionamientoService")
 	private IEstacionamientoService estacionamientoService;
-
 	
-	//usar el contructor vacio de entities 
+	
+	@GetMapping({"/index", "/"})
+	public String index() {
+		return "DisEstacionamiento/index";
+	}
+	
 	@GetMapping("/listaDispositivos")
 	public String listarDisEstacionamiento(Model modelo) {
 		modelo.addAttribute("titulo", "Lista de Estacionamientos");
 		modelo.addAttribute("estacionamientos", estacionamientoService.getAll());
 		return "DisEstacionamiento/lista_dispositivos";
 	}
+	
+	// SECTOR 29 DE SEPTIEMBRE
+	@GetMapping("/auditoria/septiembre/comunes")
+	public String plazasSectorSeptiembreNormales(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("29 de septiembre", true, 1));
+		return "DisEstacionamiento/plazas_comunes";
+	}
+	
+	@GetMapping("/auditoria/septiembre/discapacitados")
+	public String plazasSectorSeptiembreDiscapactiados(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("29 de septiembre", true, 2));
+		return "DisEstacionamiento/plazas_para_discapacitados";
+	}
+	
+	// SECTOR BUFFET
+	@GetMapping("/auditoria/buffet/comunes")
+	public String plazasSectorBuffetNormales(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("Buffet", true, 1));
+		return "DisEstacionamiento/plazas_comunes";
+	}
+	
+	@GetMapping("/auditoria/buffet/discapacitados")
+	public String plazasSectorBuffetDiscapactiados(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("Buffet", true, 2));
+		return "DisEstacionamiento/plazas_para_discapacitados";
+	}
+	
+	// SECTOR JOSE MALBA
+	@GetMapping("/auditoria/jose/comunes")
+	public String plazasSectorJoseNormales(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("José Malba", true, 1));
+		return "DisEstacionamiento/plazas_comunes";
+	}
+	
+	@GetMapping("/auditoria/jose/discapacitados")
+	public String plazasSectorJoseDiscapactiados(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("José Malba", true, 2));
+		return "DisEstacionamiento/plazas_para_discapacitados";
+	}
+	
+	// SECTOR PABLO NOGUES
+	@GetMapping("/auditoria/pablo/comunes")
+	public String plazasSectorPabloNormales(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("Pablo Nogues", true, 1));
+		return "DisEstacionamiento/plazas_comunes";
+	}
+	
+	@GetMapping("/auditoria/pablo/discapacitados")
+	public String plazasSectorPabloDiscapactiados(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("Pablo Nogues", true, 2));
+		return "DisEstacionamiento/plazas_para_discapacitados";
+	}
+	
 	
 
 	@GetMapping("/agregar")
@@ -78,9 +136,19 @@ public class DisEstacionamientoController {
 		return "redirect:/estacionamientos/listaDispositivos";
 	}
 	
-	@GetMapping("/{id}")
-	public String eliminarEstacionamiento(@PathVariable Long id) {
-		estacionamientoService.eliminarEstacionamiento(id);
+	@GetMapping("/baja/{idDispositivo}")
+	public String darDeBajaEstacionamiento(@PathVariable Long idDispositivo) {
+		DisEstacionamiento disEstacionamiento = estacionamientoService.obtenerEstacionamiento(idDispositivo);
+		disEstacionamiento.setEnFuncionamiento(false);	
+		estacionamientoService.insertOrUpdate(disEstacionamiento);
+		return "redirect:/estacionamientos/listaDispositivos";
+	}
+	
+	@GetMapping("/alta/{idDispositivo}")
+	public String darDeAltaEstacionamiento(@PathVariable Long idDispositivo) {
+		DisEstacionamiento disEstacionamiento = estacionamientoService.obtenerEstacionamiento(idDispositivo);
+		disEstacionamiento.setEnFuncionamiento(true);	
+		estacionamientoService.insertOrUpdate(disEstacionamiento);
 		return "redirect:/estacionamientos/listaDispositivos";
 	}
 	

@@ -11,6 +11,7 @@
 	
 	<form th:action="@{/estacionamientos/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}" th:object="${estacionamiento}" method="post">
 		<p> Plaza ocupada: <input type="checkbox" th:field="*{ocupado}" /></p>
+		<p> En funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}" /></p>
 		<p> Sector:
 			<select name="sector" th:field="*{sector}">
 				<option value="Buffet">Buffet</option>

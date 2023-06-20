@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-
 <head th:fragment="head">
 	<meta charset="UTF-8" />
 	<title>Baños</title>
 	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	<style>
+		.overlay-image {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0.5;
+		}
+	</style>
 </head>
 
 <body>
 
 	<div class="container">
 		<h1 th:text="${titulo}"></h1>
-
-
 	</div>
 
 	<div class="container">
-
 		<table class="table" style="background-color: #6A0E1A; color: white;">
 			<thead>
 				<tr>
@@ -30,28 +36,26 @@
 					<td scope="row"
 						th:text="${disLucesAuto.estado} ? 'Luces:ON | Cortinas:OFF' : 'Luces:OFF | Cortinas:ON'"></td>
 					<td scope="row"
-						th:text="${disLucesAuto.estado}  ? 'El aula tiene las luces encendidas y las cortinas cerradas' : 'El aula tiene las luces apagadas y las cortinas abiertas'">
+						th:text="${disLucesAuto.estado} ? 'El aula tiene las luces encendidas y las cortinas cerradas' : 'El aula tiene las luces apagadas y las cortinas abiertas'">
 					</td>
 				</tr>
 			</tbody>
 		</table>
-
-
-
 	</div>
 
-	<div style="position: relative; display: flex; justify-content: center;">
-		<div style="position: relative; width: 700px; height: 400px;">
+	<div style="position: relative;">
+		<div style="position: relative; width: 700px; height: 400px; margin: 0 auto;">
 			<img th:if="${disLucesAuto.estado}" src="/images/aulaOFF.png" alt="Imagen 1"
 				style="width: 100%; height: 100%; object-fit: cover;">
 			<img th:unless="${disLucesAuto.estado}" src="/images/aulaON.png" alt="Imagen 2"
 				style="width: 100%; height: 100%; object-fit: cover;">
-			<img src="/images/marco-visor-camara.png" alt="Marco Visor Cámara"
-				style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.5;">
+			<img src="/images/marco-visor-camara.png" alt="Marco Visor Cámara" class="overlay-image">
+		</div>
+		<div style="text-align: center; margin-top: 10px;">
+			<a class="btn btn-primary btn-sm" th:href="@{/lucesautomaticas/listaLucesAuto}"
+				th:text="'Volver a la lista'" title="Volver"></a>
 		</div>
 	</div>
-
-
 
 </body>
 

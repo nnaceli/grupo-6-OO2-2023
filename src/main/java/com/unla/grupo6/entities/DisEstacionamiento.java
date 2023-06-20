@@ -35,6 +35,12 @@ public class DisEstacionamiento extends Dispositivo{
 		this.sector = sector;
 		this.tipoEstacionamiento = tipoEstacionamiento;
 	}
+
+	@Override
+	public String toString() {
+		return "DisEstacionamiento [ocupado=" + ocupado + ", sector=" + sector + ", tipoEstacionamiento="
+				+ tipoEstacionamiento + ", enFuncionamiento="+enFuncionamiento+"]";
+	}
 	
 	
 	

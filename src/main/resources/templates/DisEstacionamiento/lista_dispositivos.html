@@ -15,6 +15,7 @@
 				<th>Sector</th>
 				<th>Ocupado</th>
 				<th>Tipo de plaza</th>
+				<th>ABM</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,9 +26,11 @@
 				<td><span th:text="${estacionamiento.ocupado}" /></td>
 				<td><span th:text="${estacionamiento.tipoEstacionamiento}" /></td>
 				<td>
-					<a th:href="@{/estacionamientos/editar/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Editar</a>
-					<a th:href="@{/estacionamientos/{id}(id=${estacionamiento.idDispositivo})}">Eliminar</a>
+					<a th:href="@{/estacionamientos/editar/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Modificar</a>
+					<a th:href="@{/estacionamientos/baja/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Baja</a>
+					<a th:href="@{/estacionamientos/alta/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Alta</a>
 				</td>
+				
 			</tr>
 		</tbody>
 	</table>

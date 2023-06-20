@@ -1,6 +1,7 @@
 package com.unla.grupo6.implementation;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import com.unla.grupo6.servicies.ILucesAutoService;
 public class DisLucesAutoService implements ILucesAutoService {
 
 	@Autowired
-    @Qualifier("disLucesAutoRepository")
+	@Qualifier("disLucesAutoRepository")
 	private IDisLucesAutoRepository lucesAutoRepository;
 
 	private ModelMapper modelMapper = new ModelMapper();
@@ -38,11 +39,9 @@ public class DisLucesAutoService implements ILucesAutoService {
 		lucesAutoRepository.save(disLucesAuto);
 	}
 
-	// revisar
 	@Override
-	public boolean remove(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public void remove(int id) {
+		
 	}
 
 	@Override
@@ -50,5 +49,10 @@ public class DisLucesAutoService implements ILucesAutoService {
 		// TODO Auto-generated method stub
 		return lucesAutoRepository.findById(id).orElse(null);
 	}
+	
+	@Override
+    public List<DisLucesAuto> getByBaja(boolean baja) {
+        return lucesAutoRepository.findByBaja(baja);
+    }
 
 }

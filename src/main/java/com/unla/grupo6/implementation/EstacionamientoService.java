@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 //import com.unla.grupo6.converts.DisEstacionamientoConvert;
@@ -31,7 +32,22 @@ public class EstacionamientoService implements IEstacionamientoService{
 	public List<DisEstacionamiento> getAll() {
 		return estacionamientoRepository.findAll();
 	}
-
+	
+	@Override
+	public List<DisEstacionamiento> getPorSector(String sector) {
+		return estacionamientoRepository.findBySector(sector);
+	}
+	
+	@Override
+	public List<DisEstacionamiento> getPorSectorYfuncionamiento(String sector, boolean enFuncionamiento) {
+		return estacionamientoRepository.findBySectorAndEnFuncionamiento(sector, enFuncionamiento);
+	}
+	
+	@Override
+	public List<DisEstacionamiento> getPorSectorYfuncionamientoYtipo(String sector, boolean enFuncionamiento, int tipo) {
+		return estacionamientoRepository.findBySectorAndEnFuncionamientoAndTipoEstacionamiento(sector, enFuncionamiento, tipo);
+	}
+	
 	@Override
 	public DisEstacionamiento insertOrUpdate(DisEstacionamiento objDisEstacionamiento) {
 		return estacionamientoRepository.save(objDisEstacionamiento);

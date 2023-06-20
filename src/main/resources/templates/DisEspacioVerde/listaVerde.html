@@ -26,6 +26,9 @@
 		</table>
 		<a class="btn btn-primary btn-sm" th:href="@{/espacioverde/crear}" th:text="'Nuevo sensor espacio verde'"
 			title="crear nuevo dispositivo en espacio verde"></a>
+			
+			<a class="btn btn-primary btn-sm" th:href="@{/logout}" th:text="'Cerrar sesion'"
+			title="cerrar sesion"></a>
 
 		<table class="table">
 			<thead>
@@ -33,9 +36,7 @@
 					<th scope="col">Id</th>
 					<th scope="col">Sector</th>
 					<th scope="col">Funcionamiento</th>
-					<th scope="col">Humedad</th>
-					<th scope="col">baja-humedad</th>
-					<th scope="col">regando</th>
+					<th scope="col">Riego</th>
 					<th scope="col">Ver Sensor</th>
 					<th scope="col">Editar</th>
 					<th scope="col">Eliminar</th>
@@ -45,9 +46,7 @@
 				<tr class="table-info" th:each="li:${lista}">
 					<th scope="row" th:text="${li.idDispositivo}"></th>
 					<td scope="row" th:text="${li.sector}"></td>
-					<td scope="row" th:text="${li.enFuncionamiento}"></td>
-					<td scope="row" th:text="${li.humedad}"></td>
-					<td scope="row" th:text="${li.bajaHumedad}"></td>
+					<td scope="row" th:text="${li.enFuncionamiento} ? 'FUNCIONA' : 'NO FUNCIONA'"></td>
 					<td scope="row" th:text="${li.regando}"></td>
 
 					<td><a class="btn btn-success btn-sm"

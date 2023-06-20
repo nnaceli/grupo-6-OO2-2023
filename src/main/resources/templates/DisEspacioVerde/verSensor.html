@@ -21,15 +21,16 @@
 		<table class="table" style="background-color: #6A0E1A; color: white;">
 			<thead>
 				<tr>
-					<th scope="col">Funcionamiento</th>
+					<th scope="col">Nivel de Humedad</th>
+					<th scope="col">Baja Humedad</th>
 					<th scope="col">Detalle</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr class="table" th:object="${espacioverde}" style="background-color: #FAD9DD; color: black;">
-					<td scope="row" th:text="${espacioverde.enFuncionamineto} ? 'SI' : 'NO'"></td>
-					<td scope="row"
-						th:text="${espacioverde.bajaHumedad}  ? 'El espacio verde esta con baja humedad esta siendo regado' : 'El espacio verde esta con alta humedad no esta siendo regado'">
+					<td scope="row" th:text="${espacioverde.humedad}"></td>
+					<td scope="row" th:text="${espacioverde.bajaHumedad} ? 'SI' : 'NO'"></td>
+					<td scope="row" th:text="${espacioverde.bajaHumedad}  ? 'esta regandose' : 'no esta regandose'">
 
 
 					</td>

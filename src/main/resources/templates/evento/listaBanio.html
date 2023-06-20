@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:fragment="head">
-<meta charset="UTF-8" />
-<title>Baños</title>
-<link rel="stylesheet"
-	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	<meta charset="UTF-8" />
+	<title>Baños</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<a class="navbar-brand" href="/index"> <img src="/images/logo.png"
@@ -18,7 +18,8 @@
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
-</nav>
+
+	</nav>
 
 
 
@@ -53,8 +54,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="table" th:each="li:${lista}"
-					style="background-color: #FAD9DD; color: black;">
+				<tr class="table" th:each="li:${lista}" style="background-color: #FAD9DD; color: black;">
 					<th scope="row" th:text="${li.id}"></th>
 					<th scope="row" th:text="${li.dispositivo.nombre}"></th>
 					<th scope="row" th:text="${li.dispositivo.idDispositivo}"></th>
@@ -67,4 +67,5 @@
 		</table>
 	</div>
 </body>
+
 </html>

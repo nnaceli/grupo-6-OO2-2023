@@ -13,7 +13,6 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -44,8 +43,5 @@ public class Dispositivo {
 		this.enFuncionamiento = enFuncionamiento;
 		this.baja = false;
 	}
-	
-	
-	
 
 }
