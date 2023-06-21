@@ -31,7 +31,10 @@ public class Evento {
 
 	@Column(name = "fechaHora")
 	private LocalDateTime fechaHora;
-
+	
+	@Column(name="nombreDispositivo")
+	private String nombreDispositivo;
+	
 //	@ManyToOne (fetch=FetchType.LAZY, mappedBy="evento")
 //	private Dispositivo dispositivo = new Dispositivo();
 
