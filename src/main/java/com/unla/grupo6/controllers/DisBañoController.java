@@ -79,8 +79,7 @@ public class DisBañoController {
 			RedirectAttributes attribute ) {
 		
 		
-		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now());
-		eventoService.saveEvento(nuevoEvento);
+		
 	    
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario: Nuevo Dispositivo");
@@ -103,7 +102,8 @@ public class DisBañoController {
 		System.out.println("Dispositivo Baño guardado con exito!");
 		attribute.addFlashAttribute("success", "Dispositivo Baño guardado con exito ");
 		
-		
+		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now());
+		eventoService.saveEvento(nuevoEvento);
 		
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 	}
@@ -138,8 +138,7 @@ public class DisBañoController {
 		
 		DisBaño disBaño= bañoService.buscar(idDispositivo);
 		
-		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now());
-		eventoService.saveEvento(nuevoEvento);
+		
 		
 		
 		 Random random = new Random();
@@ -161,7 +160,8 @@ public class DisBañoController {
 		model.addAttribute("titulo", "Ver Camara");
 		model.addAttribute("banio", disBaño);
 		
-		
+		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now());
+		eventoService.saveEvento(nuevoEvento);
 		
 		return ViewRouterHelper.BANIO_VER_CAMARA;
 	}
