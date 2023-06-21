@@ -27,6 +27,11 @@
 								<button class="btn btn-link" type="submit">Dispositivo baño</button>
 							</form>
 						</li>
+						<li>
+							<form class="dropdown-item" action="/lucesautomaticas/listaLucesAuto" method="post">
+								<button class="btn btn-link" type="submit">Dispositivo Luces Automaticas</button>
+							</form>
+						</li>
 					</ul>
 				</li>
 			</ul>
@@ -49,7 +54,6 @@
 					<th scope="col">Dispositivo</th>
 					<th scope="col">Id Dispositivo</th>
 					<th scope="col">Fecha y Hora</th>
-					<th scope="col">Ver Evento</th>
 
 				</tr>
 			</thead>
@@ -59,10 +63,6 @@
 					<th scope="row" th:text="${li.dispositivo.nombre}"></th>
 					<th scope="row" th:text="${li.dispositivo.idDispositivo}"></th>
 					<td scope="row" th:text="${li.fechaHora}"></td>
-
-					<td><a class="btn btn-dark btn-sm" th:href="@{/evento/lista/verEvento/}+${li.id}"
-							th:text="'Ver Evento'" title="Ver Evento"></a></td>
-
 				</tr>
 			</tbody>
 		</table>
