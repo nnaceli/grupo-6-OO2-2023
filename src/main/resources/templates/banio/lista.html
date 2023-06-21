@@ -2,30 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:fragment="head">
-<meta charset="UTF-8" />
-<title>Baños</title>
-<link rel="stylesheet"
-	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	<meta charset="UTF-8" />
+	<title>Baños</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand" href="/index"> <img src="/images/logo.png"
-		width="48" height="45" alt="">
-	</a>
-	<button class="navbar-toggler navbar-toggler-right" type="button"
-		data-toggle="collapse" data-target="#navbarResponsive"
-		aria-controls="navbarResponsive" aria-expanded="false"
-		aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	
-	<div class="collapse navbar-collapse" id="navbarResponsive">
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="nav-link"
-				th:href="@{/evento/lista}">Eventos</a></li>
-		</ul>
-	</div>
-			
-</nav>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/index"> <img src="/images/logo.png" width="48" height="45" alt="">
+		</a>
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{/evento/lista}">Eventos</a></li>
+			</ul>
+		</div>
+
+	</nav>
 
 
 
@@ -47,8 +43,8 @@
 
 	<div class="container">
 
-		<a class="btn btn-primary btn-sm" th:href="@{/banio/crear}"
-			th:text="'Nueva Camara Baño'" title="Crear Nueva Camara Baño"></a>
+		<a class="btn btn-primary btn-sm" th:href="@{/banio/crear}" th:text="'Nueva Camara Baño'"
+			title="Crear Nueva Camara Baño"></a>
 
 		<table class="table" style="background-color: #6A0E1A; color: white;">
 			<thead>
@@ -65,27 +61,23 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="table" th:each="li:${lista}"
-					style="background-color: #FAD9DD; color: black;">
+				<tr class="table" th:each="li:${lista}" style="background-color: #FAD9DD; color: black;">
 					<th scope="row" th:text="${li.idDispositivo}"></th>
 					<th scope="row" th:text="${li.nombre}"></th>
 					<td scope="row" th:text="${li.sector}"></td>
-					<td scope="row"
-						th:text="${li.enFuncionamiento} ? 'FUNCIONA' : 'NO FUNCIONA'"></td>
+					<td scope="row" th:text="${li.enFuncionamiento} ? 'FUNCIONA' : 'NO FUNCIONA'"></td>
 
-					<td><a class="btn btn-dark btn-sm"
-						th:href="@{/banio/lista/verCamara/}+${li.idDispositivo}"
-						th:text="'Ver Camara'" title="Ver Camara"></a></td>
-					<td><a class="btn btn-success btn-sm"
-						th:href="@{/banio/lista/edit/}+${li.idDispositivo}"
-						th:text="'Editar'" title="Editar Dispositivo"></a></td>
-					<td><a class="btn btn-danger btn-sm"
-						th:href="@{/banio/lista/delete/}+${li.idDispositivo}"
-						th:text="'Eliminar'" title="Eliminar Dispositivo"
-						onclick="return confirm('¿Estás seguro de eliminar el registro?')"></a></td>
+					<td><a class="btn btn-dark btn-sm" th:href="@{/banio/lista/verCamara/}+${li.idDispositivo}"
+							th:text="'Ver Camara'" title="Ver Camara"></a></td>
+					<td><a class="btn btn-success btn-sm" th:href="@{/banio/lista/edit/}+${li.idDispositivo}"
+							th:text="'Editar'" title="Editar Dispositivo"></a></td>
+					<td><a class="btn btn-danger btn-sm" th:href="@{/banio/lista/delete/}+${li.idDispositivo}"
+							th:text="'Eliminar'" title="Eliminar Dispositivo"
+							onclick="return confirm('¿Estás seguro de eliminar el registro?')"></a></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 </body>
+
 </html>

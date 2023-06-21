@@ -37,66 +37,85 @@ public class DisEstacionamientoController {
 	
 	@GetMapping({"/index", "/"})
 	public String index() {
-		return "DisEstacionamiento/index";
+		return ViewRouterHelper.ESTACIONAMIENTO_INDEX;
 	}
 	
 	@GetMapping("/listaDispositivos")
 	public String listarDisEstacionamiento(Model modelo) {
-		modelo.addAttribute("titulo", "Lista de Estacionamientos");
 		modelo.addAttribute("estacionamientos", estacionamientoService.getAll());
-		return "DisEstacionamiento/lista_dispositivos";
+		return ViewRouterHelper.ESTACIONAMIENTO_LISTA;
 	}
 	
 	// SECTOR 29 DE SEPTIEMBRE
-	@GetMapping("/auditoria/septiembre/comunes")
-	public String plazasSectorSeptiembreNormales(Model modelo) {
-		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("29 de septiembre", true, 1));
-		return "DisEstacionamiento/plazas_comunes";
+	@GetMapping("/septiembre")
+	public String septiembre() {
+		return ViewRouterHelper.ESTACIONAMIENTO_SECTOR_SEPTIEMBRE;
 	}
 	
-	@GetMapping("/auditoria/septiembre/discapacitados")
+	@GetMapping("/septiembre/comunes")
+	public String plazasSectorSeptiembreNormales(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("29 de septiembre", true, 1));
+		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_COMUNES;
+	}
+	
+	@GetMapping("/septiembre/discapacitados")
 	public String plazasSectorSeptiembreDiscapactiados(Model modelo) {
 		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("29 de septiembre", true, 2));
-		return "DisEstacionamiento/plazas_para_discapacitados";
+		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS;
 	}
 	
 	// SECTOR BUFFET
-	@GetMapping("/auditoria/buffet/comunes")
-	public String plazasSectorBuffetNormales(Model modelo) {
-		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("Buffet", true, 1));
-		return "DisEstacionamiento/plazas_comunes";
+	@GetMapping("/buffet")
+	public String buffet() {
+		return ViewRouterHelper.ESTACIONAMIENTO_SECTOR_BUFFET;
 	}
 	
-	@GetMapping("/auditoria/buffet/discapacitados")
+	@GetMapping("/buffet/comunes")
+	public String plazasSectorBuffetNormales(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("Buffet", true, 1));
+		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_COMUNES;
+	}
+	
+	@GetMapping("/buffet/discapacitados")
 	public String plazasSectorBuffetDiscapactiados(Model modelo) {
 		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("Buffet", true, 2));
-		return "DisEstacionamiento/plazas_para_discapacitados";
+		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS;
 	}
 	
 	// SECTOR JOSE MALBA
-	@GetMapping("/auditoria/jose/comunes")
-	public String plazasSectorJoseNormales(Model modelo) {
-		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("José Malba", true, 1));
-		return "DisEstacionamiento/plazas_comunes";
+	@GetMapping("/jose")
+	public String malba() {
+		return ViewRouterHelper.ESTACIONAMIENTO_SECTOR_JOSE;
 	}
 	
-	@GetMapping("/auditoria/jose/discapacitados")
+	@GetMapping("/jose/comunes")
+	public String plazasSectorJoseNormales(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("José Malba", true, 1));
+		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_COMUNES;
+	}
+	
+	@GetMapping("/jose/discapacitados")
 	public String plazasSectorJoseDiscapactiados(Model modelo) {
 		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("José Malba", true, 2));
-		return "DisEstacionamiento/plazas_para_discapacitados";
+		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS;
 	}
 	
 	// SECTOR PABLO NOGUES
-	@GetMapping("/auditoria/pablo/comunes")
-	public String plazasSectorPabloNormales(Model modelo) {
-		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("Pablo Nogues", true, 1));
-		return "DisEstacionamiento/plazas_comunes";
+	@GetMapping("/pablo")
+	public String pablo() {
+		return ViewRouterHelper.ESTACIONAMIENTO_SECTOR_PABLO;
 	}
 	
-	@GetMapping("/auditoria/pablo/discapacitados")
+	@GetMapping("/pablo/comunes")
+	public String plazasSectorPabloNormales(Model modelo) {
+		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("Pablo Nogues", true, 1));
+		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_COMUNES;
+	}
+	
+	@GetMapping("/pablo/discapacitados")
 	public String plazasSectorPabloDiscapactiados(Model modelo) {
 		modelo.addAttribute("estacionamientos", estacionamientoService.getPorSectorYfuncionamientoYtipo("Pablo Nogues", true, 2));
-		return "DisEstacionamiento/plazas_para_discapacitados";
+		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS;
 	}
 	
 	
@@ -105,20 +124,20 @@ public class DisEstacionamientoController {
 	public String mostrarFormularioDeAgregarDispositivo(Model modelo) {
 		DisEstacionamiento disEstacionamiento = new DisEstacionamiento();
 		modelo.addAttribute("estacionamiento", disEstacionamiento);
-		return "DisEstacionamiento/agregar_dispositivo";
+		return ViewRouterHelper.ESTACIONAMIENTO_AGREGAR;
 	}
 	
 	
 	@PostMapping("/guardar")
 	public String agregar(@ModelAttribute("estacionamiento") DisEstacionamiento nuevoEstacionamiento) {
 		estacionamientoService.insertOrUpdate(nuevoEstacionamiento);
-		return "redirect:listaDispositivos";
+		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
 	}
 	
 	@GetMapping("/editar/{idDispositivo}")
 	public String mostrarFormularioDeEditar(@PathVariable Long idDispositivo, Model modelo) {
 		modelo.addAttribute("estacionamiento", estacionamientoService.obtenerEstacionamiento(idDispositivo));
-		return "DisEstacionamiento/modificar_dispositivo";
+		return ViewRouterHelper.ESTACIONAMIENTO_MODIFICAR;
 	}
 
 	@PostMapping("/{idDispositivo}")
@@ -131,9 +150,10 @@ public class DisEstacionamientoController {
 		disEstacionamientoExistente.setOcupado(disEstacionamiento.isOcupado());
 		disEstacionamientoExistente.setTipoEstacionamiento(disEstacionamiento.getTipoEstacionamiento());
 		
+		
 		estacionamientoService.insertOrUpdate(disEstacionamientoExistente);
 		
-		return "redirect:/estacionamientos/listaDispositivos";
+		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
 	}
 	
 	@GetMapping("/baja/{idDispositivo}")
@@ -141,7 +161,7 @@ public class DisEstacionamientoController {
 		DisEstacionamiento disEstacionamiento = estacionamientoService.obtenerEstacionamiento(idDispositivo);
 		disEstacionamiento.setEnFuncionamiento(false);	
 		estacionamientoService.insertOrUpdate(disEstacionamiento);
-		return "redirect:/estacionamientos/listaDispositivos";
+		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
 	}
 	
 	@GetMapping("/alta/{idDispositivo}")
@@ -149,7 +169,7 @@ public class DisEstacionamientoController {
 		DisEstacionamiento disEstacionamiento = estacionamientoService.obtenerEstacionamiento(idDispositivo);
 		disEstacionamiento.setEnFuncionamiento(true);	
 		estacionamientoService.insertOrUpdate(disEstacionamiento);
-		return "redirect:/estacionamientos/listaDispositivos";
+		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
 	}
 	
 	/*

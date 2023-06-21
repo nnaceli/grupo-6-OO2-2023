@@ -1,75 +1,72 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:fragment="head">
+<head>
 	<meta charset="UTF-8" />
 	<title>Baños</title>
-	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
-
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand" href="/index"> <img src="/images/logo.png"
-		width="48" height="45" alt="">
-	</a>
-	<button class="navbar-toggler navbar-toggler-right" type="button"
-		data-toggle="collapse" data-target="#navbarResponsive"
-		aria-controls="navbarResponsive" aria-expanded="false"
-		aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-
-
-	</nav>
-
-
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
 
 <body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+		<a class="navbar-brand" href="/index">
+			<img src="/images/logo.png" width="75" height="75" alt="">
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+			aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+	</nav>
 
 	<div class="container">
-		<h1 class="text-center" th:text="${titulo}"></h1>
+		<h1 class="text-center mt-4" th:text="${titulo}"></h1>
 
-
-		<div th:if="${error}" class="alert alert-danger">
+		<div th:if="${error}" class="alert alert-danger mt-4">
 			<p th:text="${error}"></p>
 		</div>
-
 	</div>
 
-
-
 	<div class="container">
+		<form action="/evento/lista" method="post" class="mb-4">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="dispositivo">Filtrar por dispositivo:</label>
+						<select class="form-control" id="dispositivo" name="dispositivo">
+							<option value="">Todos los dispositivos</option>
+							<option value="baño">Dispositivo Baño</option>
+							<option value="luces">Dispositivo Luces Automaticas</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<button type="submit" class="btn btn-primary">Filtrar</button>
+				</div>
+			</div>
+		</form>
 
-		<table class="table" style="background-color: #6A0E1A; color: white;">
+		<table class="table mt-4" style="background-color: #6A0E1A; color: white;">
 			<thead>
 				<tr>
 					<th scope="col">Id Evento</th>
 					<th scope="col">Dispositivo</th>
 					<th scope="col">Id Dispositivo</th>
 					<th scope="col">Fecha y Hora</th>
-					<th scope="col">Ver Evento</th>
-				
-				
-		
 				</tr>
 			</thead>
 			<tbody>
 				<tr class="table" th:each="li:${lista}" style="background-color: #FAD9DD; color: black;">
 					<th scope="row" th:text="${li.id}"></th>
-					<th scope="row" th:text="${li.dispositivo.nombre}"></th>
-					<th scope="row" th:text="${li.dispositivo.idDispositivo}"></th>
+					<td scope="row" th:text="${li.dispositivo.nombre}"></td>
+					<td scope="row" th:text="${li.dispositivo.idDispositivo}"></td>
 					<td scope="row" th:text="${li.fechaHora}"></td>
-					
-					<td><a class="btn btn-dark btn-sm"
-						th:href="@{/evento/lista/verEvento/}+${li.id}"
-						th:text="'Ver Evento'" title="Ver Evento"></a></td>
-					
-				
 				</tr>
 			</tbody>
 		</table>
 	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

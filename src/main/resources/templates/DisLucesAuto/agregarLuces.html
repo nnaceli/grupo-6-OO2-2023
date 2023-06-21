@@ -17,11 +17,13 @@
 				<form th:action="@{/lucesautomaticas/save}" th:object="${disLucesAuto}" method="post">
 					<div class="form-group row">
 						<input type="hidden" th:field="*{idDispositivo}">
-						<label class="col-md-2" for="nombre">Nombres:</label>
-						<input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6"
-							id="nombre" placeholder="Nombres del dispositivo">
-						<small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
-							th:errors="*{nombre}"></small>
+						<label class="col-md-2" for="sector">Nombre:</label>
+						<select name="Nombre" th:field="*{nombre}" class="form-control form-control-sm" id="nombre">
+							<option value="Luz Automatica Hernandez">Luz Automatica Hernandez</option>
+							<option value="Luz Automatica Scalabrini">Luz AutomaticaScalabrini</option>
+							<option value="Luz Automatica Nestor">Luz Automatica Nestor Kirchner</option>
+						</select> <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
+							th:errors="*{sector}"></small>
 					</div>
 
 					<div class="form-group row">
@@ -44,15 +46,17 @@
 						<label class="col-md-2" for="booleano">Estado</label>
 						<div class="col-md-6">
 							<div class="form-check">
-								<input type="radio" th:field="*{estado}" class="form-check-input" id="si" value="true">
+								<input type="radio" th:field="*{estado}" class="form-check-input" id="encendido"
+									value="true">
 								<label class="form-check-label" for="encendido">Encendido</label>
 							</div>
 							<div class="form-check">
-								<input type="radio" th:field="*{estado}" class="form-check-input" id="no" value="false">
+								<input type="radio" th:field="*{estado}" class="form-check-input" id="apagado"
+									value="false">
 								<label class="form-check-label" for="apagado">Apagado</label>
 							</div>
 							<small class="form-text text-danger" th:if="${#fields.hasErrors('estado')}"
-								th:errors="*{enFuncionamiento}"></small>
+								th:errors="*{estado}"></small>
 						</div>
 					</div>
 					<p> Numero de Aula: <input type="number" th:field="*{nroAula}" /></p>
