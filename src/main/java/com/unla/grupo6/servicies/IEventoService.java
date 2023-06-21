@@ -18,7 +18,7 @@ public interface IEventoService {
 
 	public List<Evento> getAllEntreFechas(LocalDateTime fechaDesde, LocalDateTime fechaHasta);
 	public List<Evento> getAllPorDipositivo(Dispositivo dispositivo);
-	public List<Evento> findByNombreDispositivo(String nombre);
+	//public List<Evento> findByNombreDispositivo(String nombre);
 
 	
 	public Evento saveEvento(Evento evento);

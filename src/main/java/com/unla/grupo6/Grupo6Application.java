@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import com.unla.grupo6.repositories.IEspacioVerdeRepository;
 import com.unla.grupo6.repositories.IEstacionamientoRepository;
@@ -18,6 +20,7 @@ import com.unla.grupo6.implementation.EstacionamientoService;
 import com.unla.grupo6.implementation.EventoService;
 
 @SpringBootApplication
+@EnableScheduling
 public class Grupo6Application implements CommandLineRunner {
 
 	public static void main(String[] args) {
@@ -43,5 +46,10 @@ public class Grupo6Application implements CommandLineRunner {
 //		List<Evento> listEvento = servicioEvento.findByNombreDispositivo("Luz Automatica Hernandez");
 //		for (Evento evento : listEvento)
 //			System.out.println(evento.toString());
+	}
+	
+	@Scheduled(cron = "*/3 * * * * *")
+	public void generarEventoDispositivoEstacionamiento() {
+		servicioEstacionamiento.actualizarDisponibilidadEstacionamientos();
 	}
 }

@@ -14,6 +14,8 @@ public interface IEstacionamientoRepository extends JpaRepository<DisEstacionami
 	
 	public abstract List<DisEstacionamiento> findBySector(String sector);
 	
+	public abstract List<DisEstacionamiento> findByEnFuncionamiento(boolean enFuncionamiento);
+	
 	public abstract List<DisEstacionamiento> findBySectorAndEnFuncionamiento(String sector, boolean enFuncionamiento);
 	
 	public abstract List<DisEstacionamiento> findBySectorAndEnFuncionamientoAndTipoEstacionamiento(String sector, boolean enFuncionamiento, int tipoPlaza);

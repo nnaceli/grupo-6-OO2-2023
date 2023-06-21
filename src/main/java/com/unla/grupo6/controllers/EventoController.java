@@ -2,8 +2,6 @@ package com.unla.grupo6.controllers;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.query.Param;
@@ -31,15 +29,13 @@ public class EventoController {
 
 	@GetMapping("/lista")
 	public String listarEventos(Model model, @Param("palabraClave") String palabraClave) {
-	    List<Evento> lista = eventoService.getAll(palabraClave);
+		List<Evento> lista = eventoService.getAll(palabraClave);
 
-	    model.addAttribute("titulo", "Eventos");
-	    model.addAttribute("lista", lista);
-	    model.addAttribute("palabraClave", palabraClave);
+		model.addAttribute("titulo", "Eventos");
+		model.addAttribute("lista", lista);
+		model.addAttribute("palabraClave", palabraClave);
 
-	    return ViewRouterHelper.EVENTO_LISTA;
+		return ViewRouterHelper.EVENTO_LISTA;
 	}
-	
-	
-	
+
 }
