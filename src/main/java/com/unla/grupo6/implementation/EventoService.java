@@ -2,8 +2,10 @@ package com.unla.grupo6.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
 
 import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.Evento;
@@ -19,7 +21,16 @@ public class EventoService implements IEventoService {
 	@Qualifier("eventoRepository")
 	private IEventoRepository eventoRepository;
 	
+	@Override
 	public List<Evento> getAll(){
+		return eventoRepository.findAll();
+	}
+	
+	@Override
+	public List<Evento> getAll(String palabraClave) {
+		if(palabraClave != null) {
+			return eventoRepository.getAll(palabraClave);
+		}
 		return eventoRepository.findAll();
 	}
 	

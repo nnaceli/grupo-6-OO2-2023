@@ -10,6 +10,9 @@ import com.unla.grupo6.entities.Evento;
 public interface IEventoService {
 	
 	public List<Evento> getAll();
+	
+	public List<Evento> getAll(String palabraClave);
+	
 	public Evento saveEvento(Evento evento);
 	public Evento buscar (long id);
 }
