@@ -1,5 +1,7 @@
 package com.unla.grupo6.controllers;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,12 +25,22 @@ public class UserController {
 	
 	@GetMapping("/logout")
 	public String logout (Model model) {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null) {
+            // Limpiar la sesión y invalidar la autenticación
+            SecurityContextHolder.clearContext();
+
+            // Aquí puedes realizar otras tareas de limpieza o acciones personalizadas según tus necesidades
+        }
+		
 		return ViewRouterHelper.USER_LOGOUT;
 	}
 	
 	@GetMapping("/loginsuccess")
 	public String loginCheck() {
-		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
+		return ViewRouterHelper.HOME_INDEX;
 	}
 	
 
