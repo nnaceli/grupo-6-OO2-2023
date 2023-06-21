@@ -10,25 +10,31 @@
 
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
-		<a class="navbar-brand" href="/loginsuccess"> <img src="/images/logo.png" width="48" height="45" alt="">
-		</a>
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-			data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
 
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="/logout">Cerrar sesión</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="http://localhost:8080/evento/lista">Eventos</a>
-				</li>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/index"> <img src="/images/logo.png" width="48" height="45" alt="">
+
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+
+					<li class="nav-item"><a class="nav-link" th:href="@{/evento/lista}">Eventos</a></li>
+				</ul>
+			</div>
+
+
+			<li class="nav-item">
+				<a class="nav-link" href="/logout">Cerrar sesión</a>
+			</li>
+
 			</ul>
-		</div>
+			</div>
+
 	</nav>
 
 	<div class="container">
@@ -48,9 +54,11 @@
 		<a class="btn btn-primary btn-sm" th:href="@{/espacioverde/crear}" th:text="'Nuevo sensor espacio verde'"
 			title="crear nuevo dispositivo en espacio verde"></a>
 
-		<a class="btn btn-primary btn-sm" th:href="@{/logout}" th:text="'Cerrar sesion'" title="cerrar sesion"></a>
 
-		<table class="table">
+
+
+
+		<table class="table" style="background-color: #6A0E1A; color: white;">
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
@@ -63,7 +71,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="table-info" th:each="li:${lista}">
+				<tr class="table-info" th:each="li:${lista}" style="background-color: #FAD9DD; color: black;">
 					<th scope="row" th:text="${li.idDispositivo}"></th>
 					<td scope="row" th:text="${li.sector}"></td>
 					<td scope="row" th:text="${li.enFuncionamiento} ? 'FUNCIONA' : 'NO FUNCIONA'"></td>
@@ -79,67 +87,13 @@
 							th:href="@{/espacioverde/listaverde/delete/}+${li.idDispositivo}" th:text="'Eliminar'"
 							title="Eliminar Sensor"
 							onclick="return confirm('¿Estás seguro de eliminar el sensor?')"></a></td>
-					<!--	
-					<td><a class="btn btn-success btn-sm" th:href="@{/espacioverde/lista/verSensor/}+${li.idDispositivo}"
-							th:text="'Ver Sensor'" title="Ver sensor"></a></td>
-							
-					<td><a class="btn btn-success btn-sm" th:href="@{/espacioverde/listaverde/modificar/{id}}+${li.idDispositivo}"
-							th:text="'Editar'" title="Editar Registro"></a></td>
-								
-					<td><a class="btn btn-danger btn-sm" th:href="@{/espacioverde/lista/delete/}+${li.idDispositivo}"
-							th:text="'Eliminar'" title="Eliminar Registro"
-							onclick="return confirm('¿Estás seguro de eliminar el registro?')"></a></td> -->
+
 				</tr>
 			</tbody>
 		</table>
 	</div>
 
-	<!--
-	<footer th:fragment="footer" class="bg-info text-center text-white fixed-bottom">
-		<div class="container">
-			<p>espacios verdes</p>
-		</div>
 
-		<script type="text/javascript" th:src="@{vendor/bootstrap/jquery/jquery.slim.min.js}"></script>
-		<script type="text/javascript" th:src="@{vendor/bootstrap/js/popper.min.js}"></script>
-		<script type="text/javascript" th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
-	</footer>
-	-->
 </body>
 
 </html>
-
-<!--
-
-<head>
-	<meta charset="UTF-8" \>
-	<title>ESPACIO VERDE</title>
-</head>
-
-<body>
-	<h1>Lista de sonsores espacio verde</h1>
-
-	<table>
-		<thead>
-			<tr>
-				<th>Sector</th>
-				<th>Humedad</th>
-				<th>Baja-Humedad</th>
-				<th>Acciones</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="disEspacioVerde : ${listaverde}">
-				<td th:text="${disEspacioVerde.sector}">Sector</td>
-				<td th:text="${disEspacioVerde.humedad}">Humedad</td>
-				<td th:text="${disEspacioVerde.bajaHumedad}">Baja-Humedad</td>
-				<td>
-					<a th:href="@{listaverde/modificar/{id}(id=${disEspacioVerde.id})}">Editar</a>
-					<a th:href="@{/estudiantes/{id}(id=${estudiante.id})}">Eliminar</a> 
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</body>
-
-</html> -->

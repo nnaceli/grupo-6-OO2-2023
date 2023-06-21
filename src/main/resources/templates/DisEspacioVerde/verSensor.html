@@ -63,6 +63,12 @@
 
 
 	</div>
+	
+	<img th:if="${espacioverde.bajaHumedad}" src="/images/riego.jpg" alt="Imagen 1"
+		style="width: 200px; display: block; margin: 0 auto;">
+	<img th:unless="${espacioverde.bajaHumedad}" src="/images/pasto.jpg" alt="Imagen 2"
+		style="width: 200px; display: block; margin: 0 auto;">
+	
 </body>
 
 </html>

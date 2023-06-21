@@ -1,6 +1,7 @@
 package com.unla.grupo6.controllers;
 
 import java.util.List;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.DisEspacioVerde;
 import com.unla.grupo6.entities.DisEstacionamiento;
 import com.unla.grupo6.entities.Dispositivo;
+import com.unla.grupo6.entities.Evento;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 import com.unla.grupo6.implementation.EspacioVerdeService;
 import com.unla.grupo6.models.DisEspacioVerdeModel;
@@ -30,6 +32,7 @@ import com.unla.grupo6.models.DisEstacionamientoModel;
 import com.unla.grupo6.models.DispositivoModel;
 import com.unla.grupo6.servicies.IEspacioVerdeService;
 import com.unla.grupo6.servicies.IEstacionamientoService;
+import com.unla.grupo6.servicies.IEventoService;
 
 import jakarta.validation.Valid;
 
@@ -40,60 +43,16 @@ public class DisEspacioVerdeController {
 	@Autowired
 	@Qualifier("espacioVerdeService")
 	private IEspacioVerdeService espacioVerdeService;
+	
+	@Autowired
+	@Qualifier("eventoService")
+	private IEventoService eventoService;
 
 	@GetMapping("/index") // me lo muestra raro
 	public String indexTest() {
 		return ViewRouterHelper.ESPACIOVERDE_INDEX;
 	}
 
-//	// @PreAuthorize("hasRole('administrador')")
-//	@GetMapping("estadoespacioverde")
-//	public String estadoEspacioVerde() {
-//		return "DisEspacioVerde/estadoEspacioVerde";
-//	}
-//
-//	@GetMapping("/agregar/{sector}")
-//	public ModelAndView agregarDisEspacioverde(@PathVariable("sector") String sector) {
-//		ModelAndView mV = new ModelAndView(ViewRouterHelper.ESPACIOVERDE_AGREGAR);
-//		mV.addObject("sector", sector);
-//		return mV;
-//	}
-//
-//	@PostMapping("/dispositivoAgregado")
-//	public ModelAndView dispositivoAgregado(@Valid @ModelAttribute("agregar") DisEspacioVerdeModel nuevoDisEspacioVerde,
-//			BindingResult bindingResult) {
-//		ModelAndView mV = new ModelAndView();
-//		if (bindingResult.hasErrors()) {
-//			mV.setViewName(ViewRouterHelper.ESPACIOVERDE_AGREGAR);
-//		} else {
-//			mV.setViewName(ViewRouterHelper.ESPACIOVERDE_AGREGADO);
-//			mV.addObject("agregar", nuevoDisEspacioVerde);
-//		}
-//		return mV;
-//	}
-
-//	@GetMapping("/crear")
-//	public ModelAndView index() {
-//		ModelAndView mAV = new ModelAndView(ViewRouterHelper.ESPACIOVERDE_CARGAR);
-//		mAV.addObject("espaciosverdes", espacioVerdeService.getAll());
-//		mAV.addObject("espacioverde", new DisEspacioVerdeModel());
-//		return mAV;
-//	}
-
-	// @PreAuthorize("hasRole('administrador')") <- probablemente asi se desgine la
-
-//	@PostMapping("/espacioverdeagregado") // me da al login sospecho que es por el model
-//	public ModelAndView dispositivoAgregado(@Valid @ModelAttribute("agregar") DispositivoModel nuevoDispositivo,
-//			BindingResult bindingResult) {
-//		ModelAndView mV = new ModelAndView();
-//		if (bindingResult.hasErrors()) {
-//			mV.setViewName(ViewRouterHelper.ESPACIOVERDE_AGREGAR);
-//		} else {
-//			mV.setViewName(ViewRouterHelper.ESPACIOVERDE_AGREGADO);
-//			mV.addObject("agregar", nuevoDispositivo);
-//		}
-//		return mV;
-//	}
 
 	@GetMapping("/")
 	public RedirectView redirectToHomeIntex() {
@@ -126,6 +85,7 @@ public class DisEspacioVerdeController {
 		return ViewRouterHelper.ESPACIOVERDE_LISTA;
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/save")
 	public String guardarVerdes(@Valid @ModelAttribute DisEspacioVerde disEspacioVerde, BindingResult result,
 			Model model, RedirectAttributes attribute) {
@@ -145,13 +105,17 @@ public class DisEspacioVerdeController {
 			disEspacioVerde.setBajaHumedad(false);
 			disEspacioVerde.setRegando("Desactivado");
 		}
-		if (disEspacioVerde.isEnFuncionamiento() == false) {
+		if (disEspacioVerde.isEnFuncionamiento() == false) {	
 			disEspacioVerde.setRegando("No se puede activar regado");
 		}
 
 		espacioVerdeService.saveVerde(disEspacioVerde);
 		System.out.println("guardado con exito!");
 		attribute.addFlashAttribute("success", "Dispositivo espacio verde ");
+		
+		Evento nuevoEvento = new Evento(disEspacioVerde, LocalDateTime.now(), disEspacioVerde.getNombre());
+		eventoService.saveEvento(nuevoEvento);
+		
 		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
 	}
 
@@ -163,10 +127,14 @@ public class DisEspacioVerdeController {
 		model.addAttribute("titulo", "Formulario: Editar sensor espacio verde");
 		model.addAttribute("espacioverde", disespacioverde);
 		model.addAttribute("listaverde", espacioVerdeService.getAll());
+		
+		Evento nuevoEvento = new Evento(disespacioverde, LocalDateTime.now(), disespacioverde.getNombre());
+		eventoService.saveEvento(nuevoEvento);
 
 		return ViewRouterHelper.ESPACIOVERDE_CREAR;
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")	
 	@GetMapping("listaverde/delete/{idDispositivo}")
 	public String eliminar(@PathVariable("idDispositivo") Long idDispositivo, RedirectAttributes attribute) {
 		DisEspacioVerde disespacioverde = espacioVerdeService.buscarVerde(idDispositivo);
@@ -177,7 +145,8 @@ public class DisEspacioVerdeController {
 		attribute.addFlashAttribute("warning", "Dispositivo eliminado con exito");
 		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
 	}
-
+	
+	
 	@PreAuthorize("hasRole('ROLE_AUDITOR')")
 	@GetMapping("listaverde/versensor/{idDispositivo}")
 	public String verSensor(@PathVariable("idDispositivo") Long idDispositivo, Model model,
@@ -195,53 +164,5 @@ public class DisEspacioVerdeController {
 		model.addAttribute("espacioverde", disespacioverde);
 		return ViewRouterHelper.ESPACIOVERDE_VER_SENSOR;
 	}
-
-//	@GetMapping("/sensores")
-//	public String listarEspacioverde(Model modelo) {
-//		modelo.addAttribute("espacioverde", espacioVerdeService.getAll());
-//		return "espacioverde"; // nos retorna archivo estudiantes
-//	}
-//
-//	
-//	
-//	
-//	@GetMapping("sensores/nuevo")
-//	public String mostrarFormularioDeEspacioVerde(Model modelo) {
-//		DisEspacioVerde espacioverde = new DisEspacioVerde();
-//		modelo.addAttribute("espacioverde", espacioverde);
-//		return "DisEspacioVerde/agregarEspacioVerde";
-//	}
-//
-//	@PostMapping("/sensores")
-//	public String guardarEspacioVerde(@ModelAttribute("espacioverde") DisEspacioVerde espacioverde) {
-//		espacioVerdeService.saveVerde(espacioverde);
-//		return "redirect:/sensores";
-//	}
-//	
-//	
-//	
-//
-
-//	
-
-//	
-//	@GetMapping("listaverde/modificar/{id}")
-//	public String mostrarFormularioDeEditar(@PathVariable Long id, Model modelo) {
-//		modelo.addAttribute("disEspacioVerde", espacioVerdeService.buscarVerde(id));
-//		return "modificarEspacioVerde";
-//	}
-//
-//	@PostMapping("/listaverde/{id}")
-//	public String actualizarEspacioVerde(@PathVariable Long id, @ModelAttribute("disEspacioVerde") DisEspacioVerde disEspacioVerde,
-//			Model model) {
-//		DisEspacioVerde espacioVerdeExistente = espacioVerdeService.buscarVerde(id);
-//		espacioVerdeExistente.setIdDispositivo(id);
-//		espacioVerdeExistente.setHumedad(disEspacioVerde.getHumedad());
-//		espacioVerdeExistente.setSector(disEspacioVerde.getSector());
-//		
-//		espacioVerdeService.actualizarDisEspacioVerde(espacioVerdeExistente);
-//		
-//		return "redirect:/estudiantes";
-//	}
 
 }

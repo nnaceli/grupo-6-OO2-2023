@@ -71,19 +71,6 @@ public class DisEspacioVerdeModel extends DispositivoModel {
 		return riego;
 	}
 	
-//	public int verificarHumedad() {
-//
-//        if(humedad < 30)
-//            encenderRiego();
-//
-//        return 1;
-//    }
-//
-//
-//    public void encenderRiego() {
-//        regar = true; 
-//    }
-	
 	
 	
 }

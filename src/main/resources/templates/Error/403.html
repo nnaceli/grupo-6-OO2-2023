@@ -2,15 +2,42 @@
 <html>
 
 <head>
-	<meta charset="UTF-8" \>
+	<meta charset="UTF-8">
 	<title>Error</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		body {
+			background-color: #f4f4f4;
+			padding: 20px;
+		}
+
+		.container {
+			max-width: 500px;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		.error-message {
+			font-size: 24px;
+			margin-bottom: 20px;
+		}
+
+		.btn {
+			margin-top: 20px;
+		}
+	</style>
 </head>
 
 <body>
-	<h1>Usted no tiene autorizacion para esa opcion</h1>
-	<h1>Cierre su sesion e inicie en una que le permita acceder a esa informacion</h1>
-	<a class="btn btn-primary btn-sm" th:href="@{/logout}" th:text="'Cerrar sesion'"
-			title="cerrar sesion"></a>
+	<div class="container">
+		<h1 class="error-message">Usted no tiene autorización para esa opción</h1>
+		<h1 class="error-message">Cierre su sesión e inicie en una que le permita acceder a esa información</h1>
+		<h1 class="error-message">Si quiere eliminar, editar o crear un sensor, ingrese como administrador</h1>
+		<h1 class="error-message">Si quiere ver los datos de un dispositivo, ingrese como auditor</h1>
+		<a class="btn btn-primary btn-sm" href="/logout" role="button">Cerrar sesión</a>
+	</div>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -28,5 +28,5 @@ public interface IEspacioVerdeService {
 
 
 
-	//boolean eliminar(long id);
+
 }
