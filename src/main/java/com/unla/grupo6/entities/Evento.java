@@ -18,48 +18,45 @@ import lombok.Setter;
 //ESTO LO HICIMOS EN GRUPO
 
 @Entity
-@Getter @Setter @NoArgsConstructor
-@Table(name="evento")
+@Getter
+@Setter
+@NoArgsConstructor
+@Table(name = "evento")
 public class Evento {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private Long id;
-	
-	@Column(name="fechaHora")
+
+	@Column(name = "fechaHora")
 	private LocalDateTime fechaHora;
 	
+	@Column(name="nombreDispositivo")
+	private String nombreDispositivo;
 	
 //	@ManyToOne (fetch=FetchType.LAZY, mappedBy="evento")
 //	private Dispositivo dispositivo = new Dispositivo();
-	
-	@ManyToOne
-	@JoinColumn(name = "idDispositivo", nullable=false)
-	//@Column(name="dispositivo")
-	private Dispositivo dispositivo;
-	//private Dispositivo dispositivo;
 
-	
-	//constructor
-	public Evento(Long id, LocalDateTime fechaHora, String descripcion, Dispositivo dispositivo) {
+	@ManyToOne
+	@JoinColumn(name = "idDispositivo", nullable = false)
+	// @Column(name="dispositivo")
+	private Dispositivo dispositivo;
+	// private Dispositivo dispositivo;
+
+	// constructor
+	public Evento(Long id, LocalDateTime fechaHora, Dispositivo dispositivo) {
 		super();
 		this.id = id;
 		this.fechaHora = fechaHora;
 		this.dispositivo = dispositivo;
 	}
-	
-	//constructor sin ID asi aparece en la tfi
+
+	// constructor sin ID asi aparece en la tfi
 	public Evento(Dispositivo dispositivo, LocalDateTime fechaHora) {
 		super();
 		this.dispositivo = dispositivo;
 		this.fechaHora = fechaHora;
 	}
-	
 
-	
-	
-	
-	
-	
 }

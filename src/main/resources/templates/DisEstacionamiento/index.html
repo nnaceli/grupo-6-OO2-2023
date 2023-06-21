@@ -2,20 +2,43 @@
 <html>
 
 <head>
-	<meta charset="UTF-8" \>
-	<title>Smart UNLa - Estacionamientos</title>
+	<meta charset="UTF-8">
+	<title>Menú de Estacionamientos</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+	<style>
+		.btn-custom {
+			background-color: #8B0000;
+			border-color: #8B0000;
+			color: #fff;
+		}
+	</style>
 </head>
 
 <body>
-	
-	<h1>Estacionamientos</h1>
-	
-	<a th:href="@{/estacionamientos/buffet}">Buffet</a>
-	<a th:href="@{/estacionamientos/septiembre}">29 de Septiembre</a>
-	<a th:href="@{/estacionamientos/jose}">José Malba</a>
-	<a th:href="@{/estacionamientos/pablo}">Pablo Nogues</a>
-	<a th:href="@{/estacionamientos/listaDispositivos}">Gestion de dispositivos</a>
-	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/index" style="padding: 10px;">
+			<img src="/images/logo.png" width="75" height="75" alt="">
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+			aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</nav>
+
+	<div class="container">
+
+		<div class="d-grid gap-3 col-6 mx-auto mt-5">
+			<a href="http://localhost:8080/estacionamientos/buffet" class="btn btn-custom btn-lg">Buffet</a>
+			<a href="http://localhost:8080/estacionamientos/septiembre" class="btn btn-custom btn-lg">29 de
+				Septiembre</a>
+			<a href="http://localhost:8080/estacionamientos/jose" class="btn btn-custom btn-lg">José Malba</a>
+			<a href="http://localhost:8080/estacionamientos/pablo" class="btn btn-custom btn-lg">Pablo Nogues</a>
+			<a href="http://localhost:8080/estacionamientos/listaDispositivos" class="btn btn-custom btn-lg">Gestión de
+				dispositivos</a>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
