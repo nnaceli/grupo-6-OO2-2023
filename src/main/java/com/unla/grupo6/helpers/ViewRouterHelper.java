@@ -35,13 +35,13 @@ public class ViewRouterHelper {
 	// BAÑOS
 	public final static String ESTACIONAMIENTO_AGREGAR = "DisEstacionamiento/agregar_Dispositivo";
 	
-	public final static String ESTACIONAMIENTO_SECTOR_SEPTIEMBRE = "DisEstacionamiento/lista_septiembre";
-	public final static String ESTACIONAMIENTO_SECTOR_PABLO = "DisEstacionamiento/lista_pablo";
-	public final static String ESTACIONAMIENTO_SECTOR_BUFFET = "DisEstacionamiento/lista_buffet";
-	public final static String ESTACIONAMIENTO_SECTOR_JOSE = "DisEstacionamiento/lista_jose";
+	public final static String ESTACIONAMIENTO_SECTOR_SEPTIEMBRE = "DisEstacionamiento/sector_septiembre";
+	public final static String ESTACIONAMIENTO_SECTOR_PABLO = "DisEstacionamiento/sector_pablo";
+	public final static String ESTACIONAMIENTO_SECTOR_BUFFET = "DisEstacionamiento/sector_buffet";
+	public final static String ESTACIONAMIENTO_SECTOR_JOSE = "DisEstacionamiento/sector_jose";
 	
 	public final static String ESTACIONAMIENTO_PLAZAS_COMUNES = "DisEstacionamiento/plazas_comunes";
-	public final static String ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS = "DisEstacionamiento/plazas_discapacitados";
+	public final static String ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS = "DisEstacionamiento/plazas_para_discapacitados";
 	
 	//BAÑOS
 	public final static String BANIO_INDEX = "banio/index";

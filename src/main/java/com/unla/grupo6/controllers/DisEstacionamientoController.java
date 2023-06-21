@@ -150,6 +150,7 @@ public class DisEstacionamientoController {
 		disEstacionamientoExistente.setOcupado(disEstacionamiento.isOcupado());
 		disEstacionamientoExistente.setTipoEstacionamiento(disEstacionamiento.getTipoEstacionamiento());
 		
+		
 		estacionamientoService.insertOrUpdate(disEstacionamientoExistente);
 		
 		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
