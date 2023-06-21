@@ -2,8 +2,10 @@ package com.unla.grupo6.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
 
 import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.Dispositivo;
@@ -21,11 +23,19 @@ public class EventoService implements IEventoService {
 	@Qualifier("eventoRepository")
 	private IEventoRepository eventoRepository;
 	
+	@Override
 	public List<Evento> getAll(){
 		return eventoRepository.findAll();
 	}
 	
 	@Override
+	public List<Evento> getAll(String palabraClave) {
+		if(palabraClave != null) {
+			return eventoRepository.getAll(palabraClave);
+		}
+		return eventoRepository.findAll();
+		
+		
 	public List<Evento> getAllEntreFechas(LocalDateTime fechaDesde, LocalDateTime fechaHasta) {
 		return eventoRepository.findByfechaHoraBetween(fechaDesde, fechaHasta);
 	}
@@ -38,6 +48,7 @@ public class EventoService implements IEventoService {
 	@Override
 	public List<Evento> findByNombreDispositivo(String nombre) {
 		return eventoRepository.findByNombreDispositivo(nombre);
+
 	}
 	
 	public Evento saveEvento(Evento evento) {
