@@ -133,14 +133,22 @@ public class DisBañoController {
 
 		Random random = new Random();
 		boolean randomValue = random.nextBoolean();
-		disBaño.setHigienizandose(randomValue);
-		if (randomValue) {
-			disBaño.setHabilitado(false);
-			bañoService.save(disBaño);
-		} else {
-			disBaño.setHabilitado(true);
-			bañoService.save(disBaño);
+		
+		if (disBaño.isHigienizandose() != randomValue) {
+		    // Establecer el nuevo valor de higienización
+		    disBaño.setHigienizandose(randomValue);
+		    
+		    // Actualizar el estado del baño y guardar en la base de datos
+		    disBaño.setHabilitado(!randomValue);
+		    bañoService.save(disBaño);
+		    
+		    // Crear un nuevo evento con la fecha y nombre del baño
+		    Evento nuevoEvento = new Evento(disBaño, LocalDateTime.now(), disBaño.getNombre());
+		    eventoService.saveEvento(nuevoEvento);
 		}
+		
+		
+		
 
 		if (disBaño.isEnFuncionamiento() == false) {
 			attribute.addFlashAttribute("error", "ATENCION: La camara seleccionada no se puede ver porque no funciona");
@@ -150,9 +158,8 @@ public class DisBañoController {
 		model.addAttribute("titulo", "Ver Camara");
 		model.addAttribute("banio", disBaño);
 
-		Evento nuevoEvento = new Evento(disBaño, LocalDateTime.now(), disBaño.getNombre());
-		eventoService.saveEvento(nuevoEvento);
-
+		
+		
 		return ViewRouterHelper.BANIO_VER_CAMARA;
 	}
 
