@@ -48,8 +48,8 @@ public class Grupo6Application implements CommandLineRunner {
 //			System.out.println(evento.toString());
 	}
 	
-	@Scheduled(cron = "*/3 * * * * *")
-	public void generarEventoDispositivoEstacionamiento() {
-		servicioEstacionamiento.actualizarDisponibilidadEstacionamientos();
-	}
+//	@Scheduled(cron = "*/3 * * * * *")
+//	public void generarEventoDispositivoEstacionamiento() {
+//		servicioEstacionamiento.actualizarDisponibilidadEstacionamientos();
+//	}
 }
