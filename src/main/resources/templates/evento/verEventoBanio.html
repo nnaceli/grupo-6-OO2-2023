@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:fragment="head">
+	<meta charset="UTF-8" />
+	<title>Baños</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+</head>
+
+<body>
+
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+
+
+	</div>
+
+	<div class="container">
+
+		<table class="table" style="background-color: #6A0E1A; color: white;">
+			<thead>
+				<tr>
+					<th scope="col">Higienizandose</th>
+					<th scope="col">Habilitado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table" th:object="${evento}" style="background-color: #FAD9DD; color: black;">
+					<td scope="row" th:text="${evento.dispositivo.higienizandose} ? 'SI' : 'NO'"></td>
+					<td scope="row" th:text="${evento.dispositivo.habilitado}  ? 'El baño se encuentra habilitado para su uso' : 'El baño esta siendo higienizado por lo cual no esta habilitado para su uso'">
+					</td>
+
+
+				</tr>
+			</tbody>
+		</table>
+
+
+
+	</div>
+
+
+
+</body>
+
+</html>
