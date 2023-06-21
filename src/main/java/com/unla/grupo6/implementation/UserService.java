@@ -29,7 +29,7 @@ public class UserService implements UserDetailsService {
 	private IUserRepository userRepository;
 
 	@Override
-	public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException{
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		com.unla.grupo6.entities.User user = userRepository.findByUsernameAndFetchUserRolesEagerly(username);
 		return buildUser(user, buildGrantedAuthorities(user.getUserRoles()));
 	}

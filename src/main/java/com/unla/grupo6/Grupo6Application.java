@@ -29,6 +29,7 @@ public class Grupo6Application implements CommandLineRunner {
 
 	@Autowired
 	private EstacionamientoService servicioEstacionamiento;
+//	private EventoService servicioEvento;
 
 //	@Override
 	public void run(String... args) throws Exception {
@@ -38,6 +39,9 @@ public class Grupo6Application implements CommandLineRunner {
 
 		for (DisEstacionamiento estacionamiento : Estacionamientos)
 			System.out.println(estacionamiento.toString());
-
+		
+//		List<Evento> listEvento = servicioEvento.findByNombreDispositivo("Luz Automatica Hernandez");
+//		for (Evento evento : listEvento)
+//			System.out.println(evento.toString());
 	}
 }

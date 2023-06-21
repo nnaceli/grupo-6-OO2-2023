@@ -108,7 +108,7 @@ public class DisLucesAutoController {
 		model.addAttribute("titulo", "Ver Aula");
 		model.addAttribute("disLucesAuto", disLucesAuto);
 
-		Evento nuevoEvento = new Evento(disLucesAuto, LocalDateTime.now());
+		Evento nuevoEvento = new Evento(disLucesAuto, LocalDateTime.now(), disLucesAuto.getNombre());
 		eventoService.saveEvento(nuevoEvento);
 		return ViewRouterHelper.LUCES_VER_AULA;
 	}
