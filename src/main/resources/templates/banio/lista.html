@@ -58,8 +58,8 @@
 					<th scope="col">Edificio</th>
 					<th scope="col">Funcionamiento</th>
 					<th scope="col">Ver Camara</th>
-					<th scope="col">Editar</th>
-					<th scope="col">Eliminar</th>
+					<th scope="col" sec:authorize="hasAuthority('Administrador')">Editar</th>
+					<th scope="col" sec:authorize="hasAuthority('Administrador')">Eliminar</th>
 					
 					
 				</tr>
