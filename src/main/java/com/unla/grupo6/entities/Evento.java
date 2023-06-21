@@ -53,10 +53,11 @@ public class Evento {
 	}
 
 	// constructor sin ID asi aparece en la tfi
-	public Evento(Dispositivo dispositivo, LocalDateTime fechaHora) {
+	public Evento(Dispositivo dispositivo, LocalDateTime fechaHora, String nombre) {
 		super();
 		this.dispositivo = dispositivo;
 		this.fechaHora = fechaHora;
+		this.nombreDispositivo = nombre;
 	}
 
 }

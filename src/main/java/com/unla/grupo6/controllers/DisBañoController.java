@@ -102,7 +102,7 @@ public class DisBañoController {
 		System.out.println("Dispositivo Baño guardado con exito!");
 		attribute.addFlashAttribute("success", "Dispositivo Baño guardado con exito ");
 		
-		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now());
+		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now(), disBaño.getNombre());
 		eventoService.saveEvento(nuevoEvento);
 		
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
@@ -116,7 +116,7 @@ public class DisBañoController {
 		model.addAttribute("banio", disBaño);
 		model.addAttribute("lista", bañoService.getAll());
 		
-		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now());
+		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now(), disBaño.getNombre());
 		eventoService.saveEvento(nuevoEvento);
 		
 		return ViewRouterHelper.BANIO_CREAR;
@@ -160,7 +160,7 @@ public class DisBañoController {
 		model.addAttribute("titulo", "Ver Camara");
 		model.addAttribute("banio", disBaño);
 		
-		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now());
+		Evento nuevoEvento = new Evento(disBaño,LocalDateTime.now(), disBaño.getNombre());
 		eventoService.saveEvento(nuevoEvento);
 		
 		return ViewRouterHelper.BANIO_VER_CAMARA;

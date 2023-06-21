@@ -38,6 +38,10 @@ public class EstacionamientoService implements IEstacionamientoService{
 		return estacionamientoRepository.findBySector(sector);
 	}
 	
+	public List<DisEstacionamiento> getEnFuncionamiento(){
+		return estacionamientoRepository.findByEnFuncionamiento(true);
+	}
+	
 	@Override
 	public List<DisEstacionamiento> getPorSectorYfuncionamiento(String sector, boolean enFuncionamiento) {
 		return estacionamientoRepository.findBySectorAndEnFuncionamiento(sector, enFuncionamiento);
@@ -61,6 +65,29 @@ public class EstacionamientoService implements IEstacionamientoService{
 	@Override
 	public void eliminarEstacionamiento(Long id) {
 		estacionamientoRepository.deleteById(id);
+	}
+	
+	@Override
+	public void actualizarDisponibilidadEstacionamientos() {
+		
+		List<DisEstacionamiento> listaDisEstacionamientoEnFuncionamiento = estacionamientoRepository.findByEnFuncionamiento(true);
+		DisEstacionamiento dispositivoAactualizar;
+		double cambioDeDisponibilidad;
+		int idDispositivoAmodificar;
+		int cantDispositivosEnFuncionamiento = listaDisEstacionamientoEnFuncionamiento.size();
+		
+		for(int i=0; i<20; i++) {
+			
+			cambioDeDisponibilidad = Math.random()*100;
+			idDispositivoAmodificar = (int) (Math.random() * (0 + (cantDispositivosEnFuncionamiento-1)));
+			dispositivoAactualizar = listaDisEstacionamientoEnFuncionamiento.get(idDispositivoAmodificar);
+			
+			if(cambioDeDisponibilidad > 50)
+				dispositivoAactualizar.setOcupado(!dispositivoAactualizar.isOcupado());
+			
+			estacionamientoRepository.save(dispositivoAactualizar);
+		}
+		
 	}
 
 }
