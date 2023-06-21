@@ -31,10 +31,10 @@ public class Evento {
 
 	@Column(name = "fechaHora")
 	private LocalDateTime fechaHora;
-	
-	@Column(name="nombreDispositivo")
+
+	@Column(name = "nombreDispositivo")
 	private String nombreDispositivo;
-	
+
 //	@ManyToOne (fetch=FetchType.LAZY, mappedBy="evento")
 //	private Dispositivo dispositivo = new Dispositivo();
 
@@ -53,10 +53,11 @@ public class Evento {
 	}
 
 	// constructor sin ID asi aparece en la tfi
-	public Evento(Dispositivo dispositivo, LocalDateTime fechaHora) {
+	public Evento(Dispositivo dispositivo, LocalDateTime fechaHora, String nombre) {
 		super();
 		this.dispositivo = dispositivo;
 		this.fechaHora = fechaHora;
+		this.nombreDispositivo = nombre;
 	}
 
 }

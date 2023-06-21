@@ -29,15 +29,13 @@ public class EventoController {
 
 	@GetMapping("/lista")
 	public String listarEventos(Model model, @Param("palabraClave") String palabraClave) {
-	    List<Evento> lista = eventoService.getAll(palabraClave);
+		List<Evento> lista = eventoService.getAll(palabraClave);
 
-	    model.addAttribute("titulo", "Eventos");
-	    model.addAttribute("lista", lista);
-	    model.addAttribute("palabraClave", palabraClave);
+		model.addAttribute("titulo", "Eventos");
+		model.addAttribute("lista", lista);
+		model.addAttribute("palabraClave", palabraClave);
 
-	    return ViewRouterHelper.EVENTO_LISTA;
+		return ViewRouterHelper.EVENTO_LISTA;
 	}
-	
-	
-	
+
 }

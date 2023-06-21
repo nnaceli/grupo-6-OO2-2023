@@ -12,10 +12,25 @@
 		<a class="navbar-brand" href="/index">
 			<img src="/images/logo.png" width="48" height="45" alt="">
 		</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-			aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="dispositivosDropdown" role="button"
+					data-bs-toggle="dropdown" aria-expanded="false">
+					Dispositivos
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="dispositivosDropdown">
+					<li><a class="dropdown-item" href="http://localhost:8080/espacioverde/listaverde">Dispositivos
+							Espacio Verde</a></li>
+					<li><a class="dropdown-item"
+							href="http://localhost:8080/estacionamientos/listaDispositivos">Dispositivos
+							Estacionamiento</a></li>
+					<li><a class="dropdown-item" href="http://localhost:8080/banio/lista">Dispositivos Baño</a></li>
+					<li><a class="dropdown-item"
+							href="http://localhost:8080/lucesautomaticas/listaLucesAuto">Dispositivos Luces
+							Automáticas</a></li>
+				</ul>
+			</li>
+		</ul>
 
 	</nav>
 
@@ -29,11 +44,12 @@
 
 	<div class="container">
 		<form class="form-inline" th:action="@{/evento/lista}">
-			<div class="form-group mb-2 "> 
+			<div class="form-group mb-2 ">
 				<label>Filtrar :</label>
 			</div>
 			<div class="form-group mx-sm-3 mb-2 ">
-				<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="Ingrese palabra a buscar" required>
+				<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}"
+					placeholder="Ingrese palabra a buscar" required>
 			</div>
 			<input type="submit" class="btn btn-info mb-2" value="Buscar">
 			&nbsp;&nbsp;
@@ -43,14 +59,14 @@
 		<table class="table mt-4" style="background-color: #6A0E1A; color: white;">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">Id Evento</th>
+					<th scope="col">ID Evento</th>
 					<th scope="col">Dispositivo</th>
-					<th scope="col">Id Dispositivo</th>
+					<th scope="col">ID Dispositivo</th>
 					<th scope="col">Fecha y Hora</th>
 					<th scope="col">Funcionamiento</th>
 				</tr>
 			</thead>
-			
+
 			<tbody>
 				<tr class="table" th:each="li:${lista}" style="background-color: #FAD9DD; color: black;">
 					<th scope="row" th:text="${li.id}"></th>

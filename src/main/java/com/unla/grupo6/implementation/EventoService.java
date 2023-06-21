@@ -2,10 +2,8 @@ package com.unla.grupo6.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
 
 import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.Dispositivo;
@@ -18,24 +16,24 @@ import java.util.List;
 
 @Service("eventoService")
 public class EventoService implements IEventoService {
-	
+
 	@Autowired
 	@Qualifier("eventoRepository")
 	private IEventoRepository eventoRepository;
-	
+
 	@Override
-	public List<Evento> getAll(){
+	public List<Evento> getAll() {
 		return eventoRepository.findAll();
 	}
-	
+
 	@Override
 	public List<Evento> getAll(String palabraClave) {
-		if(palabraClave != null) {
+		if (palabraClave != null) {
 			return eventoRepository.getAll(palabraClave);
 		}
 		return eventoRepository.findAll();
 	}
-		
+
 	public List<Evento> getAllEntreFechas(LocalDateTime fechaDesde, LocalDateTime fechaHasta) {
 		return eventoRepository.findByfechaHoraBetween(fechaDesde, fechaHasta);
 	}
@@ -44,6 +42,7 @@ public class EventoService implements IEventoService {
 	public List<Evento> getAllPorDipositivo(Dispositivo dispositivo) {
 		return eventoRepository.findByDispositivo(dispositivo);
 	}
+
 	
 	/*
 	 * @Override public List<Evento> findByNombreDispositivo(String nombre) { return
@@ -52,6 +51,7 @@ public class EventoService implements IEventoService {
 	 * }
 	 */
 	
+
 	public Evento saveEvento(Evento evento) {
 		return eventoRepository.save(evento);
 	}
@@ -61,13 +61,5 @@ public class EventoService implements IEventoService {
 		return eventoRepository.findById(id).orElse(null);
 	}
 
-	@Override
-	public List<Evento> findByNombreDispositivo(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	
-
-	
 }
