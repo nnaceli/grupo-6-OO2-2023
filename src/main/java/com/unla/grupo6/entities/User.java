@@ -1,10 +1,8 @@
 package com.unla.grupo6.entities;
 
 
-
-import java.time.LocalDate;
-
 //import java.time.LocalDateTime;
+
 //import java.util.Set;
 //import java.util.HashSet;
 //
@@ -126,8 +124,6 @@ import java.time.LocalDate;
 //		this.userRoles = userRoles;
 //	}
 
-
-
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.HashSet;
@@ -148,40 +144,40 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name="username", unique=true, nullable=false, length=45)
+	@Column(name = "username", unique = true, nullable = false, length = 45)
 	private String username;
 
-	@Column(name="password", nullable=false, length=60)
+	@Column(name = "password", nullable = false, length = 60)
 	private String password;
 
-	@Column(name="enabled")
+	@Column(name = "enabled")
 	private boolean enabled;
 
-	@Column(name="createdat")
+	@Column(name = "createdat")
 	@CreationTimestamp
 	private LocalDateTime createdAt;
 
-	@Column(name="updatedat")
+	@Column(name = "updatedat")
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
-	
 
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private Set<UserRole> userRoles = new HashSet<>();
-	
 
 	public User(String username, String password, boolean enabled) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
-		
+
 		System.out.println(LocalTime.of(id, id));
 	}
 
@@ -192,12 +188,4 @@ public class User {
 		this.userRoles = userRoles;
 	}
 
-	
-	
 }
-
-
-	
-	
-	
-

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.Dispositivo;
 import com.unla.grupo6.entities.Evento;
 import com.unla.grupo6.repositories.IEventoRepository;

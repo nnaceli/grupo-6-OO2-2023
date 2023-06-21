@@ -1,17 +1,13 @@
 package com.unla.grupo6.implementation;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 //import com.unla.grupo6.converts.DisEstacionamientoConvert;
 import com.unla.grupo6.entities.DisEstacionamiento;
-import com.unla.grupo6.models.DisEstacionamientoModel;
 import com.unla.grupo6.repositories.IEstacionamientoRepository;
 import com.unla.grupo6.servicies.IEstacionamientoService;
 

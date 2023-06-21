@@ -16,22 +16,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-
-import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.DisEspacioVerde;
-import com.unla.grupo6.entities.DisEstacionamiento;
-import com.unla.grupo6.entities.Dispositivo;
 import com.unla.grupo6.entities.Evento;
 import com.unla.grupo6.helpers.ViewRouterHelper;
-import com.unla.grupo6.implementation.EspacioVerdeService;
-import com.unla.grupo6.models.DisEspacioVerdeModel;
-import com.unla.grupo6.models.DisEstacionamientoModel;
-import com.unla.grupo6.models.DispositivoModel;
 import com.unla.grupo6.servicies.IEspacioVerdeService;
-import com.unla.grupo6.servicies.IEstacionamientoService;
 import com.unla.grupo6.servicies.IEventoService;
 
 import jakarta.validation.Valid;
@@ -43,7 +33,7 @@ public class DisEspacioVerdeController {
 	@Autowired
 	@Qualifier("espacioVerdeService")
 	private IEspacioVerdeService espacioVerdeService;
-	
+
 	@Autowired
 	@Qualifier("eventoService")
 	private IEventoService eventoService;
@@ -53,12 +43,11 @@ public class DisEspacioVerdeController {
 		return ViewRouterHelper.ESPACIOVERDE_INDEX;
 	}
 
-
 	@GetMapping("/")
 	public RedirectView redirectToHomeIntex() {
 		return new RedirectView(ViewRouterHelper.ESPACIOVERDE_ROUTE_INDEX);
 	}
-	
+
 	@GetMapping("/crear")
 	public String crearVerdes(Model model) {
 		DisEspacioVerde disEspacioVerde = new DisEspacioVerde();
@@ -105,17 +94,17 @@ public class DisEspacioVerdeController {
 			disEspacioVerde.setBajaHumedad(false);
 			disEspacioVerde.setRegando("Desactivado");
 		}
-		if (disEspacioVerde.isEnFuncionamiento() == false) {	
+		if (disEspacioVerde.isEnFuncionamiento() == false) {
 			disEspacioVerde.setRegando("No se puede activar regado");
 		}
 
 		espacioVerdeService.saveVerde(disEspacioVerde);
 		System.out.println("guardado con exito!");
 		attribute.addFlashAttribute("success", "Dispositivo espacio verde ");
-		
+
 		Evento nuevoEvento = new Evento(disEspacioVerde, LocalDateTime.now(), disEspacioVerde.getNombre());
 		eventoService.saveEvento(nuevoEvento);
-		
+
 		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
 	}
 
@@ -127,14 +116,14 @@ public class DisEspacioVerdeController {
 		model.addAttribute("titulo", "Formulario: Editar sensor espacio verde");
 		model.addAttribute("espacioverde", disespacioverde);
 		model.addAttribute("listaverde", espacioVerdeService.getAll());
-		
+
 		Evento nuevoEvento = new Evento(disespacioverde, LocalDateTime.now(), disespacioverde.getNombre());
 		eventoService.saveEvento(nuevoEvento);
 
 		return ViewRouterHelper.ESPACIOVERDE_CREAR;
 	}
-	
-	@PreAuthorize("hasRole('ROLE_ADMIN')")	
+
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("listaverde/delete/{idDispositivo}")
 	public String eliminar(@PathVariable("idDispositivo") Long idDispositivo, RedirectAttributes attribute) {
 		DisEspacioVerde disespacioverde = espacioVerdeService.buscarVerde(idDispositivo);
@@ -145,8 +134,7 @@ public class DisEspacioVerdeController {
 		attribute.addFlashAttribute("warning", "Dispositivo eliminado con exito");
 		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
 	}
-	
-	
+
 	@PreAuthorize("hasRole('ROLE_AUDITOR')")
 	@GetMapping("listaverde/versensor/{idDispositivo}")
 	public String verSensor(@PathVariable("idDispositivo") Long idDispositivo, Model model,

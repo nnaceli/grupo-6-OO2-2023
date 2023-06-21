@@ -2,15 +2,10 @@ package com.unla.grupo6.implementation;
 
 import java.util.List;
 
-
-
-
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.unla.grupo6.entities.DisBaño;
 import com.unla.grupo6.entities.DisEspacioVerde;
 import com.unla.grupo6.models.DisEspacioVerdeModel;
 import com.unla.grupo6.repositories.IEspacioVerdeRepository;
@@ -23,7 +18,7 @@ public class EspacioVerdeService implements IEspacioVerdeService {
 	@Qualifier("espacioVerdeRepository")
 	private IEspacioVerdeRepository espacioVerdeRepository;
 
-	private ModelMapper modelMapper = new ModelMapper();
+	//private ModelMapper modelMapper = new ModelMapper();
 
 	@Override
 	public List<DisEspacioVerde> getAll() {
