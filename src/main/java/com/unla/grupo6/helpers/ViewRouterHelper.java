@@ -25,6 +25,7 @@ public class ViewRouterHelper {
 
 	// ESTACIONAMIENTO
 	public final static String ESTACIONAMIENTO_INDEX = "DisEstacionamiento/index";
+	
 	public final static String ESTACIONAMIENTO_LISTA = "DisEstacionamiento/lista_dispositivos";
 	public final static String ESTACIONAMIENTO_REDIRECT_LISTA = "redirect:/estacionamientos/listaDispositivos";
 
@@ -32,6 +33,17 @@ public class ViewRouterHelper {
 	public final static String ESTACIONAMIENTO_MODIFICAR = "DisEstacionamiento/modificarDispositivo";
 
 	// BAÑOS
+	public final static String ESTACIONAMIENTO_AGREGAR = "DisEstacionamiento/agregar_Dispositivo";
+	
+	public final static String ESTACIONAMIENTO_SECTOR_SEPTIEMBRE = "DisEstacionamiento/lista_septiembre";
+	public final static String ESTACIONAMIENTO_SECTOR_PABLO = "DisEstacionamiento/lista_pablo";
+	public final static String ESTACIONAMIENTO_SECTOR_BUFFET = "DisEstacionamiento/lista_buffet";
+	public final static String ESTACIONAMIENTO_SECTOR_JOSE = "DisEstacionamiento/lista_jose";
+	
+	public final static String ESTACIONAMIENTO_PLAZAS_COMUNES = "DisEstacionamiento/plazas_comunes";
+	public final static String ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS = "DisEstacionamiento/plazas_discapacitados";
+	
+	//BAÑOS
 	public final static String BANIO_INDEX = "banio/index";
 	public final static String BANIO_LISTA = "banio/lista";
 	public final static String BANIO_CREAR = "banio/crear";
