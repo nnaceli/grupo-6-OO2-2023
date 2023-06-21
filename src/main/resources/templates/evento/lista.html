@@ -5,6 +5,19 @@
 	<meta charset="UTF-8" />
 	<title>Baños</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+	<style>
+		.footer {
+			background-color: #6A0E1A;
+			;
+			padding: 10px;
+			text-align: center;
+			height: 40px;
+			display: flex;
+			justify-content: center;
+			text-align: center;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -28,7 +41,11 @@
 					<li><a class="dropdown-item"
 							href="http://localhost:8080/lucesautomaticas/listaLucesAuto">Dispositivos Luces
 							Automáticas</a></li>
+
 				</ul>
+			<li class="nav-item">
+				<a class="nav-link" href="/logout">Cerrar Sesion</a>
+			</li>
 			</li>
 		</ul>
 
@@ -78,6 +95,11 @@
 			</tbody>
 		</table>
 	</div>
+
+	<footer th:fragment="footer" class="footer text-center text-white fixed-bottom">
+		<p>SmartCity - UNLa Copyright © 2023</p>
+		<a class=a-footer href='http://www.unla.edu.ar'>Visitar UNLa</a>
+	</footer>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>

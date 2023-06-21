@@ -20,7 +20,7 @@ public class UserController {
 		model.addAttribute("error", error);
 		model.addAttribute("logout", logout);
 		
-		return ViewRouterHelper.USER_LOGIN;
+		return ViewRouterHelper.HOME_INDEX;
 	}
 	
 	@GetMapping("/logout")
