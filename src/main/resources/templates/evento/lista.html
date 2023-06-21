@@ -10,7 +10,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
 		<a class="navbar-brand" href="/index">
-			<img src="/images/logo.png" width="75" height="75" alt="">
+			<img src="/images/logo.png" width="48" height="45" alt="">
 		</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
 			aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,6 +47,7 @@
 					<th scope="col">Dispositivo</th>
 					<th scope="col">Id Dispositivo</th>
 					<th scope="col">Fecha y Hora</th>
+					<th scope="col">Funcionamiento</th>
 				</tr>
 			</thead>
 			
@@ -55,7 +56,8 @@
 					<th scope="row" th:text="${li.id}"></th>
 					<td scope="row" th:text="${li.dispositivo.nombre}"></td>
 					<td scope="row" th:text="${li.dispositivo.idDispositivo}"></td>
-					<td scope="row" th:text="${li.fechaHora}"></td>
+					<td scope="row" th:text="${#temporals.format(li.fechaHora, 'dd/MM/yyyy HH:mm')}"></td>
+					<td scope="row" th:text="${li.dispositivo.enFuncionamiento} ? 'FUNCIONA' : 'NO FUNCIONA'"></td>
 				</tr>
 			</tbody>
 		</table>

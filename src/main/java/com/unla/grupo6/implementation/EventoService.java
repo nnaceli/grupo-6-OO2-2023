@@ -34,7 +34,7 @@ public class EventoService implements IEventoService {
 			return eventoRepository.getAll(palabraClave);
 		}
 		return eventoRepository.findAll();
-		
+	}
 		
 	public List<Evento> getAllEntreFechas(LocalDateTime fechaDesde, LocalDateTime fechaHasta) {
 		return eventoRepository.findByfechaHoraBetween(fechaDesde, fechaHasta);
@@ -45,11 +45,12 @@ public class EventoService implements IEventoService {
 		return eventoRepository.findByDispositivo(dispositivo);
 	}
 	
-	@Override
-	public List<Evento> findByNombreDispositivo(String nombre) {
-		return eventoRepository.findByNombreDispositivo(nombre);
-
-	}
+	/*
+	 * @Override public List<Evento> findByNombreDispositivo(String nombre) { return
+	 * eventoRepository.findByNombreDispositivo(nombre);
+	 * 
+	 * }
+	 */
 	
 	public Evento saveEvento(Evento evento) {
 		return eventoRepository.save(evento);
@@ -58,6 +59,12 @@ public class EventoService implements IEventoService {
 	@Override
 	public Evento buscar(long id) {
 		return eventoRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public List<Evento> findByNombreDispositivo(String nombre) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
