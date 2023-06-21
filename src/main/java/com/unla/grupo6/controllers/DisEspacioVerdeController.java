@@ -178,6 +178,7 @@ public class DisEspacioVerdeController {
 		return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
 	}
 
+	@PreAuthorize("hasRole('ROLE_AUDITOR')")
 	@GetMapping("listaverde/versensor/{idDispositivo}")
 	public String verSensor(@PathVariable("idDispositivo") Long idDispositivo, Model model,
 			RedirectAttributes attribute) {
