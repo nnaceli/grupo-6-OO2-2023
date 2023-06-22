@@ -5,7 +5,9 @@
 	<meta charset="UTF-8" />
 	<title>Baños</title>
 	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
 	<style>
 		.footer {
 			background-color: #6A0E1A;
@@ -24,10 +26,11 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
 		<a class="navbar-brand" href="/loginsuccess">
-			<img src="/images/logo.png" width="75" height="75" alt="">
+			<img src="/images/logo.png" width="48" height="45" alt="">
 		</a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item dropdown">
+				
 				<a class="nav-link dropdown-toggle" href="#" id="dispositivosDropdown" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false">
 					Dispositivos
@@ -39,11 +42,10 @@
 							href="http://localhost:8080/estacionamientos/listaDispositivos">Dispositivos
 							Estacionamiento</a></li>
 					<li><a class="dropdown-item" href="http://localhost:8080/banio/lista">Dispositivos Baño</a></li>
-					<li><a class="dropdown-item"
-							href="http://localhost:8080/lucesautomaticas/listaLucesAuto">Dispositivos Luces
-							Automáticas</a></li>
-
+					<li><a class="dropdown-item" href="http://localhost:8080/lucesautomaticas/listaLucesAuto">Dispositivos Luces Automáticas</a></li>
 				</ul>
+
+
 				<li class="nav-item dropdown"><a aria-expanded="false"
 					aria-haspopup="true" class="nav-link dropdown-toggle"
 					data-toggle="dropdown" href="#" id="navbarDropdownBlog">Sesion</a>
@@ -57,6 +59,7 @@
 
 					</div>
 				</li>
+
 			</li>
 		</ul>
 
@@ -85,7 +88,7 @@
 		</form>
 
 		<table class="table mt-4" style="background-color: #6A0E1A; color: white;">
-			<thead class="thead-dark">
+			<thead >
 				<tr>
 					<th scope="col">ID Evento</th>
 					<th scope="col">Dispositivo</th>
@@ -106,6 +109,12 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<script type="text/javascript">
+	function limpiarCampos(){
+		window.location='/evento/lista';
+	}
+	</script>
 
 	<footer th:fragment="footer" class="footer text-center text-white fixed-bottom">
 		<p>SmartCity - UNLa Copyright © 2023</p>

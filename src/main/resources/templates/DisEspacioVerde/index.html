@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Menú de Espacios verdes</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+	<style>
+		.btn-custom {
+			background-color: #8B0000;
+			border-color: #8B0000;
+			color: #fff;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+		<a class="navbar-brand" href="/loginsuccess">
+			<img src="/images/logo.png" width="75" height="75" alt="">
+		</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="dispositivosDropdown" role="button"
+					data-bs-toggle="dropdown" aria-expanded="false">
+					Dispositivos
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="dispositivosDropdown">
+					<li><a class="dropdown-item" href="http://localhost:8080/espacioverde/listaverde">Dispositivos
+							Espacio Verde</a></li>
+					<li><a class="dropdown-item"
+							href="http://localhost:8080/estacionamientos/listaDispositivos">Dispositivos
+							Estacionamiento</a></li>
+					<li><a class="dropdown-item" href="http://localhost:8080/banio/lista">Dispositivos Baño</a></li>
+					<li><a class="dropdown-item"
+							href="http://localhost:8080/lucesautomaticas/listaLucesAuto">Dispositivos Luces
+							Automáticas</a></li>
+
+				</ul>
+			<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+					data-toggle="dropdown" href="#" id="navbarDropdownBlog">Sesion</a>
+				<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+					<form sec:authorize="authenticated" th:action="@{/logout}" method="post">
+						<input class="dropdown-item" style="cursor: pointer" type="submit" value="Cerrar sesión" />
+					</form>
+
+				</div>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="http://localhost:8080/evento/lista">Eventos</a>
+			</li>
+			</li>
+		</ul>
+
+	</nav>
+
+	<div class="container">
+
+		<div class="d-grid gap-3 col-6 mx-auto mt-5">
+			<a href="http://localhost:8080/espacioverde/crear" class="btn btn-danger">Crear Sensor</a>
+			<a href="http://localhost:8080/espacioverde/listaverde" class="btn btn-danger">Gestion de espacio verde</a>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</html>

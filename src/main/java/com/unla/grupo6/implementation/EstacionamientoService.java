@@ -61,9 +61,11 @@ public class EstacionamientoService implements IEstacionamientoService {
 
 		// si la cantidad de dispositivos cargados son menores al limite, se carga el
 		// dispositivo
-		if (listaDisEstacionamientosFiltrada.size() < limiteDeCarga)
+		
+		if (listaDisEstacionamientosFiltrada.size() < limiteDeCarga) {
 			estacionamientoRepository.save(objDisEstacionamiento);
-
+		}
+		
 		return null;
 	}
 
@@ -85,43 +87,41 @@ public class EstacionamientoService implements IEstacionamientoService {
 	@Override
 	public void actualizarDisponibilidadEstacionamientos() {
 
-		List<DisEstacionamiento> listaDisEstacionamientoEnFuncionamiento = estacionamientoRepository
-				.findByEnFuncionamiento(true);
-		DisEstacionamiento dispositivoAactualizar;
-		double cambioDeDisponibilidad;
-		int idDispositivoAmodificar;
-		int cantDispositivosEnFuncionamiento = listaDisEstacionamientoEnFuncionamiento.size();
-
-		for (int i = 0; i < 20; i++) {
-
-			cambioDeDisponibilidad = Math.random() * 100;
-			idDispositivoAmodificar = (int) (Math.random() * (0 + (cantDispositivosEnFuncionamiento - 1)));
-			dispositivoAactualizar = listaDisEstacionamientoEnFuncionamiento.get(idDispositivoAmodificar);
-
-			if (cambioDeDisponibilidad > 50)
-				dispositivoAactualizar.setOcupado(!dispositivoAactualizar.isOcupado());
-
-			estacionamientoRepository.save(dispositivoAactualizar);
+		List<DisEstacionamiento> listaDisEstacionamientoEnFuncionamiento = estacionamientoRepository.findByEnFuncionamiento(true);
+		double aleatorioCambioDeDisponibilidad;
+		
+		for(DisEstacionamiento disEstacionamiento : listaDisEstacionamientoEnFuncionamiento) {
+			
+			aleatorioCambioDeDisponibilidad = Math.random() * 100;
+			
+			if (aleatorioCambioDeDisponibilidad < 50) {
+				disEstacionamiento.setOcupado(!disEstacionamiento.isOcupado());
+				estacionamientoRepository.save(disEstacionamiento);
+			}
+			
 		}
 
 	}
 
 	private int establecerLimiteDeCarga(String sector, int tipoEstacionamiento) {
 
-		int limiteCarga = 20;
+		int limiteCarga = 30;
+		
+		if (sector.compareTo("Buffet") == 0 || sector.compareTo("29 de Septiembre") == 0 ) {
 
-		if (sector == "Buffet" || sector == "29 de Septiembre") {
-
-			limiteCarga = 50;
+			limiteCarga = 14;
 
 			if (tipoEstacionamiento == 2)
 				limiteCarga = 10;
 
-		} else if (tipoEstacionamiento == 2) {
+		} else if (sector.compareTo("Pablo Nogues") == 0  || sector.compareTo("José Malba") == 0) {
 
-			limiteCarga = 5;
+			limiteCarga = 12;
+
+			if (tipoEstacionamiento == 2)
+				limiteCarga = 5;
 		}
-
+		
 		return limiteCarga;
 	}
 

@@ -17,7 +17,7 @@ public interface IEventoRepository extends JpaRepository<Evento, Long>{
 
 	List<Evento> findByfechaHora(LocalDateTime fechaHora);
 	
-	@Query("SELECT e FROM Evento e WHERE e.dispositivo.nombre LIKE %?1%")
+	@Query("SELECT e FROM Evento e WHERE CONCAT(e.dispositivo.nombre, ' ', e.dispositivo.idDispositivo) LIKE %?1%")
 	public List<Evento> getAll(String palabraClave);
 
 	List<Evento> findByfechaHoraBetween(LocalDateTime fechaHoraDesde, LocalDateTime fechaHoraHasta);
