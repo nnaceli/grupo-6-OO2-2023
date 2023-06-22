@@ -2,6 +2,7 @@ package com.unla.grupo6.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,8 @@ public class DisEstacionamientoController {
 	public String index() {
 		return ViewRouterHelper.ESTACIONAMIENTO_INDEX;
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/listaDispositivos")
 	public String listarDisEstacionamiento(Model modelo) {
 		modelo.addAttribute("estacionamientos", estacionamientoService.getAll());
@@ -112,26 +114,30 @@ public class DisEstacionamientoController {
 				estacionamientoService.getPorSectorYfuncionamientoYtipo("Pablo Nogues", true, 2));
 		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS;
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/agregar")
 	public String mostrarFormularioDeAgregarDispositivo(Model modelo) {
 		DisEstacionamiento disEstacionamiento = new DisEstacionamiento();
 		modelo.addAttribute("estacionamiento", disEstacionamiento);
 		return ViewRouterHelper.ESTACIONAMIENTO_AGREGAR;
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/guardar")
 	public String agregar(@ModelAttribute("estacionamiento") DisEstacionamiento nuevoEstacionamiento) {
 		estacionamientoService.insert(nuevoEstacionamiento);
 		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/editar/{idDispositivo}")
 	public String mostrarFormularioDeEditar(@PathVariable Long idDispositivo, Model modelo) {
 		modelo.addAttribute("estacionamiento", estacionamientoService.obtenerEstacionamiento(idDispositivo));
 		return ViewRouterHelper.ESTACIONAMIENTO_MODIFICAR;
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/{idDispositivo}")
 	public String actualizarEstacionamiento(@PathVariable Long idDispositivo,
 			@ModelAttribute("estacionamiento") DisEstacionamiento disEstacionamiento, Model model) {
@@ -146,7 +152,8 @@ public class DisEstacionamientoController {
 
 		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/baja/{idDispositivo}")
 	public String darDeBajaEstacionamiento(@PathVariable Long idDispositivo) {
 		DisEstacionamiento disEstacionamiento = estacionamientoService.obtenerEstacionamiento(idDispositivo);
@@ -154,7 +161,8 @@ public class DisEstacionamientoController {
 		estacionamientoService.update(disEstacionamiento);
 		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/alta/{idDispositivo}")
 	public String darDeAltaEstacionamiento(@PathVariable Long idDispositivo) {
 		DisEstacionamiento disEstacionamiento = estacionamientoService.obtenerEstacionamiento(idDispositivo);
