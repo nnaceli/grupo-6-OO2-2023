@@ -1,17 +1,13 @@
 package com.unla.grupo6.controllers;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.unla.grupo6.helpers.ViewRouterHelper;
 
 @Controller
-@RequestMapping("/")
 public class UserController {
 
 	@GetMapping("/login")
@@ -23,23 +19,23 @@ public class UserController {
 		return ViewRouterHelper.USER_LOGIN;
 	}
 
-	@GetMapping("/logout")
-	public String logout(Model model) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-		if (authentication != null) {
-			// Limpiar la sesión y invalidar la autenticación
-			SecurityContextHolder.clearContext();
-
-			// Aquí puedes realizar otras tareas de limpieza o acciones personalizadas según
-			// tus necesidades
-		}
-
-		return ViewRouterHelper.USER_LOGOUT;
-	}
+//	@GetMapping("/logout")
+//	public String logout(Model model) {
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//
+//		if (authentication != null) {
+//			// Limpiar la sesión y invalidar la autenticación
+//			SecurityContextHolder.clearContext();
+//
+//			// Aquí puedes realizar otras tareas de limpieza o acciones personalizadas según
+//			// tus necesidades
+//		}
+//
+//		return ViewRouterHelper.USER_LOGOUT;
+//	}
 
 	@GetMapping("/loginsuccess")
-	public String redirect() {
+	public String loginsuccess() {
 		return ViewRouterHelper.HOME_INDEX;
 	}
 

@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="jumbotron">
 			<h1 class="display-5">Login</h1>
-			<form th:action="@{/loginprocess}" th:object:"${logout}" method="post">
+			<form th:action="@{/loginsuccess}" method="post">
 				<input type="text" name="username" id="username" placeholder="Username" />
 				<input type="password" name="password" id="password" placeholder="Password" />
 				<input type="submit" />
@@ -22,8 +22,8 @@
 			</div>
 		</div>
 	</div>
-	
-	<script src="/vendor/jquery/jquery.min.js"></script>
+
+	 <script src="/vendor/jquery/jquery.min.js"></script>
 	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 

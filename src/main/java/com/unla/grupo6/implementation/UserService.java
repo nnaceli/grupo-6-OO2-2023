@@ -26,7 +26,7 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	@Qualifier("userRepository")
 	private IUserRepository userRepository;
-
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		com.unla.grupo6.entities.User user = userRepository.findByUsernameAndFetchUserRolesEagerly(username);
