@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -99,7 +100,8 @@ public class DisBañoController {
 
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 	}
-
+	
+	
 	@GetMapping("lista/edit/{idDispositivo}")
 	public String editar(@PathVariable("idDispositivo") Long idDispositivo, Model model, RedirectAttributes attribute) {
 
@@ -113,7 +115,8 @@ public class DisBañoController {
 
 		return ViewRouterHelper.BANIO_CREAR;
 	}
-
+	
+	
 	@GetMapping("lista/delete/{idDispositivo}")
 	public String eliminar(@PathVariable("idDispositivo") Long idDispositivo, RedirectAttributes attribute) {
 		DisBaño disBaño = bañoService.buscar(idDispositivo);
@@ -148,8 +151,6 @@ public class DisBañoController {
 		}
 		
 		
-		
-
 		if (disBaño.isEnFuncionamiento() == false) {
 			attribute.addFlashAttribute("error", "ATENCION: La camara seleccionada no se puede ver porque no funciona");
 			return ViewRouterHelper.BANIO_REDIRECT_LISTA;

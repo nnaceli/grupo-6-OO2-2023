@@ -18,6 +18,8 @@ public interface IEstacionamientoRepository extends JpaRepository<DisEstacionami
 	
 	public abstract List<DisEstacionamiento> findBySectorAndEnFuncionamiento(String sector, boolean enFuncionamiento);
 	
+	public abstract List<DisEstacionamiento> findBySectorAndTipoEstacionamiento(String sector, int tipoEstacionamiento);
+	
 	public abstract List<DisEstacionamiento> findBySectorAndEnFuncionamientoAndTipoEstacionamiento(String sector, boolean enFuncionamiento, int tipoPlaza);
 	/*
 	@Query("SELECT d FROM DisEstacionamiento d where d.sector = (:sector) AND d.ocupado = false")

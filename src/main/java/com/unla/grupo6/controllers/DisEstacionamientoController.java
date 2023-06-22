@@ -122,7 +122,7 @@ public class DisEstacionamientoController {
 
 	@PostMapping("/guardar")
 	public String agregar(@ModelAttribute("estacionamiento") DisEstacionamiento nuevoEstacionamiento) {
-		estacionamientoService.insertOrUpdate(nuevoEstacionamiento);
+		estacionamientoService.update(nuevoEstacionamiento);
 		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
 	}
 
@@ -142,7 +142,7 @@ public class DisEstacionamientoController {
 		disEstacionamientoExistente.setOcupado(disEstacionamiento.isOcupado());
 		disEstacionamientoExistente.setTipoEstacionamiento(disEstacionamiento.getTipoEstacionamiento());
 
-		estacionamientoService.insertOrUpdate(disEstacionamientoExistente);
+		estacionamientoService.update(disEstacionamientoExistente);
 
 		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
 	}
@@ -151,7 +151,7 @@ public class DisEstacionamientoController {
 	public String darDeBajaEstacionamiento(@PathVariable Long idDispositivo) {
 		DisEstacionamiento disEstacionamiento = estacionamientoService.obtenerEstacionamiento(idDispositivo);
 		disEstacionamiento.setEnFuncionamiento(false);
-		estacionamientoService.insertOrUpdate(disEstacionamiento);
+		estacionamientoService.update(disEstacionamiento);
 		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
 	}
 
@@ -159,7 +159,7 @@ public class DisEstacionamientoController {
 	public String darDeAltaEstacionamiento(@PathVariable Long idDispositivo) {
 		DisEstacionamiento disEstacionamiento = estacionamientoService.obtenerEstacionamiento(idDispositivo);
 		disEstacionamiento.setEnFuncionamiento(true);
-		estacionamientoService.insertOrUpdate(disEstacionamiento);
+		estacionamientoService.insert(disEstacionamiento);
 		return ViewRouterHelper.ESTACIONAMIENTO_REDIRECT_LISTA;
 	}
 
