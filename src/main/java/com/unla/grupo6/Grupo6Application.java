@@ -43,7 +43,14 @@ public class Grupo6Application implements CommandLineRunner {
 		for (DisEstacionamiento estacionamiento : Estacionamientos)
 			System.out.println(estacionamiento.toString());
 		
+<<<<<<< HEAD
 		//cargarDispositivosEstacionamiento();
+=======
+		if(servicioEstacionamiento.getAll().size() == 0) {
+			cargarDispositivosEstacionamiento();
+		}
+			
+>>>>>>> dcc275f (carga automatica y limite de carga de dispositivos estacionamiento terminado)
 		
 //		List<Evento> listEvento = servicioEvento.findByNombreDispositivo("Luz Automatica Hernandez");
 //		for (Evento evento : listEvento)
@@ -55,6 +62,7 @@ public class Grupo6Application implements CommandLineRunner {
 //		servicioEstacionamiento.actualizarDisponibilidadEstacionamientos();
 //	}
 	
+<<<<<<< HEAD
 //	private void cargarDispositivosEstacionamiento() {
 //		
 //		String sectorAcargar="";
@@ -77,4 +85,29 @@ public class Grupo6Application implements CommandLineRunner {
 //			}
 //		}
 //	} 
+=======
+	private void cargarDispositivosEstacionamiento() {
+		
+		String sectorAcargar="";
+		DisEstacionamiento dispositivoAgregado=null;
+		//carga de dispositivos para estacionamientos
+		for(int i=0; i<4; i++) {
+			
+			switch(i) {
+				case 0: sectorAcargar="Buffet"; break;
+				case 1: sectorAcargar="29 de Septiembre"; break;
+				case 2: sectorAcargar="Pablo Nogues"; break;
+				case 3: sectorAcargar="José Malba"; break;
+			}
+			
+			for(int j=0; j<10; j++) {
+				dispositivoAgregado = servicioEstacionamiento.insert(new DisEstacionamiento("DisEstacionamiento", true, false, true, sectorAcargar, 1));
+			}
+			
+			for(int z=0; z<4; z++) {
+				servicioEstacionamiento.insert(new DisEstacionamiento("DisEstacionamiento", true, false, true, sectorAcargar, 2));
+			}
+		}
+	} 
+>>>>>>> dcc275f (carga automatica y limite de carga de dispositivos estacionamiento terminado)
 }
