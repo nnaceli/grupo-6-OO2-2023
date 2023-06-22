@@ -45,6 +45,8 @@ public class DisEstacionamientoController {
 	@GetMapping("/septiembre/comunes")
 	public String plazasSectorSeptiembreNormales(Model modelo) {
 		modelo.addAttribute("titulo", "Disponibilidad de plazas comunes");
+		modelo.addAttribute("sectorActual", "comunes");
+		modelo.addAttribute("estiloDisponibilidad", "btn btn-danger btn-sm");
 		modelo.addAttribute("estacionamientos",
 				estacionamientoService.getPorSectorYfuncionamientoYtipo("29 de septiembre", true, 1));
 		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_COMUNES;

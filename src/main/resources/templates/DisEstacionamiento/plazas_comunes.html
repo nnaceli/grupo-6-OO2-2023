@@ -6,6 +6,8 @@
 	<title>Smart UNLa - Estacionamientos</title>
 	<link rel="stylesheet"
 	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	
+	
 </head>
 
 <body>
@@ -73,12 +75,15 @@
 			</thead>
 			<tbody>
 				<tr class="table" th:each="estacionamiento:${estacionamientos}" style="background-color: #FAD9DD; color: black;">
+					
 					<th scope="row" th:text="${estacionamiento.idDispositivo}"></th>
 					<td scope="row" th:text="${estacionamiento.sector}"></td>
 					<td scope="row" th:text="${estacionamiento.ocupado} ? 'Disponible' : 'Ocupado'"></td>
 				</tr>
 			</tbody>
 		</table>
+		
+		<a class="center btn btn-dark btn-sm" th:href="${sectorActual}" th:text="'Actualizar'" title="Actualizar"></a>
 	</div>
 	
 	<script src="/vendor/jquery/jquery.min.js"></script>
