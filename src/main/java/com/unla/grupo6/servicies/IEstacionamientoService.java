@@ -18,7 +18,9 @@ public interface IEstacionamientoService {
 	
 	public List<DisEstacionamiento> getPorSectorYfuncionamientoYtipo(String sector, boolean enFuncionamiento, int tipo);
 	
-	public DisEstacionamiento insertOrUpdate(DisEstacionamiento objDisEstacionamiento);
+	public DisEstacionamiento insert(DisEstacionamiento objDisEstacionamiento);
+	
+	public DisEstacionamiento update(DisEstacionamiento objDisEstacionamiento);
 	
 	public DisEstacionamiento obtenerEstacionamiento(Long id);
 	

@@ -69,11 +69,11 @@ public class Grupo6Application implements CommandLineRunner {
 			}
 			
 			for(int j=0; j<10; j++) {
-				servicioEstacionamiento.insertOrUpdate(new DisEstacionamiento("DisEstacionamiento", true, false, true, sectorAcargar, 1));
+				servicioEstacionamiento.insert(new DisEstacionamiento("DisEstacionamiento", true, false, true, sectorAcargar, 1));
 			}
 			
 			for(int z=0; z<3; z++) {
-				servicioEstacionamiento.insertOrUpdate(new DisEstacionamiento("DisEstacionamiento", true, false, true, sectorAcargar, 2));
+				servicioEstacionamiento.insert(new DisEstacionamiento("DisEstacionamiento", true, false, true, sectorAcargar, 2));
 			}
 		}
 	} 
