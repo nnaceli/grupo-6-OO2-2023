@@ -47,33 +47,5 @@ public class UserService implements UserDetailsService {
 		return new ArrayList<>(grantedAuthorities);
 	}
 
-//	private Usuario buildUser (com.unla.grupo6.entities.Usuario user , List<GrantedAuthority> grantedAuthorities) {
-//		return new Usuario (user.getUsuario(),  user.getContraseña(), user.isActivado(), true, true, true, grantedAuthorities); //error aca grantedAuthoritys
-//	}
-//
-//	
-//	private Object grantedAuthorities() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	private List<GrantedAuthority> buildGrantedAuthorities(Set<UsuarioAdministrador> usuarioAdministradores){
-//		Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>(); //error en el hashset
-//		for(UsuarioAdministrador usuarioAdmin : usuarioAdministradores) {
-//			grantedAuthorities.add(new SimpleGrantedAuthority(usuarioAdmin.getRole()));
-//		}
-//		
-//		return new ArrayList<GrantedAuthority> (grantedAuthorities);
-//	}
-//	
-//	
-//	private UserDetails buildUser(Usuario usuario, Object buildGrantedAuthorities) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	private Object buildGrantedAuthorities(Object userRoles) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
 }

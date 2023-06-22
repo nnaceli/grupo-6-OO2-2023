@@ -19,20 +19,10 @@ public class UserController {
 		return ViewRouterHelper.USER_LOGIN;
 	}
 
-//	@GetMapping("/logout")
-//	public String logout(Model model) {
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//
-//		if (authentication != null) {
-//			// Limpiar la sesión y invalidar la autenticación
-//			SecurityContextHolder.clearContext();
-//
-//			// Aquí puedes realizar otras tareas de limpieza o acciones personalizadas según
-//			// tus necesidades
-//		}
-//
-//		return ViewRouterHelper.USER_LOGOUT;
-//	}
+	@GetMapping("/logout")
+	public String logout(Model model) {
+		return ViewRouterHelper.USER_LOGOUT;
+	}
 
 	@GetMapping("/loginsuccess")
 	public String loginsuccess() {
