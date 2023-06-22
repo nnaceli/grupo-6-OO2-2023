@@ -7,6 +7,43 @@
 </head>
 
 <body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+		<a class="navbar-brand" href="/loginsuccess">
+			<img src="/images/logo.png" width="75" height="75" alt="">
+		</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="dispositivosDropdown" role="button"
+					data-bs-toggle="dropdown" aria-expanded="false">
+					Dispositivos
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="dispositivosDropdown">
+					<li><a class="dropdown-item" href="http://localhost:8080/espacioverde/listaverde">Dispositivos
+							Espacio Verde</a></li>
+					<li><a class="dropdown-item"
+							href="http://localhost:8080/estacionamientos/listaDispositivos">Dispositivos
+							Estacionamiento</a></li>
+					<li><a class="dropdown-item" href="http://localhost:8080/banio/lista">Dispositivos Baño</a></li>
+					<li><a class="dropdown-item"
+							href="http://localhost:8080/lucesautomaticas/listaLucesAuto">Dispositivos Luces
+							Automáticas</a></li>
+
+				</ul>
+			<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+					data-toggle="dropdown" href="#" id="navbarDropdownBlog">Sesion</a>
+				<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+					<form sec:authorize="authenticated" th:action="@{/logout}" method="post">
+						<input class="dropdown-item" style="cursor: pointer" type="submit" value="Cerrar sesión" />
+					</form>
+
+				</div>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="http://localhost:8080/evento/lista">Eventos</a>
+			</li>
+			</li>
+		</ul>
+
+	</nav>
 	<h1>Gestion de dispositivos para estacionamientos</h1>
 	<a th:href="@{/estacionamientos/agregar}">Agregar dispositivo</a>
 	<table>

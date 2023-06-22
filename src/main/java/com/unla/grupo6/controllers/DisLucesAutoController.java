@@ -5,6 +5,7 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,6 +46,7 @@ public class DisLucesAutoController {
 		return ViewRouterHelper.LUCES_INDEX;
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/agregarLuces")
 	public String agregar(Model model) {
 		DisLucesAuto disLucesAuto = new DisLucesAuto();
@@ -61,6 +63,7 @@ public class DisLucesAutoController {
 		return ViewRouterHelper.LUCES_AGREGADAS;
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/save")
 	public String guardar(@Valid @ModelAttribute DisLucesAuto disLucesAuto, BindingResult result, Model model,
 			RedirectAttributes attribute) {
@@ -78,6 +81,7 @@ public class DisLucesAutoController {
 		return ViewRouterHelper.LUCES_REDIRECT_AGREGADAS;
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/listaLucesAuto/modificarLuces/{idDispositivo}")
 	public String modificar(@PathVariable("idDispositivo") Long idDispositivo, Model model) {
 		DisLucesAuto disLucesAuto = lucesService.buscar(idDispositivo);
@@ -87,7 +91,8 @@ public class DisLucesAutoController {
 
 		return ViewRouterHelper.LUCES_AGREGAR;
 	}
-
+	
+	@PreAuthorize("hasRole('ROLE_AUDITOR')")
 	@GetMapping("listaLucesAuto/verAula/{idDispositivo}")
 	public String verCamara(@PathVariable("idDispositivo") Long idDispositivo, Model model,
 			RedirectAttributes attribute) {
@@ -113,6 +118,7 @@ public class DisLucesAutoController {
 		return ViewRouterHelper.LUCES_VER_AULA;
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("listaLucesAuto/eliminarLuces/{idDispositivo}")
 	public String eliminar(@PathVariable("idDispositivo") Long idDispositivo, RedirectAttributes attribute) {
 		DisLucesAuto disLucesAuto = lucesService.buscar(idDispositivo);

@@ -12,11 +12,15 @@ public interface IEstacionamientoService {
 	
 	public List<DisEstacionamiento> getPorSector(String sector);
 	
+	public List<DisEstacionamiento> getPorSectorYtipo(String sector, int tipo);
+	
 	public List<DisEstacionamiento> getPorSectorYfuncionamiento(String sector, boolean enFuncionamiento);
 	
 	public List<DisEstacionamiento> getPorSectorYfuncionamientoYtipo(String sector, boolean enFuncionamiento, int tipo);
 	
-	public DisEstacionamiento insertOrUpdate(DisEstacionamiento objDisEstacionamiento);
+	public DisEstacionamiento insert(DisEstacionamiento objDisEstacionamiento);
+	
+	public DisEstacionamiento update(DisEstacionamiento objDisEstacionamiento);
 	
 	public DisEstacionamiento obtenerEstacionamiento(Long id);
 	

@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -99,7 +100,8 @@ public class DisBañoController {
 
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 	}
-
+	
+	
 	@GetMapping("lista/edit/{idDispositivo}")
 	public String editar(@PathVariable("idDispositivo") Long idDispositivo, Model model, RedirectAttributes attribute) {
 
@@ -113,7 +115,8 @@ public class DisBañoController {
 
 		return ViewRouterHelper.BANIO_CREAR;
 	}
-
+	
+	
 	@GetMapping("lista/delete/{idDispositivo}")
 	public String eliminar(@PathVariable("idDispositivo") Long idDispositivo, RedirectAttributes attribute) {
 		DisBaño disBaño = bañoService.buscar(idDispositivo);
@@ -133,15 +136,21 @@ public class DisBañoController {
 
 		Random random = new Random();
 		boolean randomValue = random.nextBoolean();
-		disBaño.setHigienizandose(randomValue);
-		if (randomValue) {
-			disBaño.setHabilitado(false);
-			bañoService.save(disBaño);
-		} else {
-			disBaño.setHabilitado(true);
-			bañoService.save(disBaño);
+		
+		if (disBaño.isHigienizandose() != randomValue) {
+		    // Establecer el nuevo valor de higienización
+		    disBaño.setHigienizandose(randomValue);
+		    
+		    // Actualizar el estado del baño y guardar en la base de datos
+		    disBaño.setHabilitado(!randomValue);
+		    bañoService.save(disBaño);
+		    
+		    // Crear un nuevo evento con la fecha y nombre del baño
+		    Evento nuevoEvento = new Evento(disBaño, LocalDateTime.now(), disBaño.getNombre());
+		    eventoService.saveEvento(nuevoEvento);
 		}
-
+		
+		
 		if (disBaño.isEnFuncionamiento() == false) {
 			attribute.addFlashAttribute("error", "ATENCION: La camara seleccionada no se puede ver porque no funciona");
 			return ViewRouterHelper.BANIO_REDIRECT_LISTA;
@@ -150,9 +159,8 @@ public class DisBañoController {
 		model.addAttribute("titulo", "Ver Camara");
 		model.addAttribute("banio", disBaño);
 
-		Evento nuevoEvento = new Evento(disBaño, LocalDateTime.now(), disBaño.getNombre());
-		eventoService.saveEvento(nuevoEvento);
-
+		
+		
 		return ViewRouterHelper.BANIO_VER_CAMARA;
 	}
 

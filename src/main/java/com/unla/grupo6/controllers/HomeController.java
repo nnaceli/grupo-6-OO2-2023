@@ -8,9 +8,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
 public class HomeController {
-	@GetMapping("/")
+	
+	@GetMapping("/index")
 	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouterHelper.HOME_INDEX);
 		return mAV;

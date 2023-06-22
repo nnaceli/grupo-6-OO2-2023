@@ -48,6 +48,4 @@ public class SecurityConfiguration {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers("/images/", "/js/", "/webjars/*");
     }/
-}
-
-Enviar mensaje a ꜱᴀʟᴀ ᴅᴇ ᴇꜱᴛᴜᴅɪᴏ 1-🎓*/
+}*/

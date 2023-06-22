@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Baños</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 	<style>
 		.footer {
@@ -43,9 +44,19 @@
 							Automáticas</a></li>
 
 				</ul>
-			<li class="nav-item">
-				<a class="nav-link" href="/logout">Cerrar Sesion</a>
-			</li>
+				<li class="nav-item dropdown"><a aria-expanded="false"
+					aria-haspopup="true" class="nav-link dropdown-toggle"
+					data-toggle="dropdown" href="#" id="navbarDropdownBlog">Sesion</a>
+					<div aria-labelledby="navbarDropdownBlog"
+						class="dropdown-menu dropdown-menu-right">
+						<form sec:authorize="authenticated" th:action="@{/logout}"
+							method="post">
+							<input class="dropdown-item" style="cursor: pointer"
+								type="submit" value="Cerrar sesión"/>
+						</form>
+
+					</div>
+				</li>
 			</li>
 		</ul>
 
@@ -101,6 +112,8 @@
 		<a class=a-footer href='http://www.unla.edu.ar'>Visitar UNLa</a>
 	</footer>
 
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
