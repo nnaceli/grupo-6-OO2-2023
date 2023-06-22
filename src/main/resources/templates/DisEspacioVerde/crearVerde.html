@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:fragment="head">
+	<meta charset="UTF-8" />
+	<title>FORMULARIO CREAR NUEVO SENSOR</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+
+		<a class="navbar-brand" href="/loginsuccess">
+			<img src="/images/logo.png" width="75" height="75" alt="">
+		</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="dispositivosDropdown" role="button"
+					data-bs-toggle="dropdown" aria-expanded="false">
+					Dispositivos
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="dispositivosDropdown">
+					<li><a class="dropdown-item" href="http://localhost:8080/espacioverde/listaverde">Dispositivos
+							Espacio Verde</a></li>
+					<li><a class="dropdown-item"
+							href="http://localhost:8080/estacionamientos/listaDispositivos">Dispositivos
+							Estacionamiento</a></li>
+					<li><a class="dropdown-item" href="http://localhost:8080/banio/lista">Dispositivos Baño</a></li>
+					<li><a class="dropdown-item"
+							href="http://localhost:8080/lucesautomaticas/listaLucesAuto">Dispositivos Luces
+							Automáticas</a></li>
+
+				</ul>
+			<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+					data-toggle="dropdown" href="#" id="navbarDropdownBlog">Sesion</a>
+				<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+					<form sec:authorize="authenticated" th:action="@{/logout}" method="post">
+						<input class="dropdown-item" style="cursor: pointer" type="submit" value="Cerrar sesión" />
+					</form>
+
+				</div>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="http://localhost:8080/evento/lista">Eventos</a>
+			</li>
+			</li>
+		</ul>
+
+	</nav>
+
+	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+		<form th:action="@{/logout}" method="post" sec:authorize="authenticated">
+			<input class="dropdown-item" type="submit" style="cursor: pointer" value="Cerrar sesión" />
+		</form>
+	</div>
+	</li>
+	    </ul>
+	</nav>
+
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<form th:action="@{/espacioverde/save}" th:object="${espacioverde}" method="post">
+					<div class="form-group row">
+						<input type="hidden" th:field="*{idDispositivo}">
+						<label class="col-md-2" for="nombre">Nombre:</label>
+						<input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6"
+							id="humedad" placeholder="nombre del dispositivo">
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="nombre">Humedad:</label>
+						<input type="text" th:field="*{humedad}" class="form-control form-control-sm col-md-6"
+							id="humedad" placeholder="Humedad del dispositivo">
+
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="sector">Sector:</label>
+						<div class="col-md-6">
+							<select name="sector" th:field="*{sector}" class="form-control form-control-sm" id="sector">
+								<option value="Plaza Abuelas">Plaza Abuelas</option>
+								<option value="Plaza Malvinas">Plaza Malvinas</option>
+								<option value="Plaza del 10">Plaza del 10</option>
+							</select> 
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('sector')}"
+								th:errors="*{sector}"></small>
+
+						</div>
+
+						</div>
+
+						<div class="form-group row">
+
+							<label class="col-md-2" for="booleano">¿Funciona?</label>
+							<div class="col-md-6">
+								<div class="form-check">
+									<input type="radio" th:field="*{enFuncionamiento}" class="form-check-input" id="si"
+										value="true"> <label class="form-check-label" for="si">Sí</label>
+								</div>
+								<div class="form-check">
+									<input type="radio" th:field="*{enFuncionamiento}" class="form-check-input" id="no"
+										value="false"> <label class="form-check-label" for="no">No</label>
+								</div>
+								<small class="form-text text-danger" th:if="${#fields.hasErrors('enFuncionamiento')}"
+									th:errors="*{enFuncionamiento}"></small>
+							</div>
+						</div>
+
+						<div class="card-footer bg-dark">
+							<input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
+						</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</html>

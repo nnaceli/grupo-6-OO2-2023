@@ -2,7 +2,6 @@ package com.unla.grupo6.implementation;
 
 import java.util.List;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -14,12 +13,12 @@ import com.unla.grupo6.servicies.IEspacioVerdeService;
 
 @Service("espacioVerdeService")
 public class EspacioVerdeService implements IEspacioVerdeService {
-	
+
 	@Autowired
 	@Qualifier("espacioVerdeRepository")
 	private IEspacioVerdeRepository espacioVerdeRepository;
-	
-	private ModelMapper modelMapper = new ModelMapper();
+
+	//private ModelMapper modelMapper = new ModelMapper();
 
 	@Override
 	public List<DisEspacioVerde> getAll() {
@@ -32,9 +31,30 @@ public class EspacioVerdeService implements IEspacioVerdeService {
 		return null;
 	}
 
+
 	@Override
-	public boolean remove(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public void saveVerde(DisEspacioVerde disEspacioVerde) {
+		espacioVerdeRepository.save(disEspacioVerde);
+
 	}
+
+	@Override
+	public DisEspacioVerde buscarVerde(long id) {
+		return espacioVerdeRepository.findById(id).get();
+	}
+
+	@Override
+	public void eliminarVerde(long id) {
+		espacioVerdeRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public DisEspacioVerde actualizarDisEspacioVerde(DisEspacioVerde disEspacioVerde) {
+		return espacioVerdeRepository.save(disEspacioVerde);
+	}
+
+
+
+	
 }

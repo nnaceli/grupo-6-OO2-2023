@@ -1,8 +1,12 @@
 package com.unla.grupo6.models;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Size;
 
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Size;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class DisEspacioVerdeModel extends DispositivoModel {
 	
 	private boolean bajaHumedad;
@@ -12,20 +16,22 @@ public class DisEspacioVerdeModel extends DispositivoModel {
 	
 	@Size(min=5, max=20)
 	private String sector;
-
-	//construcotr vacio
-	public DisEspacioVerdeModel() {
-		super();
-	}
-
+	
 	//constructor
-	public DisEspacioVerdeModel(int id, String nombre, String descripcion, boolean enFuncionamiento,
+	public DisEspacioVerdeModel(int id, String nombre, boolean enFuncionamiento,
 			boolean bajaHumedad, @Max(30) float humedad, @Size(min = 5, max = 20) String sector) {
-		super(id, nombre, descripcion, enFuncionamiento);
-		this.bajaHumedad = false;
+		super(id, nombre, enFuncionamiento);
+		this.bajaHumedad = bajaHumedad;
 		this.humedad = humedad;
 		this.sector = sector;
 	}
+
+	
+	//constructor vacio
+	
+
+
+
 
 	public boolean isBajaHumedad() {
 		return bajaHumedad;
@@ -64,19 +70,6 @@ public class DisEspacioVerdeModel extends DispositivoModel {
 		
 		return riego;
 	}
-	
-//	public int verificarHumedad() {
-//
-//        if(humedad < 30)
-//            encenderRiego();
-//
-//        return 1;
-//    }
-//
-//
-//    public void encenderRiego() {
-//        regar = true; 
-//    }
 	
 	
 	

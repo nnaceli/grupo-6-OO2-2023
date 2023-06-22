@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" \>
+	<title>Smart UNLa - Estacionamientos</title>
+</head>
+
+<body>
+	<h1>Dar de alta dispositivo</h1>
+	
+	<form action="#" th:action="@{guardar}" th:object="${estacionamiento}" method="post">
+		<p> Nombre: 
+			<select name="nombre" th:field="*{nombre}">
+				<option value="DisEstacionamiento">DisEstacionamiento</option>
+			</select>
+		</p>
+		<p> En funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}" /></p>
+		<p> Plaza ocupada: 
+			<select name="ocupado" th:field="*{ocupado}">
+				<option value="false">No</option>
+			</select>
+		</p>
+		<p> Sector:
+			<select name="sector" th:field="*{sector}">
+				<option value="Buffet">Buffet</option>
+				<option value="29 de Septiembre">29 de septiembre</option>
+				<option value="Pablo Nogues">Pablo Nogues</option>
+				<option value="José Malba">José Malba</option>
+			</select>
+		</p>
+		<p> Tipo de estacionameinto:
+			<select name="sector" th:field="*{tipoEstacionamiento}">
+				<option value="1">Normal</option>
+				<option value="2">Para discapacitados</option>
+			</select>
+		</p>
+		<input type="submit" />
+	</form>
+</body>
+
+</html>

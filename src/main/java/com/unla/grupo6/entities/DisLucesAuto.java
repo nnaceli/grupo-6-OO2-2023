@@ -3,12 +3,9 @@ package com.unla.grupo6.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
+
 @Table(name = "dis_luces_auto")
 public class DisLucesAuto extends Dispositivo {
 	@Column(name = "estado")
@@ -17,11 +14,14 @@ public class DisLucesAuto extends Dispositivo {
 	@Column(name = "nroAula")
 	private int nroAula;
 
-	public DisLucesAuto(int id, String nombre, String descripcion, boolean enFuncionamiento, boolean estado,
-			int nroAula) {
-		super(id, nombre, descripcion, enFuncionamiento);
+	public DisLucesAuto(String nombre, boolean enFuncionamiento, boolean baja, boolean estado, int nroAula) {
+		super(nombre, enFuncionamiento, baja);
 		this.estado = estado;
 		this.nroAula = nroAula;
+	}
+
+	public DisLucesAuto() {
+		
 	}
 
 	public boolean isEstado() {
