@@ -2,8 +2,17 @@
 <html>
 
 <head>
-	<meta charset="UTF-8" \>
-	<title>Smart UNLa - Estacionamientos</title>
+	<meta charset="UTF-8">
+	<title>Menú de Espacios verdes</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+	<style>
+		.btn-custom {
+			background-color: #8B0000;
+			border-color: #8B0000;
+			color: #fff;
+		}
+	</style>
 </head>
 
 <body>
@@ -44,37 +53,19 @@
 		</ul>
 
 	</nav>
-	<h1>Gestion de dispositivos para estacionamientos</h1>
-	<a th:href="@{/estacionamientos/agregar}">Agregar dispositivo</a>
-	<table>
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Activado</th>
-				<th>Sector</th>
-				<th>Ocupado</th>
-				<th>Tipo de plaza</th>
-				<th>ABM</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="estacionamiento : ${estacionamientos}">
-				<td><span th:text="${estacionamiento.idDispositivo}" /></td>
-				<td><span th:text="${estacionamiento.enFuncionamiento}" /></td>
-				<td><span th:text="${estacionamiento.sector}" /></td>
-				<td><span th:text="${estacionamiento.ocupado}" /></td>
-				<td><span th:text="${estacionamiento.tipoEstacionamiento}" /></td>
-				<td>
-					<a th:href="@{/estacionamientos/editar/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Modificar</a>
-					<a th:href="@{/estacionamientos/baja/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Baja</a>
-					<a th:href="@{/estacionamientos/alta/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Alta</a>
-				</td>
-				
-			</tr>
-		</tbody>
-	</table>
-	
-	
+
+	<div class="container">
+
+		<div class="d-grid gap-3 col-6 mx-auto mt-5">
+			<a href="http://localhost:8080/espacioverde/crear" class="btn btn-danger">Crear Sensor</a>
+			<a href="http://localhost:8080/espacioverde/listaverde" class="btn btn-danger">Gestion de espacio verde</a>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
 </html>
