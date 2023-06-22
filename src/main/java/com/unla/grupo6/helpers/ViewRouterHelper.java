@@ -2,8 +2,6 @@ package com.unla.grupo6.helpers;
 
 public class ViewRouterHelper {
 	/**** Views ****/
-	// HOME
-		public final static String HOME_INDEX = "home/index";
 
 	// DISPOSITIVO
 	public final static String DISPOSITIVO_INDEX = "Dispositivo/index";
@@ -66,6 +64,7 @@ public class ViewRouterHelper {
 	public final static String USER_LOGIN = "User/login";
 	public final static String USER_LOGOUT = "User/logout";
 
-	
+	// HOME
+	public final static String HOME_INDEX = "home/index";
 
 }
