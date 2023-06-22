@@ -104,7 +104,7 @@ public class DisBañoController {
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 	}
 	
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("lista/edit/{idDispositivo}")
 	public String editar(@PathVariable("idDispositivo") Long idDispositivo, Model model, RedirectAttributes attribute) {
 
@@ -117,7 +117,7 @@ public class DisBañoController {
 		return ViewRouterHelper.BANIO_CREAR;
 	}
 	
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("lista/delete/{idDispositivo}")
 	public String eliminar(@PathVariable("idDispositivo") Long idDispositivo, RedirectAttributes attribute) {
 		DisBaño disBaño = bañoService.buscar(idDispositivo);
