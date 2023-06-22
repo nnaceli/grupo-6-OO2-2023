@@ -43,6 +43,8 @@ public class Grupo6Application implements CommandLineRunner {
 		for (DisEstacionamiento estacionamiento : Estacionamientos)
 			System.out.println(estacionamiento.toString());
 		
+		cargarDispositivosEstacionamiento();
+		
 //		List<Evento> listEvento = servicioEvento.findByNombreDispositivo("Luz Automatica Hernandez");
 //		for (Evento evento : listEvento)
 //			System.out.println(evento.toString());
@@ -52,4 +54,27 @@ public class Grupo6Application implements CommandLineRunner {
 //	public void generarEventoDispositivoEstacionamiento() {
 //		servicioEstacionamiento.actualizarDisponibilidadEstacionamientos();
 //	}
+	
+	private void cargarDispositivosEstacionamiento() {
+		
+		String sectorAcargar="";
+		//carga de dispositivos para estacionamientos
+		for(int i=0; i<4; i++) {
+			
+			switch(i) {
+				case 0: sectorAcargar="Buffet"; break;
+				case 1: sectorAcargar="29 de Septiembre"; break;
+				case 2: sectorAcargar="Pablo Nogues"; break;
+				case 3: sectorAcargar="José Malba"; break;
+			}
+			
+			for(int j=0; j<10; j++) {
+				servicioEstacionamiento.insertOrUpdate(new DisEstacionamiento("DisEstacionamiento", true, false, true, sectorAcargar, 1));
+			}
+			
+			for(int z=0; z<3; z++) {
+				servicioEstacionamiento.insertOrUpdate(new DisEstacionamiento("DisEstacionamiento", true, false, true, sectorAcargar, 2));
+			}
+		}
+	} 
 }

@@ -34,6 +34,10 @@ public class EstacionamientoService implements IEstacionamientoService{
 		return estacionamientoRepository.findBySector(sector);
 	}
 	
+	public List<DisEstacionamiento> getPorSectorYtipo(String sector, int tipo){
+		return estacionamientoRepository.findBySectorAndTipoEstacionamiento(sector, tipo);
+	}
+	
 	public List<DisEstacionamiento> getEnFuncionamiento(){
 		return estacionamientoRepository.findByEnFuncionamiento(true);
 	}
@@ -49,7 +53,10 @@ public class EstacionamientoService implements IEstacionamientoService{
 	}
 	
 	@Override
-	public DisEstacionamiento insertOrUpdate(DisEstacionamiento objDisEstacionamiento) {
+	public DisEstacionamiento insertOrUpdate(DisEstacionamiento objDisEstacionamiento) { 
+		
+		int limiteDeCarga;
+		
 		return estacionamientoRepository.save(objDisEstacionamiento);
 	}
 
@@ -85,5 +92,24 @@ public class EstacionamientoService implements IEstacionamientoService{
 		}
 		
 	}
-
+	
+	private int establecerLimiteDeCarga(String sector, int tipoEstacionamiento) {
+		
+		int limiteCarga = 20;
+		
+		if(sector == "Buffet" || sector == "29 de Septiembre") {
+			
+			limiteCarga = 50;
+			
+			if(tipoEstacionamiento == 2)
+				limiteCarga = 10;
+			
+		}else if(tipoEstacionamiento == 2){
+			
+			limiteCarga = 5;
+		}
+		
+		return limiteCarga;
+	}
+	
 }

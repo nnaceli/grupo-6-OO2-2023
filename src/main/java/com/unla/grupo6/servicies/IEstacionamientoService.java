@@ -12,6 +12,8 @@ public interface IEstacionamientoService {
 	
 	public List<DisEstacionamiento> getPorSector(String sector);
 	
+	public List<DisEstacionamiento> getPorSectorYtipo(String sector, int tipo);
+	
 	public List<DisEstacionamiento> getPorSectorYfuncionamiento(String sector, boolean enFuncionamiento);
 	
 	public List<DisEstacionamiento> getPorSectorYfuncionamientoYtipo(String sector, boolean enFuncionamiento, int tipo);
