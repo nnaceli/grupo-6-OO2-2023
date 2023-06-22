@@ -2,6 +2,7 @@ package com.unla.grupo6.implementation;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,17 @@ public class BañoService implements IBañoService {
 	@Override
 	public void save(DisBaño disBaño) {
 		bañoRepository.save(disBaño);
-
 	}
+	
+	public boolean existsByNombreAndSector(String nombre, String sector) {
+        return bañoRepository.existsByNombreAndSector(nombre, sector);
+    }
+
+	@Override
+	public DisBaño getByUsername(String nombre) {
+		return bañoRepository.getByUsername(nombre);
+	}
+	
+	
 
 }
