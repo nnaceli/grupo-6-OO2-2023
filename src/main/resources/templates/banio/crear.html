@@ -34,17 +34,16 @@
 
 	<div class="container">
 		<div class="card bg-light">
-			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
-			<div class="card-body">
+			<div class="card-header"  th:text="${titulo}" style="background-color: #6A0E1A; color: white;"></div>
+			<div class="card-body btn-sm">
 
-
-
-				<form th:action="@{/banio/save}" th:object="${banio}" method="post">
+				<form th:action="@{/banio/save}" th:object="${banio}" method="post" >
 					<div class="form-group row">
 						<label class="col-md-2" for="nombre">Nombre:</label>
 						<div class="col-md-6">
 							<select name="sector" th:field="*{nombre}" class="form-control form-control-sm" id="sector">
-								<option value="Hernandez">Dispositivo Baño</option>
+								<option value="Hernandez">Dispositivo Baño Mujer</option>
+								<option value="Hernandez">Dispositivo Baño Hombre</option>
 							</select> <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
 								th:errors="*{nombre}"></small>
 						</div>
@@ -70,9 +69,27 @@
 						<label class="col-md-2" for="sector">Sector:</label>
 						<div class="col-md-6">
 							<select name="sector" th:field="*{sector}" class="form-control form-control-sm" id="sector">
-								<option value="Hernandez">Hernandez</option>
-								<option value="Scalabrini">Scalabrini</option>
-								<option value="Nestor">Nestor Kirchner</option>
+								<option value="Jose Hernandez">Jose Hernandez</option>
+								<option value="Comedor Universitario Padre Mujica">Comedor Universitario Padre Mujica</option>
+								<option value="Inadi">Inadi</option>
+								<option value="Irma Laciar de Carrica">Irma Laciar de Carrica</option>
+								<option value="Leonardo Werthein">Leonardo Werthein</option>
+								<option value="Oscar Varsavsky">Oscar Varsavsky</option>
+								<option value="Hector Oesterheld">Hector Oesterheld</option>
+								<option value="Cine Tita Merello">Cine Tita Merello</option>
+								<option value="Lisando de la Torre">Lisandro de la Torre</option>
+								<option value="Macedonio Fernandez">Macedonio Fernandez</option>
+								<option value="Raul Scalabrini Ortiz">Raul Scalabrini Ortiz</option>
+								<option value="Arturo Jauretche">Arturo Jauretche</option>
+								<option value="Manuel Ugarte">Manuel Ugarte</option>
+								<option value="Arturo Jauretche">Arturo Jauretche</option>
+								<option value="Homero Manzi">Homero Manzi</option>
+								<option value="Ortega Peña">Ortega Peña</option>
+								<option value="Lepoldo Marechal">Leopoldo Marechal</option>
+								<option value="Juana Azurduy">Juana Azurduy</option>
+								<option value="Lepoldo Marechal">Leopoldo Marechal</option>
+								<option value="Nestor Kirchner">Nestor Kirchner</option>
+								<option value="Aulario Remedios del Valle">Aulario Remedios del Valle</option>
 							</select> <small class="form-text text-danger" th:if="${#fields.hasErrors('sector')}"
 								th:errors="*{sector}"></small>
 						</div>
@@ -95,8 +112,8 @@
 						</div>
 					</div>
 
-					<div class="card-footer bg-dark">
-						<input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
+					<div class="card-footer" style="background-color: #6A0E1A; color: white;">
+						<input type="submit" class="btn btn-dark btn-sm" value="Guardar" />
 					</div>
 
 

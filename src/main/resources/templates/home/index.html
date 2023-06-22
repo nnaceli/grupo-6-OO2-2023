@@ -4,10 +4,8 @@
 <head th:fragment="head">
 <meta charset="UTF-8" />
 <title>Home</title>
-<link rel="stylesheet"
-	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 
 <style>
 body {
@@ -89,30 +87,30 @@ body {
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+		
+		
+		
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
+
+			<li class="nav-item"><a class="nav-link"
+					href="http://localhost:8080/evento/lista">Eventos</a></li>
 
 				<li class="nav-item dropdown"><a aria-expanded="false"
 					aria-haspopup="true" class="nav-link dropdown-toggle"
 					data-toggle="dropdown" href="#" id="navbarDropdownBlog">Sesion</a>
 					<div aria-labelledby="navbarDropdownBlog"
 						class="dropdown-menu dropdown-menu-right">
-						<form sec:authorize="anonymous" th:action="@{/login}"
-							method="post">
-							<input class="dropdown-item" style="cursor: pointer"
-								type="submit" value="Iniciar sesión" />
-						</form>
-
-						<form sec:authorize="authenticated" th:action="@{/logout}"
-							method="post">
+						
+						<form th:action="@{/logout}" method="post">
 							<input class="dropdown-item" style="cursor: pointer"
 								type="submit" value="Cerrar sesión" />
 						</form>
 
-					</div></li>
+					</div>
+					</li>
 
-				<li class="nav-item"><a class="nav-link"
-					href="http://localhost:8080/evento/lista">Eventos</a></li>
+				
 			</ul>
 		</div>
 	</nav>
