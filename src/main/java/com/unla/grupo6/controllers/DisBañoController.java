@@ -12,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,11 +40,7 @@ public class DisBañoController {
 	@Qualifier("eventoService")
 	private IEventoService eventoService;
 
-	@GetMapping("/index")
-	public String index() {
-		return ViewRouterHelper.BANIO_INDEX;
-	}
-
+	
 	@GetMapping("/lista")
 	public String listarBaños(Model model) {
 		List<DisBaño> baniosLista = bañoService.getAll();
@@ -71,11 +68,19 @@ public class DisBañoController {
 	}
 
 	@PostMapping("/save")
-	public String guardar(@Valid @ModelAttribute DisBaño disBaño, BindingResult result, Model model,
-			RedirectAttributes attribute) {
+	public String guardar(@Valid @ModelAttribute DisBaño disBaño, BindingResult result, Model model, RedirectAttributes attribute) {
+	
+	
+		/*
+		 * if(bañoService.getByUsername(disBaño.getNombre()).getIdDispositivo() !=
+		 * disBaño.getIdDispositivo()) { FieldError error = new FieldError("sector",
+		 * "nombre", "Ya existe un dispositivo baño en ese sector");
+		 * result.addError(error); }
+		 */
+		
 
-		if (result.hasErrors()) {
-			model.addAttribute("titulo", "Formulario: Nuevo Dispositivo");
+	if (result.hasErrors()) {
+			model.addAttribute("titulo", "Formulario: Nuevo Dispositivo Baño");
 			model.addAttribute("banio", disBaño);
 			model.addAttribute("lista", bañoService.getAll());
 
@@ -89,15 +94,13 @@ public class DisBañoController {
 			disBaño.setHabilitado(true);
 		}
 
-		disBaño.setNombre("Dispositivo Baño");
-
 		bañoService.save(disBaño);
 		System.out.println("Dispositivo Baño guardado con exito!");
 		attribute.addFlashAttribute("success", "Dispositivo Baño guardado con exito ");
-
+	
 		Evento nuevoEvento = new Evento(disBaño, LocalDateTime.now(), disBaño.getNombre());
 		eventoService.saveEvento(nuevoEvento);
-
+		
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 	}
 	
@@ -110,9 +113,7 @@ public class DisBañoController {
 		model.addAttribute("banio", disBaño);
 		model.addAttribute("lista", bañoService.getAll());
 
-		Evento nuevoEvento = new Evento(disBaño, LocalDateTime.now(), disBaño.getNombre());
-		eventoService.saveEvento(nuevoEvento);
-
+		
 		return ViewRouterHelper.BANIO_CREAR;
 	}
 	
@@ -138,29 +139,25 @@ public class DisBañoController {
 		boolean randomValue = random.nextBoolean();
 		
 		if (disBaño.isHigienizandose() != randomValue) {
-		    // Establecer el nuevo valor de higienización
+		   
 		    disBaño.setHigienizandose(randomValue);
 		    
-		    // Actualizar el estado del baño y guardar en la base de datos
 		    disBaño.setHabilitado(!randomValue);
 		    bañoService.save(disBaño);
 		    
-		    // Crear un nuevo evento con la fecha y nombre del baño
 		    Evento nuevoEvento = new Evento(disBaño, LocalDateTime.now(), disBaño.getNombre());
 		    eventoService.saveEvento(nuevoEvento);
 		}
-		
 		
 		if (disBaño.isEnFuncionamiento() == false) {
 			attribute.addFlashAttribute("error", "ATENCION: La camara seleccionada no se puede ver porque no funciona");
 			return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 		}
 
-		model.addAttribute("titulo", "Ver Camara");
+		model.addAttribute("titulo", "Camara del baño");
 		model.addAttribute("banio", disBaño);
 
-		
-		
+
 		return ViewRouterHelper.BANIO_VER_CAMARA;
 	}
 
