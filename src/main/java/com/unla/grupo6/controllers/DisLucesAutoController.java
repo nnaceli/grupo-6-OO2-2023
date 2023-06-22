@@ -91,7 +91,7 @@ public class DisLucesAutoController {
 
 		return ViewRouterHelper.LUCES_AGREGAR;
 	}
-
+	
 	@PreAuthorize("hasRole('ROLE_AUDITOR')")
 	@GetMapping("listaLucesAuto/verAula/{idDispositivo}")
 	public String verCamara(@PathVariable("idDispositivo") Long idDispositivo, Model model,
