@@ -31,6 +31,7 @@ public class DisEstacionamientoController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/listaDispositivos")
 	public String listarDisEstacionamiento(Model modelo) {
+		modelo.addAttribute("titulo", "Lista general de dispositivos");
 		modelo.addAttribute("estacionamientos", estacionamientoService.getAll());
 		return ViewRouterHelper.ESTACIONAMIENTO_LISTA;
 	}
@@ -46,7 +47,6 @@ public class DisEstacionamientoController {
 	public String plazasSectorSeptiembreNormales(Model modelo) {
 		modelo.addAttribute("titulo", "Disponibilidad de plazas comunes");
 		modelo.addAttribute("sectorActual", "comunes");
-		modelo.addAttribute("estiloDisponibilidad", "btn btn-danger btn-sm");
 		modelo.addAttribute("estacionamientos",
 				estacionamientoService.getPorSectorYfuncionamientoYtipo("29 de septiembre", true, 1));
 		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_COMUNES;
@@ -55,6 +55,7 @@ public class DisEstacionamientoController {
 	@GetMapping("/septiembre/discapacitados")
 	public String plazasSectorSeptiembreDiscapactiados(Model modelo) {
 		modelo.addAttribute("titulo", "Disponibilidad de plazas para discapacitados");
+		modelo.addAttribute("sectorActual", "discapacitados");
 		modelo.addAttribute("estacionamientos",
 				estacionamientoService.getPorSectorYfuncionamientoYtipo("29 de septiembre", true, 2));
 		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS;
@@ -70,6 +71,7 @@ public class DisEstacionamientoController {
 	@GetMapping("/buffet/comunes")
 	public String plazasSectorBuffetNormales(Model modelo) {
 		modelo.addAttribute("titulo", "Disponibilidad de plazas comunes");
+		modelo.addAttribute("sectorActual", "comunes");
 		modelo.addAttribute("estacionamientos",estacionamientoService.getPorSectorYfuncionamientoYtipo("Buffet", true, 1));
 		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_COMUNES;
 	}
@@ -77,6 +79,7 @@ public class DisEstacionamientoController {
 	@GetMapping("/buffet/discapacitados")
 	public String plazasSectorBuffetDiscapactiados(Model modelo) {
 		modelo.addAttribute("titulo", "Disponibilidad de plazas para discapacitados");
+		modelo.addAttribute("sectorActual", "discapacitados");
 		modelo.addAttribute("estacionamientos",
 				estacionamientoService.getPorSectorYfuncionamientoYtipo("Buffet", true, 2));
 		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS;
@@ -92,6 +95,7 @@ public class DisEstacionamientoController {
 	@GetMapping("/jose/comunes")
 	public String plazasSectorJoseNormales(Model modelo) {
 		modelo.addAttribute("titulo", "Disponibilidad de plazas comunes");
+		modelo.addAttribute("sectorActual", "comunes");
 		modelo.addAttribute("estacionamientos",
 				estacionamientoService.getPorSectorYfuncionamientoYtipo("José Malba", true, 1));
 		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_COMUNES;
@@ -100,6 +104,7 @@ public class DisEstacionamientoController {
 	@GetMapping("/jose/discapacitados")
 	public String plazasSectorJoseDiscapactiados(Model modelo) {
 		modelo.addAttribute("titulo", "Disponibilidad de plazas para discapacitados");
+		modelo.addAttribute("sectorActual", "discapacitados");
 		modelo.addAttribute("estacionamientos",
 				estacionamientoService.getPorSectorYfuncionamientoYtipo("José Malba", true, 2));
 		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS;
@@ -115,6 +120,7 @@ public class DisEstacionamientoController {
 	@GetMapping("/pablo/comunes")
 	public String plazasSectorPabloNormales(Model modelo) {
 		modelo.addAttribute("titulo", "Disponibilidad de plazas comunes");
+		modelo.addAttribute("sectorActual", "comunes");
 		modelo.addAttribute("estacionamientos",
 				estacionamientoService.getPorSectorYfuncionamientoYtipo("Pablo Nogues", true, 1));
 		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_COMUNES;
@@ -123,6 +129,7 @@ public class DisEstacionamientoController {
 	@GetMapping("/pablo/discapacitados")
 	public String plazasSectorPabloDiscapactiados(Model modelo) {
 		modelo.addAttribute("titulo", "Disponibilidad de plazas para discapacitados");
+		modelo.addAttribute("sectorActual", "discapacitados");
 		modelo.addAttribute("estacionamientos",
 				estacionamientoService.getPorSectorYfuncionamientoYtipo("Pablo Nogues", true, 2));
 		return ViewRouterHelper.ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS;
