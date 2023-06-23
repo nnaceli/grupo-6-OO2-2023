@@ -1,5 +1,6 @@
 package com.unla.grupo6;
 
+import java.time.LocalDateTime;
 import java.util.Iterator;
 
 import java.util.List;
@@ -46,53 +47,57 @@ public class Grupo6Application implements CommandLineRunner {
 	
 	@Autowired
 	private BañoService servicioBanios;
-//	private EventoService servicioEvento;
+	
+	@Autowired
+	private EventoService servicioEvento;
 
-////	@Override
-//	public void run(String... args) throws Exception {
-//
-//
-//		List<DisEstacionamiento> Estacionamientos = servicioEstacionamiento
-//				.getPorSectorYfuncionamientoYtipo("29 de septiembre", true, 2);
-//
-//		for (DisEstacionamiento estacionamiento : Estacionamientos)
-//			System.out.println(estacionamiento.toString());
-//
-//		//cargarDispositivosEstacionamiento();
-//		if(servicioEstacionamiento.getAll().size() == 0) {
-//			cargarDispositivosEstacionamiento();
-//		}
-//			
-//
-//
-//		
-//		// Carga automatica de dispositivos al inicializar el proyecto con la base de datos vacia
-//		if(servicioEstacionamiento.getAll().size() == 0) {
-//			cargarDispositivosEstacionamiento();
-//		}
-//		
-//		if(servicioEspacioVerde.getAll().size() == 0) {
-//			cargarDispositivosEspacioVerde();
-//		}
-//		
-//		if(servicioLucesAuto.getAll().size() == 0) {
-//			cargarDispositivosLucesAutomaticas();
-//		}
-//		
-//		if(servicioBanios.getAll().size() == 0) {
-//			cargarDispositivosBanios();
-//		}
+	@Override
+	public void run(String... args) throws Exception {
+		
+		// Carga automatica de dispositivos al inicializar el proyecto con la base de datos vacia
+		if(servicioEstacionamiento.getAll().size() == 0) {
+			cargarDispositivosEstacionamiento();
+		}
+		
+		if(servicioEspacioVerde.getAll().size() == 0) {
+			cargarDispositivosEspacioVerde();
+		}
+		
+		if(servicioLucesAuto.getAll().size() == 0) {
+			cargarDispositivosLucesAutomaticas();
+		}
+		
+		if(servicioBanios.getAll().size() == 0) {
+			cargarDispositivosBanios();
+		}
 
 		
 //		List<Evento> listEvento = servicioEvento.findByNombreDispositivo("Luz Automatica Hernandez");
 //		for (Evento evento : listEvento)
 //			System.out.println(evento.toString());
-//	}
+	}
 	
-//	@Scheduled(cron = "*/3 * * * * *")
-//	public void actualizarDispositivosDeEstacionamientos() {
-//		servicioEstacionamiento.actualizarDisponibilidadEstacionamientos();
-//	}
+	@Scheduled(cron = "*/60 * 7-22 * * *")
+	public void actualizarDispositivosDeEstacionamientos() {
+		List<DisEstacionamiento> dispositivosActualizados = servicioEstacionamiento.actualizarDisponibilidadEstacionamientos();
+		
+		String nombreEvento, suceso, sector;
+		LocalDateTime fechaHoraEvento;
+		
+		
+		for(DisEstacionamiento disEstacionamiento : dispositivosActualizados) {
+			
+			fechaHoraEvento = LocalDateTime.now();
+			sector = disEstacionamiento.getSector();
+			suceso = "fue desocupado";
+			
+			if(disEstacionamiento.isOcupado())
+				suceso = "fue ocupado";
+			
+			nombreEvento = "Plaza "+ disEstacionamiento.getIdDispositivo() + " "+suceso+ " en el sector "+sector;
+			servicioEvento.saveEvento(new Evento(disEstacionamiento, fechaHoraEvento, nombreEvento));	
+		}
+	}
 	
 
 	private void cargarDispositivosEstacionamiento() {
@@ -138,11 +143,5 @@ public class Grupo6Application implements CommandLineRunner {
 		servicioBanios.save(new DisBaño("Dispositivo Baño Hombre", true, false, true, false, "Jose Hernandez"));
 	}
 
-
-	@Override
-	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

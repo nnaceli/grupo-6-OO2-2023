@@ -1,6 +1,7 @@
 package com.unla.grupo6.implementation;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -85,9 +86,10 @@ public class EstacionamientoService implements IEstacionamientoService {
 	}
 
 	@Override
-	public void actualizarDisponibilidadEstacionamientos() {
+	public List<DisEstacionamiento> actualizarDisponibilidadEstacionamientos() {
 
 		List<DisEstacionamiento> listaDisEstacionamientoEnFuncionamiento = estacionamientoRepository.findByEnFuncionamiento(true);
+		List<DisEstacionamiento> dispositivosActualizados = new ArrayList<DisEstacionamiento>();;
 		double aleatorioCambioDeDisponibilidad;
 		
 		for(DisEstacionamiento disEstacionamiento : listaDisEstacionamientoEnFuncionamiento) {
@@ -96,11 +98,13 @@ public class EstacionamientoService implements IEstacionamientoService {
 			
 			if (aleatorioCambioDeDisponibilidad < 50) {
 				disEstacionamiento.setOcupado(!disEstacionamiento.isOcupado());
+				dispositivosActualizados.add(disEstacionamiento);
 				estacionamientoRepository.save(disEstacionamiento);
 			}
 			
 		}
-
+		
+		return dispositivosActualizados;
 	}
 
 	private int establecerLimiteDeCarga(String sector, int tipoEstacionamiento) {
@@ -124,5 +128,6 @@ public class EstacionamientoService implements IEstacionamientoService {
 		
 		return limiteCarga;
 	}
+
 
 }
