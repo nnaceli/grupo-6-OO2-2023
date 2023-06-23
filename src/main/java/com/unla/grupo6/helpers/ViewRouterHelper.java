@@ -31,7 +31,7 @@ public class ViewRouterHelper {
 	public final static String ESTACIONAMIENTO_REDIRECT_LISTA = "redirect:/estacionamientos/listaDispositivos";
 
 	public final static String ESTACIONAMIENTO_CARGAR = "DisEstacionamiento/cargarDispositivo";
-	public final static String ESTACIONAMIENTO_MODIFICAR = "DisEstacionamiento/modificarDispositivo";
+	public final static String ESTACIONAMIENTO_MODIFICAR = "DisEstacionamiento/modificar_dispositivo";
 
 	// BAÑOS
 	public final static String ESTACIONAMIENTO_AGREGAR = "DisEstacionamiento/agregar_Dispositivo";

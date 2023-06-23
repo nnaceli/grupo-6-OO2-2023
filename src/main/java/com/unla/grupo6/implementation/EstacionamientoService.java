@@ -109,14 +109,14 @@ public class EstacionamientoService implements IEstacionamientoService {
 		
 		if (sector.compareTo("Buffet") == 0 || sector.compareTo("29 de Septiembre") == 0 ) {
 
-			limiteCarga = 14;
+			limiteCarga = 50;
 
 			if (tipoEstacionamiento == 2)
 				limiteCarga = 10;
 
 		} else if (sector.compareTo("Pablo Nogues") == 0  || sector.compareTo("José Malba") == 0) {
 
-			limiteCarga = 12;
+			limiteCarga = 20;
 
 			if (tipoEstacionamiento == 2)
 				limiteCarga = 5;

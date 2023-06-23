@@ -153,19 +153,18 @@ public class DisEstacionamientoController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/editar/{idDispositivo}")
 	public String mostrarFormularioDeEditar(@PathVariable Long idDispositivo, Model modelo) {
+		modelo.addAttribute("titulo", "Modificacion de dispositivo");
 		modelo.addAttribute("estacionamiento", estacionamientoService.obtenerEstacionamiento(idDispositivo));
 		return ViewRouterHelper.ESTACIONAMIENTO_MODIFICAR;
 	}
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@PostMapping("/{idDispositivo}")
+	@PostMapping("/modificar/{idDispositivo}")
 	public String actualizarEstacionamiento(@PathVariable Long idDispositivo,
 			@ModelAttribute("estacionamiento") DisEstacionamiento disEstacionamiento, Model model) {
 		DisEstacionamiento disEstacionamientoExistente = estacionamientoService.obtenerEstacionamiento(idDispositivo);
 		disEstacionamientoExistente.setIdDispositivo(idDispositivo);
 		disEstacionamientoExistente.setSector(disEstacionamiento.getSector());
-		disEstacionamientoExistente.setEnFuncionamiento(disEstacionamiento.isEnFuncionamiento());
-		disEstacionamientoExistente.setOcupado(disEstacionamiento.isOcupado());
 		disEstacionamientoExistente.setTipoEstacionamiento(disEstacionamiento.getTipoEstacionamiento());
 
 		estacionamientoService.update(disEstacionamientoExistente);

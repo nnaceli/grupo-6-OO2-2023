@@ -4,30 +4,104 @@
 <head>
 	<meta charset="UTF-8" \>
 	<title>Smart UNLa - Estacionamientos</title>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 </head>
 
 <body>
-	<h1>Modificacion de dispositivo</h1>
+
+	<nav class="navbar navbar-expand-lg navbar-dark" style="padding: 10px; background-color:black;">
+		<a class="navbar-brand" href="/loginsuccess">
+			<img src="/images/logo.png" width="48" height="45" alt="">
+		</a>
+		<div class="navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="dispositivosDropdown" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false">
+						Dispositivos
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dispositivosDropdown">
+						<li><a class="dropdown-item" href="http://localhost:8080/espacioverde/listaverde">Dispositivos
+								Espacio Verde</a></li>
+						<li><a class="dropdown-item"
+								href="http://localhost:8080/estacionamientos/listaDispositivos">Dispositivos
+								Estacionamiento</a></li>
+						<li><a class="dropdown-item" href="http://localhost:8080/banio/lista">Dispositivos Baño</a></li>
+						<li><a class="dropdown-item"
+								href="http://localhost:8080/lucesautomaticas/listaLucesAuto">Dispositivos Luces
+								Automáticas</a></li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="http://localhost:8080/evento/lista">Eventos</a>
+				</li>
+			</ul>
+		</div>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">
+					Sesion
+				</a>
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+					<form th:action="@{/logout}" method="post" sec:authorize="authenticated">
+						<input class="dropdown-item" type="submit" style="cursor: pointer" value="Cerrar sesión" />
+					</form>
+				</div>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="container">
+		<h1 class="text-center" th:text="${titulo}"></h1>
+
+
+		<div th:if="${error}" class="alert alert-danger">
+			<p th:text="${error}"></p>
+		</div>
+
+	</div>
 	
-	<form th:action="@{/estacionamientos/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}" th:object="${estacionamiento}" method="post">
-		<p> Plaza ocupada: <input type="checkbox" th:field="*{ocupado}" /></p>
-		<p> En funcionamiento: <input type="checkbox" th:field="*{enFuncionamiento}" /></p>
-		<p> Sector:
-			<select name="sector" th:field="*{sector}">
-				<option value="Buffet">Buffet</option>
-				<option value="29 de septiembre">29 de septiembre</option>
-				<option value="Pablo Nogues">Pablo Nogues</option>
-				<option value="José Malba">José Malba</option>
-			</select>
-		</p>
-		<p> Tipo de estacionameinto:
-			<select name="sector" th:field="*{tipoEstacionamiento}">
-				<option value="1">Normal</option>
-				<option value="2">Para discapacitados</option>
-			</select>
-		</p>
-		<input type="submit" />
-	</form>
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-body">
+				<form th:action="@{/estacionamientos/modificar/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}"th:object="${estacionamiento}" method="post">
+					
+					<div class="form-group row">
+						<label class="col-md-2" for="sector">Sector</label>
+						<div class="col-md-6">
+							<select name="sector" th:field="*{sector}" class="form-control form-control-sm" id="sector">
+								<option value="Buffet">Buffet</option>
+								<option value="29 de Septiembre">29 de Septiembre</option>
+								<option value="Pablo Nogues">Pablo Nogues</option>
+								<option value="José Malba">José Malba</option>
+							</select>
+						</div>
+
+					</div>
+
+
+					<div class="form-group row">
+						<label class="col-md-2" for="tipoEstacionamiento">Tipo de estacionameinto:</label>
+						<div class="col-md-6">
+							<select name="sector" th:field="*{tipoEstacionamiento}" class="form-control form-control-sm"
+								id="tipoEstacionamiento">
+								<option value="1">Normal</option>
+								<option value="2">Para discapacitados</option>
+							</select>
+						</div>
+
+					</div>
+
+
+					<div class="card-footer bg-dark">
+						<input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>	
+
 </body>
 
 </html>
