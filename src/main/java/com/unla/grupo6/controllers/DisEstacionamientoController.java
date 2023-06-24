@@ -35,7 +35,15 @@ public class DisEstacionamientoController {
 		modelo.addAttribute("estacionamientos", estacionamientoService.getAll());
 		return ViewRouterHelper.ESTACIONAMIENTO_LISTA;
 	}
-
+	
+	
+	@GetMapping("/verPlaza/{idDispositivo}")
+	public String verPlaza(@PathVariable Long idDispositivo, Model modelo) {
+		modelo.addAttribute("titulo", "Vista de la plaza");
+		modelo.addAttribute("estacionamiento", estacionamientoService.obtenerEstacionamiento(idDispositivo));
+		return ViewRouterHelper.ESTACIONAMIENTO_VER_PLAZA;
+	}
+	
 	// SECTOR 29 DE SEPTIEMBRE
 	@GetMapping("/septiembre")
 	public String septiembre(Model modelo) {
