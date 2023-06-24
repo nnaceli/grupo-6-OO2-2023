@@ -18,10 +18,5 @@ public interface IBañoService {
 
 	public void save(DisBaño disBaño);
 	
-	/*
-	 * public boolean existsByNombreAndSector(String nombre, String sector);
-	 * 
-	 * public DisBaño getByUsername(@Param("nombre") String nombre);
-	 */
 
 }
