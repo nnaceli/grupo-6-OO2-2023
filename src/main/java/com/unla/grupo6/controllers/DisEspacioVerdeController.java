@@ -27,7 +27,7 @@ import com.unla.grupo6.servicies.IEventoService;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/espacioverde")
+@RequestMapping("/espacioverde") 
 public class DisEspacioVerdeController {
 
 	@Autowired
