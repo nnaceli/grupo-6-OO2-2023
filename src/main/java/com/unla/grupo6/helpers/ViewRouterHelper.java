@@ -43,6 +43,7 @@ public class ViewRouterHelper {
 
 	public final static String ESTACIONAMIENTO_PLAZAS_COMUNES = "DisEstacionamiento/plazas_comunes";
 	public final static String ESTACIONAMIENTO_PLAZAS_DISCAPACITADOS = "DisEstacionamiento/plazas_para_discapacitados";
+	public final static String ESTACIONAMIENTO_VER_PLAZA = "DisEstacionamiento/ver_plaza";
 
 	// BAÑOS
 	public final static String BANIO_INDEX = "banio/index";

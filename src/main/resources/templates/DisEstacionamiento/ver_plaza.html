@@ -4,9 +4,8 @@
 <head>
 	<meta charset="UTF-8" \>
 	<title>Smart UNLa - Estacionamientos</title>
-	<link rel="stylesheet"
-	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
-</head>
+	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+
 </head>
 
 <body>
@@ -61,34 +60,37 @@
 		</div>
 
 	</div>
+
 	<div class="container">
 
 		<table class="table" style="background-color: #6A0E1A; color: white;">
 			<thead>
 				<tr>
-					<th scope="col">Id</th>
 					<th scope="col">Sector</th>
 					<th scope="col">Disponibilidad</th>
-					<th scope="col">Plaza</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="table" th:each="estacionamiento:${estacionamientos}" style="background-color: #FAD9DD; color: black;">
-					
-					<th scope="row" th:text="${estacionamiento.idDispositivo}"></th>
+				<tr class="table" th:object="${estacionamiento}" style="background-color: #FAD9DD; color: black;">
 					<td scope="row" th:text="${estacionamiento.sector}"></td>
-					<td scope="row" th:text="${estacionamiento.ocupado} ? 'Ocupado' : 'Disponible'"></td>
-					<td><a class="btn btn-dark btn-sm" th:href="@{/estacionamientos/verPlaza/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Ver plaza</a></td>
+					<td scope="row"
+						th:text="${estacionamiento.ocupado} ? 'La plaza se encuentra ocupada' : 'La plaza se encuentra desocupada'">
+					</td>
 				</tr>
 			</tbody>
 		</table>
-		<a class="center btn btn-dark btn-sm" th:href="${sectorActual}" th:text="'Actualizar'" title="Actualizar"></a>
+
 	</div>
-	
+
+	<img th:if="${estacionamiento.ocupado}" src="/images/plaza_ocupada.png" alt="Imagen 1"
+		style="width: 200px; display: block; margin: 0 auto;">
+	<img th:unless="${estacionamiento.ocupado}" src="/images/plaza_desocupada.png" alt="Imagen 2"
+		style="width: 200px; display: block; margin: 0 auto;">
+
 	<script src="/vendor/jquery/jquery.min.js"></script>
 	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
