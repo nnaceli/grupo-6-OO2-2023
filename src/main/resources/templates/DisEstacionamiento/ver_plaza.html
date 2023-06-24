@@ -1,28 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 
-
-<head th:fragment="head">
-	<meta charset="UTF-8" />
-	<title>LISTA DE DISPOSITIVOS DE LUCES AUTOMATICAS</title>
+<head>
+	<meta charset="UTF-8" \>
+	<title>Smart UNLa - Estacionamientos</title>
 	<link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-	<style>
-		.footer {
-			background-color: #6A0E1A;
-			;
-			padding: 10px;
-			text-align: center;
-			height: 40px;
-			display: flex;
-			justify-content: center;
-			text-align: center;
-		}
-	</style>
+
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark " style="padding: 10px; background-color:black;">
+	<nav class="navbar navbar-expand-lg navbar-dark" style="padding: 10px; background-color:black;">
 		<a class="navbar-brand" href="/loginsuccess">
 			<img src="/images/logo.png" width="48" height="45" alt="">
 		</a>
@@ -62,10 +49,8 @@
 					</form>
 				</div>
 			</li>
-			    
 		</ul>
 	</nav>
-
 	<div class="container">
 		<h1 class="text-center" th:text="${titulo}"></h1>
 
@@ -78,50 +63,34 @@
 
 	<div class="container">
 
-		<a class="btn btn-primary btn-sm" th:href="@{/lucesautomaticas/agregarLuces}"
-			th:text="'Nuevo Dispositivo de Luz Automatica'" title="Crear Nueva Luz Automatica"></a>
-
-		<table class="table">
+		<table class="table" style="background-color: #6A0E1A; color: white;">
 			<thead>
 				<tr>
-					<th scope="col">ID</th>
-					<th scope="col">Nro Aula</th>
-					<th scope="col">Funcionamiento</th>
-					<th scope="col">Ver</th>
-					<th scope="col">Editar</th>
-					<th scope="col">Eliminar</th>
+					<th scope="col">Sector</th>
+					<th scope="col">Disponibilidad</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="table-info" th:each="li:${lista}">
-					<th scope="row" th:text="${li.idDispositivo}"></th>
-					<td scope="row" th:text="${li.nroAula}"></td>
-					<td scope="row" th:text="${li.enFuncionamiento}"></td>
-					<td><a class="btn btn-success btn-sm"
-							th:href="@{/lucesautomaticas/listaLucesAuto/verAula/}+${li.idDispositivo}"
-							th:text="'Ver Aula'" title="Ver Aula"></a></td>
-					<td><a class="btn btn-success btn-sm"
-							th:href="@{/lucesautomaticas/listaLucesAuto/modificarLuces/}+${li.idDispositivo}"
-							th:text="'Editar'" title="Editar Registro"></a></td>
-					<td><a class="btn btn-danger btn-sm"
-							th:href="@{/lucesautomaticas/listaLucesAuto/eliminarLuces/}+${li.idDispositivo}"
-							th:text="'Eliminar'" title="Eliminar Registro"
-							onclick="return confirm('¿Estás seguro de eliminar el registro?')"></a></td>
+				<tr class="table" th:object="${estacionamiento}" style="background-color: #FAD9DD; color: black;">
+					<td scope="row" th:text="${estacionamiento.sector}"></td>
+					<td scope="row"
+						th:text="${estacionamiento.ocupado} ? 'La plaza se encuentra ocupada' : 'La plaza se encuentra desocupada'">
+					</td>
 				</tr>
 			</tbody>
 		</table>
+
 	</div>
 
-	<footer th:fragment="footer" class="footer text-center text-white fixed-bottom">
-		<p>SmartCity - UNLa Copyright © 2023</p>
-		<a class=a-footer href='http://www.unla.edu.ar'>Visitar UNLa</a>
-	</footer>
-	<script type="text/javascript" th:src="@{vendor/bootstrap/jquery/jquery.slim.min.js}"></script>
-	<script type="text/javascript" th:src="@{vendor/bootstrap/js/popper.min.js}"></script>
-	<script type="text/javascript" th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
+	<img th:if="${estacionamiento.ocupado}" src="/images/plaza_ocupada.png" alt="Imagen 1"
+		style="width: 200px; display: block; margin: 0 auto;">
+	<img th:unless="${estacionamiento.ocupado}" src="/images/plaza_desocupada.png" alt="Imagen 2"
+		style="width: 200px; display: block; margin: 0 auto;">
+
 	<script src="/vendor/jquery/jquery.min.js"></script>
 	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

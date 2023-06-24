@@ -4,6 +4,8 @@
 <head>
 	<meta charset="UTF-8" \>
 	<title>Smart UNLa - Estacionamientos</title>
+	<link rel="stylesheet"
+	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
 </head>
 
 <body>
@@ -44,37 +46,53 @@
 		</ul>
 
 	</nav>
-	<h1>Gestion de dispositivos para estacionamientos</h1>
-	<a th:href="@{/estacionamientos/agregar}">Agregar dispositivo</a>
-	<table>
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Activado</th>
-				<th>Sector</th>
-				<th>Ocupado</th>
-				<th>Tipo de plaza</th>
-				<th>ABM</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="estacionamiento : ${estacionamientos}">
-				<td><span th:text="${estacionamiento.idDispositivo}" /></td>
-				<td><span th:text="${estacionamiento.enFuncionamiento}" /></td>
-				<td><span th:text="${estacionamiento.sector}" /></td>
-				<td><span th:text="${estacionamiento.ocupado}" /></td>
-				<td><span th:text="${estacionamiento.tipoEstacionamiento}" /></td>
-				<td>
-					<a th:href="@{/estacionamientos/editar/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Modificar</a>
-					<a th:href="@{/estacionamientos/baja/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Baja</a>
-					<a th:href="@{/estacionamientos/alta/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Alta</a>
-				</td>
-				
-			</tr>
-		</tbody>
-	</table>
+	<div class="container">
+		<h1 class="text-center" th:text="${titulo}"></h1>
+
+
+		<div th:if="${error}" class="alert alert-danger">
+			<p th:text="${error}"></p>
+		</div>
+
+	</div>
+
+	<div class="container">
+
+		<a class="btn btn-primary btn-sm" th:href="@{/estacionamientos/agregar}" th:text="'Agregar dispositivo'" title="Agregar dispositivo"></a>
+		<a class="btn btn-primary btn-sm" th:href="@{/estacionamientos/}" th:text="'Regresar a menu principal'" title="Regresar a menu principal"></a>
+		<table class="table" style="background-color: #6A0E1A; color: white;">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Activado</th>
+					<th scope="col">Sector</th>
+					<th scope="col">Ocupado</th>
+					<th scope="col">Tipo de plaza</th>
+					<th scope="col">Modificación</th>
+					<th scope="col">Alta</th>
+					<th scope="col">Baja</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table" th:each="estacionamiento : ${estacionamientos}" style="background-color: #c7c8ca; color: black;">
+					<th><span th:text="${estacionamiento.idDispositivo}" /></th>
+					<th><span th:text="${estacionamiento.enFuncionamiento} ? 'En funcionamiento' : 'Desactivado'" /></th>
+					<th><span th:text="${estacionamiento.sector}" /></th>
+					<th><span th:text="${estacionamiento.ocupado} ? 'Ocupado' : 'Disponible'" /></th>
+					<th><span th:text="${estacionamiento.tipoEstacionamiento}" /></th>
+					<td><a class="btn btn-dark btn-sm" th:href="@{/estacionamientos/editar/}+${estacionamiento.idDispositivo}">Modificar</a></td>
+					<td><a class="btn btn-success btn-sm" th:href="@{/estacionamientos/alta/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Dar de alta</a></td>
+					<td><a class="btn btn-danger btn-sm" th:href="@{/estacionamientos/baja/{idDispositivo}(idDispositivo=${estacionamiento.idDispositivo})}">Dar de baja</a></td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
 	
-	
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

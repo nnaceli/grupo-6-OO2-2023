@@ -143,8 +143,7 @@ public class DisEspacioVerdeController {
 		DisEspacioVerde disespacioverde = espacioVerdeService.buscarVerde(idDispositivo);
 
 		if (disespacioverde.isEnFuncionamiento() == false) {
-			attribute.addFlashAttribute("error",
-					"ATENCION: El sensor seleccionado no se puede ver porque esta en mantenimiento y/o no funciona");
+			attribute.addFlashAttribute("error", "ATENCION: El sensor seleccionado no se puede ver porque esta en mantenimiento y/o no funciona");
 			return ViewRouterHelper.ESPACIOVERDE_REDIRECT_LISTA;
 		}
 

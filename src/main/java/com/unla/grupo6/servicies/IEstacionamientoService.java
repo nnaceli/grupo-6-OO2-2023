@@ -26,5 +26,5 @@ public interface IEstacionamientoService {
 	
 	public void eliminarEstacionamiento(Long id);
 	
-	public void actualizarDisponibilidadEstacionamientos();
+	public List<DisEstacionamiento> actualizarDisponibilidadEstacionamientos();
 }

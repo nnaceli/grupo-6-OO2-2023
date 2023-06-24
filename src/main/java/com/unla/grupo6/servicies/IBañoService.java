@@ -2,7 +2,9 @@ package com.unla.grupo6.servicies;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
+
 
 import com.unla.grupo6.entities.DisBaño;
 
@@ -15,5 +17,9 @@ public interface IBañoService {
 	public void eliminar(Long id);
 
 	public void save(DisBaño disBaño);
+	
+	public boolean existsByNombreAndSector(String nombre, String sector);
+	
+	public DisBaño getByUsername(@Param("nombre") String nombre);
 
 }

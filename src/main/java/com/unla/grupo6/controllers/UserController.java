@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo6.helpers.ViewRouterHelper;
 
@@ -20,20 +19,10 @@ public class UserController {
 		return ViewRouterHelper.USER_LOGIN;
 	}
 
-//	@GetMapping("/logout")
-//	public String logout(Model model) {
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//
-//		if (authentication != null) {
-//			// Limpiar la sesión y invalidar la autenticación
-//			SecurityContextHolder.clearContext();
-//
-//			// Aquí puedes realizar otras tareas de limpieza o acciones personalizadas según
-//			// tus necesidades
-//		}
-//
-//		return ViewRouterHelper.USER_LOGOUT;
-//	}
+	@GetMapping("/logout")
+	public String logout(Model model) {
+		return ViewRouterHelper.USER_LOGOUT;
+	}
 
 	@GetMapping("/loginsuccess")
 	public String loginsuccess() {

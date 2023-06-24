@@ -13,7 +13,7 @@ import com.unla.grupo6.entities.DisEstacionamiento;
 public interface IEstacionamientoRepository extends JpaRepository<DisEstacionamiento, Serializable> {
 	
 	public abstract List<DisEstacionamiento> findBySector(String sector);
-	
+
 	public abstract List<DisEstacionamiento> findByEnFuncionamiento(boolean enFuncionamiento);
 	
 	public abstract List<DisEstacionamiento> findBySectorAndEnFuncionamiento(String sector, boolean enFuncionamiento);
