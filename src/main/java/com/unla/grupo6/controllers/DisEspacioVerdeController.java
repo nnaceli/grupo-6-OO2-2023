@@ -27,7 +27,7 @@ import com.unla.grupo6.servicies.IEventoService;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/espacioverde")
+@RequestMapping("/espacioverde") 
 public class DisEspacioVerdeController {
 
 	@Autowired
@@ -39,7 +39,7 @@ public class DisEspacioVerdeController {
 	private IEventoService eventoService;
 
 	@GetMapping("/index") // me lo muestra raro
-	public String indexTest() {
+	public String indexTest() { 
 		return ViewRouterHelper.ESPACIOVERDE_INDEX;
 	}
 
