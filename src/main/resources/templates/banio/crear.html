@@ -37,8 +37,10 @@
 			<div class="card-header"  th:text="${titulo}" style="background-color: #6A0E1A; color: white;"></div>
 			<div class="card-body btn-sm">
 
-				<form th:action="@{/banio/save}" th:object="${banio}" method="post" >
+				<form th:action="@{/banio/guardar}" th:object="${banio}" method="post" >
 					<div class="form-group row">
+					<input type="hidden" th:field="*{idDispositivo}" />
+				
 						<label class="col-md-2" for="nombre">Nombre:</label>
 						<div class="col-md-6">
 							<select name="sector" th:field="*{nombre}" class="form-control form-control-sm" id="sector">
@@ -113,7 +115,7 @@
 					</div>
 
 					<div class="card-footer" style="background-color: #6A0E1A; color: white;">
-						<input type="submit" class="btn btn-dark btn-sm" value="Guardar" />
+						<input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
 					</div>
 
 

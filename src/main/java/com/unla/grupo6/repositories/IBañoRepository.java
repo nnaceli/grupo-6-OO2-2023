@@ -19,8 +19,10 @@ public interface IBañoRepository extends JpaRepository<DisBaño, Serializable> 
 	
 	boolean existsByNombreAndSector(String nombre, String sector);
 	
-	@Query("SELECT d FROM DisBaño d WHERE d.nombre = (:nombre)")
-	public abstract DisBaño getByUsername(@Param("nombre") String nombre);
+	/*
+	 * @Query("SELECT d FROM DisBaño d WHERE d.nombre = (:nombre)") public abstract
+	 * DisBaño getByUsername(@Param("nombre") String nombre);
+	 */
 	
 
 }

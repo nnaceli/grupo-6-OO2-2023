@@ -39,14 +39,15 @@ public class BañoService implements IBañoService {
 		bañoRepository.save(disBaño);
 	}
 	
-	public boolean existsByNombreAndSector(String nombre, String sector) {
-        return bañoRepository.existsByNombreAndSector(nombre, sector);
-    }
-
-	@Override
-	public DisBaño getByUsername(String nombre) {
-		return bañoRepository.getByUsername(nombre);
-	}
+	
+	
+	/*
+	 * public boolean existsByNombreAndSector(String nombre, String sector) { return
+	 * bañoRepository.existsByNombreAndSector(nombre, sector); }
+	 * 
+	 * @Override public DisBaño getByUsername(String nombre) { return
+	 * bañoRepository.getByUsername(nombre); }
+	 */
 	
 	
 
