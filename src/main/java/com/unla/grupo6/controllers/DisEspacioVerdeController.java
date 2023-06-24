@@ -39,7 +39,7 @@ public class DisEspacioVerdeController {
 	private IEventoService eventoService;
 
 	@GetMapping("/index") // me lo muestra raro
-	public String indexTest() {
+	public String indexTest() { 
 		return ViewRouterHelper.ESPACIOVERDE_INDEX;
 	}
 
