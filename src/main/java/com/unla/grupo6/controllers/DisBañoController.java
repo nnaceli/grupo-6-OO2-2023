@@ -25,6 +25,7 @@ import com.unla.grupo6.servicies.IEventoService;
 
 import jakarta.validation.Valid;
 import com.unla.grupo6.entities.DisBaño;
+import com.unla.grupo6.entities.DisLucesAuto;
 import com.unla.grupo6.entities.Evento;
 import com.unla.grupo6.helpers.ViewRouterHelper;
 
@@ -67,17 +68,9 @@ public class DisBañoController {
 		return ViewRouterHelper.BANIO_CREAR;
 	}
 
-	@PostMapping("/save")
+	@PostMapping("/guardar")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String guardar(@Valid @ModelAttribute DisBaño disBaño, BindingResult result, Model model, RedirectAttributes attribute) {
-	
-	
-		/*
-		 * if(bañoService.getByUsername(disBaño.getNombre()).getIdDispositivo() !=
-		 * disBaño.getIdDispositivo()) { FieldError error = new FieldError("sector",
-		 * "nombre", "Ya existe un dispositivo baño en ese sector");
-		 * result.addError(error); }
-		 */
-		
 
 	if (result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario: Nuevo Dispositivo Baño");
@@ -104,17 +97,20 @@ public class DisBañoController {
 		return ViewRouterHelper.BANIO_REDIRECT_LISTA;
 	}
 	
+	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("lista/edit/{idDispositivo}")
-	public String editar(@PathVariable("idDispositivo") Long idDispositivo, Model model, RedirectAttributes attribute) {
+	public String editar(@PathVariable("idDispositivo") Long idDispositivo, Model model) {
 
-		DisBaño disBaño = bañoService.buscar(idDispositivo);
-		model.addAttribute("titulo", "Formulario: Editar Camara Baño");
-		model.addAttribute("banio", disBaño);
-		model.addAttribute("lista", bañoService.getAll());
+	    DisBaño disBaño = bañoService.buscar(idDispositivo);
+	   
 
-		
-		return ViewRouterHelper.BANIO_CREAR;
+	    model.addAttribute("titulo", "Formulario: Editar Camara Baño");
+	    model.addAttribute("banio", disBaño);
+	    model.addAttribute("lista", bañoService.getAll());
+	    System.out.println("id EDITAR: "+ disBaño.getIdDispositivo());
+
+	    return ViewRouterHelper.BANIO_CREAR;
 	}
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
