@@ -41,6 +41,12 @@ public class DisBañoController {
 	@Qualifier("eventoService")
 	private IEventoService eventoService;
 
+
+	@GetMapping("/index")
+	public String index() {
+		return ViewRouterHelper.BANIO_INDEX;
+	}
+
 	
 	@GetMapping("/lista")
 	public String listarBaños(Model model) {
